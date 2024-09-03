@@ -23,4 +23,11 @@ public class MoodoUserService {
         return userRepository.findById(id);
     }
 
+    // 회원가입 시 아이디 중복 여부 확인
+    public int userIdCheck(String id) {
+        int result = userRepository.countById(id);
+
+        return result;
+    }
+
 }
