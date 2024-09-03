@@ -22,6 +22,6 @@ public class MoodoMode {
     @Column(nullable = false)
     private int mdMode; // 기분 상태(1 ~ 5)
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime createdDate; //작성일자
 }
