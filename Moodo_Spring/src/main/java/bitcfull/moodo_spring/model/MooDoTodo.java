@@ -18,11 +18,11 @@ public class MooDoTodo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx; // 글번호 (고유식별자)
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER) // id 나머지값 받아와줌
     @JoinColumn(name = "user_id", nullable = false)
     private MooDoUser user; // 조인
 
-    @Column(nullable = false, length = 400)
+    @Column(nullable = false, length = 400, name = "td_list")
     private String tdList; // 할일 목록
 
     @Column(nullable = false)
