@@ -19,7 +19,7 @@ public class MoodoMode {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long idx;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "user_id", nullable = false)
   private MooDoUser user;
 
