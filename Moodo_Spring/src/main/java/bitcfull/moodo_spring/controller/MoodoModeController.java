@@ -12,6 +12,7 @@ import java.util.*;
 @RequestMapping("/api/mood")
 public class MoodoModeController {
 
+
     @Autowired
     private MoodoModeService moodoModeService;
 
@@ -30,7 +31,7 @@ public class MoodoModeController {
 
     // 특정 날짜 기분값 조회
     @GetMapping("/list/{userId}/{date}")
-    public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable LocalDate date) {
+    public Optional<MoodoMode> userMoodByDateList(@PathVariable String userId, @PathVariable LocalDate date) {
         return moodoModeService.findByUserAndDate(userId, date);
     }
 
@@ -71,3 +72,4 @@ public class MoodoModeController {
 
 
 }
+
