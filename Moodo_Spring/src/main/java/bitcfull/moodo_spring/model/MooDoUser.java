@@ -22,5 +22,5 @@ public class MooDoUser {
     private String pass;
 
     @Column(nullable = false)
-    private LocalDate age;
+    private String age;
 }
