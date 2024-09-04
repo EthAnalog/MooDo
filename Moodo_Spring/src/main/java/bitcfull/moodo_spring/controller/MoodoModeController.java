@@ -17,7 +17,7 @@ public class MoodoModeController {
 
   // 유저 전체 기분 목록과 가장 많은 기분값 조회
   @GetMapping("/list/{userId}")
-  public Map<String, Object> userMoodList(String userId) {
+  public Map<String, Object> userMoodList(@PathVariable String userId) {
     List<MoodoMode> moodList = moodoModeService.findByUserId(userId);
     Integer moodMax = moodoModeService.findMoodMax(userId);
 
@@ -30,7 +30,7 @@ public class MoodoModeController {
 
   // 특정 날짜 기분값 조회
   @GetMapping("/list/{userId}/{date}")
-  public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable LocalDate date) {
+  public Optional<MoodoMode> userMoodByDateList(@PathVariable String userId, @PathVariable LocalDate date) {
     return moodoModeService.findByUserAndDate(userId, date);
   }
 
