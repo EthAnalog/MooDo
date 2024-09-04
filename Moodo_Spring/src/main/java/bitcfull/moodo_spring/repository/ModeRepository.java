@@ -25,4 +25,8 @@ public interface ModeRepository extends JpaRepository<MoodoMode, Long> {
             "ORDER BY mcount DESC")
     List<Object[]> findMoodMax(String userId, LocalDate startDate, LocalDate endDate);
 
+
 }
+
+}
+

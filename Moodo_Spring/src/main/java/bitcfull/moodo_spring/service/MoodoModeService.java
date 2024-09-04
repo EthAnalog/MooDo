@@ -88,4 +88,8 @@ public class MoodoModeService {
         }
         return moodMax;
     }
+
 }
+
+}
+
