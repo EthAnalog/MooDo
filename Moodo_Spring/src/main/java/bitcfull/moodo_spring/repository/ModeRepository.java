@@ -28,5 +28,5 @@ public interface ModeRepository extends JpaRepository<MoodoMode, Long> {
 
 }
 
-}
+
 
