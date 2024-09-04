@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,8 +41,8 @@ public class MoodoTodoService {
     }
 
     // 특정 사용자가 지정한 날짜에 등록한 할 일 목록 조회 (달력에서 날짜 터치하고 해당 날짜 리스트 조회)
-    public List<MooDoTodo> findByUserIdAndDate(String userId, LocalDate date) {
-        return todoRepository.findByUserIdAndDate(userId, date);
+    public List<MooDoTodo> findByUserIdAndStartDate(String userId, LocalDateTime startDate) {
+        return todoRepository.findByUserIdAndStartDate(userId, startDate);
     }
 
 
