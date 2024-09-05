@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,19 +43,19 @@ public class MoodoTodoService {
         return todoRepository.save(todo);
     }
 
-//    할일 완료 체크
-public MooDoTodo updateCheck(Long id, String tdCheck) {
-    System.out.println("Received tdCheck value in service: " + tdCheck); // 로그 추가
-    MooDoTodo updateTodo = todoRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("에러 발생"));
-// 상태 체크
-    if ("Y".equals(tdCheck) || "N".equals(tdCheck)) {
-        updateTodo.setTdCheck(tdCheck);
-        return todoRepository.save(updateTodo);
-    } else {
-        throw new IllegalArgumentException("올바른 상태 값이 아닙니다.");
+    //    할일 완료 체크
+    public MooDoTodo updateCheck(Long id, String tdCheck) {
+        System.out.println("Received tdCheck value in service: " + tdCheck); // 로그 추가
+        MooDoTodo updateTodo = todoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("에러 발생"));
+        // 상태 체크
+        if ("Y".equals(tdCheck) || "N".equals(tdCheck)) {
+            updateTodo.setTdCheck(tdCheck);
+            return todoRepository.save(updateTodo);
+        } else {
+            throw new IllegalArgumentException("올바른 상태 값이 아닙니다.");
+        }
     }
-}
 
     // 특정 할 일 조회 (검색 통해서 조회? 나중에 필요없으면 빼기)
     public Optional<MooDoTodo> findById(Long id) {
@@ -62,8 +63,10 @@ public MooDoTodo updateCheck(Long id, String tdCheck) {
     }
 
     // 특정 사용자가 지정한 날짜에 등록한 할 일 목록 조회 (달력에서 날짜 터치하고 해당 날짜 리스트 조회)
-    public List<MooDoTodo> findByUserIdAndStartDate(String userId, LocalDateTime startDate) {
-        return todoRepository.findByUserIdAndStartDate(userId, startDate);
+    public List<MooDoTodo> findByUserIdAndStartDate(String userId, String startDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime localDateTime = LocalDateTime.parse(startDate, formatter);
+        return todoRepository.findByUserIdAndStartDate(userId, localDateTime);
     }
 
 
