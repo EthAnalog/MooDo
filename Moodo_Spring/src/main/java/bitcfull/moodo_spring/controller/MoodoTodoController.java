@@ -23,21 +23,21 @@ public class MoodoTodoController {
         return todoService.insert(todo, userId);
     }
 
-//    할 일 조회 (선택한 날짜 할 일 목록)
-@GetMapping("/list/{userId}/{date}")
-public List<MooDoTodo> getTodoList(@PathVariable String userId,
-                                   @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date){
-    return todoService.findByUserIdAndStartDate(userId, date);
-}
+    //    할 일 조회 (선택한 날짜 할 일 목록)
+    @GetMapping("/list/{userId}/{date}")
+    public List<MooDoTodo> getTodoList(@PathVariable String userId,
+                                       @PathVariable String date){
+        return todoService.findByUserIdAndStartDate(userId, date);
+    }
 
-//    할 일 완료 여부
-@PutMapping("/check/{id}")
-public MooDoTodo updateCheck(@PathVariable Long id, @RequestBody String tdCheck) {
-    System.out.println("Received tdCheck value: " + tdCheck); // 로그 추가
-    return todoService.updateCheck(id, tdCheck.trim());
-}
+    //    할 일 완료 여부
+    @PutMapping("/check/{id}")
+    public MooDoTodo updateCheck(@PathVariable Long id, @RequestBody String tdCheck) {
+        System.out.println("Received tdCheck value: " + tdCheck); // 로그 추가
+        return todoService.updateCheck(id, tdCheck.trim());
+    }
 
-//    검색해서 할 일 조회
+    // 검색해서 할 일 조회
     @GetMapping("/{id}")
     public Optional<MooDoTodo> getTodoById(@PathVariable Long id) {
         return todoService.findById(id);
@@ -59,7 +59,7 @@ public MooDoTodo updateCheck(@PathVariable Long id, @RequestBody String tdCheck)
     }
 
 
-// 할 일 삭제
+    // 할 일 삭제
     @DeleteMapping("/delete/{id}")
     public void deleteTodo(@PathVariable Long id) {
         todoService.delete(id);
