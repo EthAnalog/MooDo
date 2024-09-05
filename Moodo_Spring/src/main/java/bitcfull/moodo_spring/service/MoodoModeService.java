@@ -49,12 +49,8 @@ public class MoodoModeService {
 
     // 기분 기록 수정
     @Transactional
-    public MoodoMode update(Long id, MoodoMode mood) {
-        MoodoMode m = modeRepository.findById(id).get();
-
-        m.setMdMode(mood.getMdMode());
-
-        return m;
+    public MoodoMode update(MoodoMode mood) {
+        return modeRepository.save(mood);
     }
 
     // 유저별 매월 가장 많이 기록된 기분 값 조회
