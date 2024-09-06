@@ -10,10 +10,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,5 +75,21 @@ public class MoodoTodoController {
     @DeleteMapping("/delete/{id}")
     public void deleteTodo(@PathVariable Long id) {
         todoService.delete(id);
+    }
+
+    // 한 달 동안 기록된 계획 개수
+    @GetMapping("/count/{userId}/{month}")
+    public int getTodoCountForMonth(@PathVariable String userId, @PathVariable String month) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+        Date date = dateFormat.parse(month);
+        return todoService.getTodoCountForMonth(userId, date);
+    }
+
+    // 한 달 동안 완료된 계획 개수 (tdCheck가 'Y')
+    @GetMapping("/completed/count/{userId}/{month}")
+    public int getCompletedTodoCountForMonth(@PathVariable String userId, @PathVariable String month) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+        Date date = dateFormat.parse(month);
+        return todoService.getCompletedTodoCountForMonth(userId, date);
     }
 }
