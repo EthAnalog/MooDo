@@ -78,5 +78,10 @@ public class MoodoUserController {
         }
     }
 
-
+    // 사용자 정보 가져오기
+    @GetMapping("/userInfo/{id}")
+    public MooDoUser getUserInfo(@PathVariable String id) {
+        System.out.println("사용자 정보 가져오기 " + id);
+        return userService.getUserInfo(id);
+    }
 }
