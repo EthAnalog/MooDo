@@ -60,13 +60,15 @@ public class MoodoModeController {
         return moodoModeService.insert(mood);
     }
 
-    // 기분 기록 수정 ++ 기분값만 수정하기 위해 매개변수 @RequestParam int mdMode 로 수정
+    // 기분 기록 수정 ++ 날씨, 일기 추가
     @PutMapping("/update/{id}")
-    public MoodoMode update(@PathVariable Long id, @RequestParam int mdMode) {
+    public MoodoMode update(@PathVariable Long id, @RequestParam int mdMode, @RequestParam int weather, @RequestParam String mdDaily) {
         Optional<MoodoMode> existMood = moodoModeService.findById(id);
         if (existMood.isPresent()) {
             MoodoMode updatedMood = existMood.get();
             updatedMood.setMdMode(mdMode);
+            updatedMood.setWeather(weather);
+            updatedMood.setMdDaily(mdDaily);
             return moodoModeService.update(updatedMood);
         } else {
             throw new RuntimeException("기록을 찾을 수 없습니다.");
