@@ -2,12 +2,14 @@ package bitcfull.moodo_spring.model;
 
 
 import bitcfull.moodo_spring.MoodoSpringApplication;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter @Setter
 @Entity
@@ -26,10 +28,10 @@ public class MooDoTodo {
     private String tdList; // 할일 목록
 
     @Column(nullable = false)
-    private LocalDateTime startDate; // 일정 시작일
+    private Date startDate; // 일정 시작일
 
     @Column(nullable = false)
-    private LocalDateTime endDate; // 일정 마지막일
+    private Date endDate; // 일정 마지막일
 
     // Boolean으로 할 경우, Service 내 if문에서 에러 발생
     // 길이 1의 String으로 형변환 및 기본값 N으로 설정
@@ -37,5 +39,5 @@ public class MooDoTodo {
     private String tdCheck = "N"; // 할일 완료 여부
 
     @Column(nullable = false)
-    private LocalDateTime createdDate; // 작성일
+    private Date createdDate; // 작성일
 }
