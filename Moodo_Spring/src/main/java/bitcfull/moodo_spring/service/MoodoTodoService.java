@@ -3,20 +3,12 @@ package bitcfull.moodo_spring.service;
 import bitcfull.moodo_spring.model.MooDoTodo;
 import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.repository.TodoRepository;
-import org.hibernate.annotations.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class MoodoTodoService {
@@ -95,5 +87,35 @@ public class MoodoTodoService {
     // 할 일 삭제
     public void delete(Long id) {
         todoRepository.deleteById(id);
+    }
+
+    // 한 달 동안 기록된 계획 개수
+    public int getTodoCountForMonth(String userId, Date month) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(month);
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        Date startOfMonth = cal.getTime();
+
+        cal.add(Calendar.MONTH, 1);
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.add(Calendar.DATE, -1); // 한 달의 마지막 날 설정
+        Date endOfMonth = cal.getTime();
+
+        return todoRepository.countByUserIdAndStartDateBetween(userId, startOfMonth, endOfMonth);
+    }
+
+    // 한 달 동안 완료된 계획(tdCheck가 'Y') 개수
+    public int getCompletedTodoCountForMonth(String userId, Date month) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(month);
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        Date startOfMonth = cal.getTime();
+
+        cal.add(Calendar.MONTH, 1);
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        cal.add(Calendar.DATE, -1); // 한 달의 마지막 날 설정
+        Date endOfMonth = cal.getTime();
+
+        return todoRepository.countByUserIdAndStartDateBetweenAndTdCheck(userId, startOfMonth, endOfMonth, "Y");
     }
 }
