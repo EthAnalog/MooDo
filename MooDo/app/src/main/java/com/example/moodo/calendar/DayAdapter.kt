@@ -13,15 +13,15 @@ import java.util.Locale
 
 class DayAdapter(val tempMonth:Int,
                  val dayList:MutableList<Date>,
-                 val today:Date)
+                 val todayPosition:Int)
     :RecyclerView.Adapter<DayAdapter.DayHolder>() {
     val row = 6
 
-    var selectedDate:Date? = null
-
+    // 선택된 날짜
+    var selectedPosition = -1
     // 날짜 선택 interface
     interface ClickItemDayListener {
-        fun clickItemDay(date:Date)
+        fun clickItemDay(position: Int)
     }
 
     var clickItemDayListener:ClickItemDayListener? = null
@@ -32,15 +32,7 @@ class DayAdapter(val tempMonth:Int,
                 val pos = adapterPosition
                 Toast.makeText(binding.root.context, "${dayList[pos]}", Toast.LENGTH_SHORT).show()
 
-                if (pos != RecyclerView.NO_POSITION) {
-                    // 클릭된 날짜 색상 변경
-                    selectedDate = dayList[pos]
-                    notifyDataSetChanged()
-
-                    clickItemDayListener?.clickItemDay(dayList[pos])
-
-                    Log.d("MooDoLog click", dayList[pos].toString())
-                }
+                clickItemDayListener?.clickItemDay(pos)
             }
         }
     }
@@ -56,11 +48,6 @@ class DayAdapter(val tempMonth:Int,
     override fun onBindViewHolder(holder: DayHolder, position: Int) {
         val currentDay = dayList[position]
 
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val todayString = sdf.format(today)
-        val currentDayString = sdf.format(currentDay)
-        val selectedDateString = selectedDate?.let { sdf.format(it) } ?: ""
-
         holder.binding.itemDayTxt.text = currentDay.date.toString()
 
         // 요일 색상 설정
@@ -69,27 +56,13 @@ class DayAdapter(val tempMonth:Int,
             6 -> Color.BLUE
             else -> Color.BLACK
         })
-
         if (tempMonth != currentDay.month) {
             holder.binding.itemDayTxt.alpha = 0.4f
         }
 
-        // 선택된 날짜 및 현재 날짜 배경색 설정
-        if (selectedDate != null) {
-            holder.binding.itemDayLayout.setBackgroundColor(
-                when {
-                    currentDayString == selectedDateString -> Color.parseColor("#FFC107") // 선택된 날짜 강조 색상
-                    else -> Color.WHITE // 기본 배경색
-                }
-            )
-        }
-        else {
-            holder.binding.itemDayLayout.setBackgroundColor(
-                when {
-                    currentDayString == todayString -> Color.parseColor("#FFEB3B") // 오늘 날짜 강조 색상
-                    else -> Color.WHITE // 기본 배경색
-                }
-            )
+        if (selectedPosition== -1 && todayPosition == position) {
+            selectedPosition = todayPosition
+            clickItemDayListener?.clickItemDay(selectedPosition)
         }
     }
 }

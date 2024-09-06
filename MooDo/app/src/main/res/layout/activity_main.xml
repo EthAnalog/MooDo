@@ -15,12 +15,12 @@
         android:textSize="45sp"
         android:text="MooDo"/>
     <Button
-        android:id="@+id/singInBtn"
+        android:id="@+id/signInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sing In"/>
     <Button
-        android:id="@+id/singUpBtn"
+        android:id="@+id/signUpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sing Up"/>
