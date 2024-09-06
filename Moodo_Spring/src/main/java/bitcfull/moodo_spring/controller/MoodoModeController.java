@@ -30,7 +30,7 @@ public class MoodoModeController {
 
     // 특정 날짜 기분값 조회
     @GetMapping("/list/{userId}/{date}")
-    public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable LocalDate date) {
+    public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable Date date) {
         return moodoModeService.findByUserAndDate(userId, date);
     }
 
@@ -43,8 +43,12 @@ public class MoodoModeController {
             throw new IllegalArgumentException("사용자 정보가 없습니다.");
         }
 
+        // 조회날짜 Date로 변경
+        LocalDate now = LocalDate.now();
+        Date nowDate = moodoModeService.localDateToDate(now);
+
         // 당일 혹 과거 날짜만 기록 가능 설정
-        if (mood.getCreatedDate().isAfter(LocalDate.now())) {
+        if (mood.getCreatedDate().after(nowDate)) {
             throw new IllegalArgumentException("다가올 날짜에는 기록할 수 없습니다.");
         }
 

@@ -9,18 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.*;
 
 @Service
 public class MoodoModeService {
 
     @Autowired
     private ModeRepository modeRepository;
-    @Autowired
-    private MoodoSpringApplication moodoSpringApplication;
+
 
     // 기분 기록 추가
     public MoodoMode insert(MoodoMode mood) {
@@ -43,8 +41,14 @@ public class MoodoModeService {
     }
 
     // 특정 날짜의 유저 기분 기록 조회(이모지 삽입 위해서 필요?)
-    public Optional<MoodoMode> findByUserAndDate(String userId, LocalDate createdDate) {
+    public Optional<MoodoMode> findByUserAndDate(String userId, Date createdDate) {
         return modeRepository.findByUserIdAndCreatedDate(userId, createdDate);
+    }
+
+    // LocalDate > Date 로 변환 메소드
+    public Date localDateToDate(LocalDate localDate) {
+        ZonedDateTime zdt = localDate.atStartOfDay(ZoneId.systemDefault());
+        return Date.from(zdt.toInstant());
     }
 
     // 기분 기록 수정
@@ -62,8 +66,12 @@ public class MoodoModeService {
         // 조회일
         LocalDate endMonth = LocalDate.now();
 
-        // 조회일 기준 당월 1일부터 조회일까지 가장 많은 기분값 조회
-        List<Object[]> result = modeRepository.findMoodMax(userId, startMonth, endMonth);
+        //당월 1일, 조회일 > Date 변환
+        Date startDate = localDateToDate(startMonth);
+        Date endDate = localDateToDate(endMonth);
+
+        // 조회일 기준 당월 1일부터 조회일까지 가장 많은 기분값 조회(Date변환)
+        List<Object[]> result = modeRepository.findMoodMax(userId, startDate, endDate);
 
         // 기분값, 빈도수 Map에서 키값(기분값) 반환
         Map<Integer, Long> moodCounts = new HashMap<>();

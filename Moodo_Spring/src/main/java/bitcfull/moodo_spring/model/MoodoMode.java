@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter @Setter
@@ -27,5 +28,5 @@ public class MoodoMode {
   private int mdMode; // 기분 상태(1 ~ 5)
 
   @Column(name = "created_date", nullable = false)
-  private LocalDate createdDate; //작성일자
+  private Date createdDate; //작성일자
 }
