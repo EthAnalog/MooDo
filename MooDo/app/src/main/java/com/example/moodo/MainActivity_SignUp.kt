@@ -132,6 +132,8 @@ class MainActivity_SignUp : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
+                // 생년월일 입력 시
+
                 val datePattern = "^\\d{4}/\\d{2}/\\d{2}$"  // YYYY/MM/DD 형식
                 val inputDate = txtAge.text.toString()
 

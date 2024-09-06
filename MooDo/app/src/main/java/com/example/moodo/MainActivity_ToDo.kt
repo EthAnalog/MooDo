@@ -43,8 +43,8 @@ class MainActivity_ToDo : AppCompatActivity() {
 
         // tdList Adapter
         val todoAdapter = ToDoAdapter()
-        binding.toDorecycler.adapter = todoAdapter
-        binding.toDorecycler.layoutManager = LinearLayoutManager(this)
+        binding.toDoList.adapter = todoAdapter
+        binding.toDoList.layoutManager = LinearLayoutManager(this)
 
         // 선택한 날짜 tdList 불러오기
         MooDoClient.retrofit.getTodoList(userId.toString(), selectDate.toString()).enqueue(object :retrofit2.Callback<List<MooDoToDo>>{
@@ -66,30 +66,11 @@ class MainActivity_ToDo : AppCompatActivity() {
                 Log.d("MooDoLog getTodo Fail", t.toString())
             }
         })
-        
-        
-        // 기록된 감정 있는지 조회
-        // 아직 안됨
-//        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-//        val select = dateFormat.parse(selectDate.toString())
-//        MooDoClient.retrofit.userMoodList(userId.toString(), select!!).enqueue(object :
-//            retrofit2.Callback<Optional<MooDoMode>> {
-//            override fun onResponse(
-//                call: Call<Optional<MooDoMode>>,
-//                response: Response<Optional<MooDoMode>>
-//            ) {
-//                if (response.isSuccessful) {
-//                    Log.d("MooDoLog Mood body", response.body().toString())
-//                    Log.d("MooDoLog Mood call", call.toString())
-//                } else {
-//                    Log.d("MooDoLog Mood", "Response is not successful: ${response.code()}")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Optional<MooDoMode>>, t: Throwable) {
-//                Log.d("MooDoLog userMoodList Fail", t.toString())
-//            }
-//
-//        })
+
+        // 뒤로 가기 버튼
+        binding.btnClose.setOnClickListener {
+            setResult(RESULT_CANCELED, null)
+            finish()
+        }
     }
 }

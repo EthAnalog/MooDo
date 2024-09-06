@@ -40,5 +40,34 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        // 개발용 버튼, 로그인 자동
+        binding.testBtn.setOnClickListener {
+            val id = "testUser1"
+            val pw = "newPassword1231"
+
+            val loginUser = MooDoUser(id, pw, null, null)
+            MooDoClient.retrofit.login(loginUser).enqueue(object:retrofit2.Callback<MooDoUser>{
+                override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
+                    if (response.isSuccessful) {
+                        // main Page 이동
+                        val intent = Intent(this@MainActivity, MainActivity_MooDo::class.java)
+                        intent.putExtra("id", id)
+                        startActivity(intent)
+                    }
+                    // 로그인 실패
+                    else {
+                        AlertDialog.Builder(binding.root.context)
+                            .setMessage("아이디와 비밀번호를 확인하세요.")
+                            .setPositiveButton("확인", null)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<MooDoUser>, t: Throwable) {
+                    Log.d("MooDoLog Login Fail", t.toString())
+                }
+            })
+        }
     }
 }

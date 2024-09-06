@@ -5,9 +5,6 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
-import java.time.LocalDate
-import java.util.Date
-import java.util.Optional
 
 interface MooDoInterface {
     // 회원가입
@@ -25,8 +22,4 @@ interface MooDoInterface {
     // 회원 to do list 조회
     @GET("api/todo/list/{userId}/{date}")
     fun getTodoList(@Path("userId") userId:String, @Path("date") date:String):Call<List<MooDoToDo>>
-
-    // 특정 날짜 기분값 조회
-    @GET("/api/mood/list/{userId}/{date}")
-    fun userMoodList(@Path("userId") userId: String, @Path("date") date: LocalDate):Call<Optional<MooDoMode>>
 }
