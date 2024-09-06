@@ -1,4 +1,4 @@
-package com.example.moodo
+package com.example.moodo.sign
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.moodo.mode.MainActivity_MooDo
+import com.example.moodo.R
 import com.example.moodo.databinding.ActivityMainSingInBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoUser

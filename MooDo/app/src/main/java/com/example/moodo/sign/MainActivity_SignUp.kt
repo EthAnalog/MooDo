@@ -1,4 +1,4 @@
-package com.example.moodo
+package com.example.moodo.sign
 
 import android.graphics.Color
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.moodo.R
 import com.example.moodo.databinding.ActivityMainSingUpBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoUser
@@ -132,7 +133,39 @@ class MainActivity_SignUp : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                // 생년월일 입력 시
+                // 생년월일 입력 시 포맷에 맞게 / 삽입
+                val input = s.toString()
+                val length = input.length
+
+                val textPattern = StringBuilder(input)
+
+                // 직접 '/' 삽입 없이 숫자만 입력하도록 설정
+                var i = 0
+                while (i < textPattern.length) {
+                    if (textPattern[i] == '/') {
+                        textPattern.deleteCharAt(i)
+                    } else {
+                        i++
+                    }
+                }
+                // 자동 '/' 삽입할 구간 설정
+                if (length > 6) {
+                    textPattern.insert(4, '/')
+                    if (length > 8) {
+                        textPattern.insert(7, '/')
+                    }
+                } else if (length > 4) {
+                    textPattern.insert(4, '/')
+                }
+                // 10자리 초과하지 않도록 take(10) 삽입
+                val inputText = textPattern.toString().take(10)
+                // 날짜 수정입력 시 무한루프 방지
+                if (txtAge.text.toString() != inputText) {
+                    txtAge.removeTextChangedListener(this)
+                    txtAge.text = Editable.Factory.getInstance().newEditable(inputText)
+                    txtAge.setSelection(inputText.length)
+                    txtAge.addTextChangedListener(this)
+                }
 
                 val datePattern = "^\\d{4}/\\d{2}/\\d{2}$"  // YYYY/MM/DD 형식
                 val inputDate = txtAge.text.toString()

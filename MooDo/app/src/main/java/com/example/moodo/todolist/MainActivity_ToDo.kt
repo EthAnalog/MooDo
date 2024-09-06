@@ -1,27 +1,19 @@
-package com.example.moodo
+package com.example.moodo.todolist
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moodo.R
 import com.example.moodo.databinding.ActivityMainToDoBinding
 import com.example.moodo.db.MooDoClient
-import com.example.moodo.db.MooDoMode
 import com.example.moodo.db.MooDoToDo
-import com.example.moodo.recycler.ToDoAdapter
+import com.example.moodo.adapter.ToDoAdapter
 import retrofit2.Call
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
-import java.util.Calendar
-import java.util.Locale
-import java.util.Optional
 
 class MainActivity_ToDo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

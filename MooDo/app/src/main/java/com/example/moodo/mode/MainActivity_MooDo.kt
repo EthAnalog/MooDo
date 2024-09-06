@@ -1,4 +1,4 @@
-package com.example.moodo
+package com.example.moodo.mode
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,11 +10,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.example.moodo.MainActivity_Statis
+import com.example.moodo.R
 import com.example.moodo.calendar.MonthAdapter
 import com.example.moodo.databinding.ActivityMainMooDoBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoToDo
-import com.example.moodo.recycler.ToDoAdapter
+import com.example.moodo.adapter.ToDoAdapter
+import com.example.moodo.todolist.MainActivity_ToDo
 import retrofit2.Call
 import retrofit2.Response
 import java.lang.Exception

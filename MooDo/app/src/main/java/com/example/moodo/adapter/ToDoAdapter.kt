@@ -1,4 +1,4 @@
-package com.example.moodo.recycler
+package com.example.moodo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -29,6 +29,6 @@ class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
         // startDate 포맷팅
         holder.binding.startToDo.text = dateFormat.format(todoItem.startDate)
         // endDate 포맷팅
-        holder.binding.endToDo.text = dateFormat.format(todoItem.startDate)
+        holder.binding.endToDo.text = dateFormat.format(todoItem.endDate)
     }
 }

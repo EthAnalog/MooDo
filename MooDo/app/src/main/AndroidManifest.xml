@@ -16,25 +16,28 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".todolist.MainActivity_ToDo_Write"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity_Statis"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_ModeWrite"
+            android:name=".mode.MainActivity_ModeWrite"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_ToDo"
+            android:name=".todolist.MainActivity_ToDo"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_SignIn"
+            android:name=".sign.MainActivity_SignIn"
             android:exported="false" />
         <activity
             android:name=".MainActivity_Calendar"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_MooDo"
+            android:name=".mode.MainActivity_MooDo"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_SignUp"
+            android:name=".sign.MainActivity_SignUp"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,4 +1,4 @@
-package com.example.moodo
+package com.example.moodo.mode
 
 import android.os.Bundle
 import android.util.Log
@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.moodo.R
 import com.example.moodo.databinding.ActivityMainModeWriteBinding
 import java.text.SimpleDateFormat
 

@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.moodo.databinding.ActivityMainBinding
-import com.example.moodo.databinding.DialogLoginBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoUser
+import com.example.moodo.mode.MainActivity_MooDo
+import com.example.moodo.sign.MainActivity_SignIn
+import com.example.moodo.sign.MainActivity_SignUp
 import retrofit2.Call
 import retrofit2.Response
 
