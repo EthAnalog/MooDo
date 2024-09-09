@@ -24,14 +24,14 @@ public interface TodoRepository extends JpaRepository<MooDoTodo, Long> {
             @Param("endDate") String endOfDay,
             @Param("check") String check);
 
-    Optional<MooDoTodo> findById(Long id); // 할 일 조회
-
     // 캘린더 표시, 하루 단위 to do list 개수 반환
     @Query("SELECT COUNT(t) FROM MooDoTodo t WHERE t.user.id = :userId AND t.startDate <= :endDate AND t.endDate >= :startDate")
     int countByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
             @Param("userId") String userId,
             @Param("startDate") String startDate,
             @Param("endDate") String endDate);
+
+    Optional<MooDoTodo> findById(Long id); // 할 일 조회
 
     @Query("SELECT COUNT(t) FROM MooDoTodo t WHERE t.user.id = :userId AND t.startDate BETWEEN :startDate AND :endDate")
     int countByUserIdAndStartDateBetween(
