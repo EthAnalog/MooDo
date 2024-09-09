@@ -41,6 +41,12 @@ public class MoodoTodoController {
         return todoService.findByUserIdAndStartDate(userId, date);
     }
 
+    // 선택된 날짜의 일정 개수 조회
+    @GetMapping("/count/day/{userId}/{date}")
+    public int getTodoCountForDay(@PathVariable String userId, @PathVariable String date) {
+        return todoService.getTodoCountForDay(userId, date);
+    }
+
     // 할 일 조회 (선택한 날짜 + check = Y)
     @GetMapping("/listY/{userId}/{date}")
     public List<MooDoTodo> getTodoListY(@PathVariable String userId, @PathVariable String date) throws Exception {

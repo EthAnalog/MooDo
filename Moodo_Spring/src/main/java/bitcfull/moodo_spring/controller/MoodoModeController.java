@@ -29,10 +29,25 @@ public class MoodoModeController {
         return result;
     }
 
-    // 특정 날짜 기분값 조회
+    // 특정 날짜 일기 조회
     @GetMapping("/list/{userId}/{date}")
     public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable String date) {
         return moodoModeService.findByUserAndDate(userId, date);
+    }
+
+    // 특정 날짜 기분값 조회
+    @GetMapping("/list/{userId}/{date}")
+    public int getMdMode(@PathVariable String userId, @PathVariable String date) {
+        Optional<MoodoMode> mood = moodoModeService.findByUserAndDate(userId, date);
+        if (mood.isPresent()) {
+            int moodNum = mood.get().getMdMode();
+            System.out.println(date + " 감정 " + moodNum);
+            return moodNum;
+        } else {
+            // 데이터가 없을 경우 기본값을 반환하거나 예외를 던질 수 있습니다.
+            System.out.println(date + " 데이터 없음");
+            return 0; // 예를 들어 기본값으로 0을 반환
+        }
     }
 
     // 기분 기록 추가
