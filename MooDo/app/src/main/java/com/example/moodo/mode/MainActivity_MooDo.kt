@@ -108,6 +108,7 @@ class MainActivity_MooDo : AppCompatActivity() {
                 if (update) {
                     val date = saveDate.text.toString()
                     refreshTodoList(date)
+                    monthAdapter.notifyDataSetChanged()
                 }
             }
         }

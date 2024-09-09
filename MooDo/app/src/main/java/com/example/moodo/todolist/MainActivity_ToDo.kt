@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -147,12 +148,24 @@ class MainActivity_ToDo : AppCompatActivity() {
         }
         // 작성 버튼
         binding.btnWrite.setOnClickListener {
-            val intent = Intent(this@MainActivity_ToDo, MainActivity_ToDo_Write::class.java)
-            intent.putExtra("userId", userId)
-            val stats = "insert"
-            intent.putExtra("stats", stats)
-            intent.putExtra("selectDate", selectDate)
-            activityInsert.launch(intent)
+            // 오늘보다 이전 날짜에서 작성 버튼 클릭 x
+            val formatter = dateFormat.parse(selectDate!!)
+            val today = Date()
+
+            if (formatter.before(today)) {
+                AlertDialog.Builder(binding.root.context)
+                    .setMessage("선택한 날짜가 오늘보다 이전입니다. 오늘부터 To do list를 작성할 수 있어요.")
+                    .setPositiveButton("확인", null)
+                    .show()
+            }
+            else {
+                val intent = Intent(this@MainActivity_ToDo, MainActivity_ToDo_Write::class.java)
+                intent.putExtra("userId", userId)
+                val stats = "insert"
+                intent.putExtra("stats", stats)
+                intent.putExtra("selectDate", selectDate)
+                activityInsert.launch(intent)
+            }
         }
 
         // 수정 intent 처리
