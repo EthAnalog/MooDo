@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @RestController
@@ -30,7 +31,7 @@ public class MoodoModeController {
 
     // 특정 날짜 기분값 조회
     @GetMapping("/list/{userId}/{date}")
-    public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable Date date) {
+    public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable String date) {
         return moodoModeService.findByUserAndDate(userId, date);
     }
 
@@ -43,12 +44,10 @@ public class MoodoModeController {
             throw new IllegalArgumentException("사용자 정보가 없습니다.");
         }
 
-        // 조회날짜 Date로 변경
-        LocalDate now = LocalDate.now();
-        Date nowDate = moodoModeService.localDateToDate(now);
-
         // 당일 혹 과거 날짜만 기록 가능 설정
-        if (mood.getCreatedDate().after(nowDate)) {
+        LocalDate now = LocalDate.now();
+        String nowDate = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        if (mood.getCreatedDate().compareTo(nowDate) > 0) {
             throw new IllegalArgumentException("다가올 날짜에는 기록할 수 없습니다.");
         }
 

@@ -14,7 +14,7 @@ public interface ModeRepository extends JpaRepository<MoodoMode, Long> {
     List<MoodoMode> findByUserId(String userId); // 사용자 기분 기록 가져옴
 
     // 특정 날짜의 사용자 기분 기록
-    Optional<MoodoMode> findByUserIdAndCreatedDate(String userId, Date createdDate);
+    Optional<MoodoMode> findByUserIdAndCreatedDate(String userId, String createdDate);
 
 
     // 당월 1일부터 현재까지 기록된 기분 중 가장 많은 값 조회
@@ -24,6 +24,6 @@ public interface ModeRepository extends JpaRepository<MoodoMode, Long> {
             "AND md.createdDate BETWEEN :startDate AND :endDate " +
             "GROUP BY md.mdMode " +
             "ORDER BY mcount DESC")
-    List<Object[]> findMoodMax(String userId, Date startDate, Date endDate);
+    List<Object[]> findMoodMax(String userId, String startDate, String endDate);
 
 }
