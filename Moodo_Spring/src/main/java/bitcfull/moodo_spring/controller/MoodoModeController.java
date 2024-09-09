@@ -36,7 +36,7 @@ public class MoodoModeController {
     }
 
     // 특정 날짜 기분값 조회
-    @GetMapping("/list/{userId}/{date}")
+    @GetMapping("/list/mdMode/{userId}/{date}")
     public int getMdMode(@PathVariable String userId, @PathVariable String date) {
         Optional<MoodoMode> mood = moodoModeService.findByUserAndDate(userId, date);
         if (mood.isPresent()) {
