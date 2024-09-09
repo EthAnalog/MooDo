@@ -26,8 +26,9 @@ public class MoodoTodoController {
     @Autowired
     private MoodoTodoService todoService;
 
-    @PostMapping("/add")
-    public MooDoTodo addTodo(@RequestBody MooDoTodo todo, @RequestParam String userId) throws ParseException {
+    @PostMapping("/add/{userId}")
+    public MooDoTodo addTodo(@RequestBody MooDoTodo todo, @PathVariable String userId) throws ParseException {
+        System.out.println("to do list 저장하기 " + userId);
         // 생성 시간은 자동으로 서버에서 저장
         return todoService.insert(todo, userId);
     }
@@ -37,9 +38,7 @@ public class MoodoTodoController {
     public List<MooDoTodo> getTodoList(@PathVariable String userId,
                                        @PathVariable String date) throws Exception {
         System.out.println("전달받은 날짜: " + date);
-
         return todoService.findByUserIdAndStartDate(userId, date);
-
     }
 
     // 할 일 완료 여부
