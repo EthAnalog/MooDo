@@ -49,16 +49,11 @@ public class MoodoTodoService {
     }
 
     // 할일 완료 체크
-    public MooDoTodo updateCheck(Long id, String tdCheck) {
-        System.out.println("Received tdCheck value in service: " + tdCheck);
+    public MooDoTodo updateCheck(Long id) {
         MooDoTodo updateTodo = todoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("에러 발생"));
-        if ("Y".equals(tdCheck) || "N".equals(tdCheck)) {
-            updateTodo.setTdCheck(tdCheck);
-            return todoRepository.save(updateTodo);
-        } else {
-            throw new IllegalArgumentException("올바른 상태 값이 아닙니다.");
-        }
+        updateTodo.setTdCheck("Y");
+        return todoRepository.save(updateTodo);
     }
 
     // 특정 할 일 조회
@@ -75,6 +70,28 @@ public class MoodoTodoService {
         System.out.println("End of Day: " + endOfDay);
 
         return todoRepository.findByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(userId, startOfDay, endOfDay);
+    }
+
+    // 할 일 조회 + tdCheck = Y
+    public List<MooDoTodo> findByUserIdAndY(String userId, String date) {
+        String startOfDay = date + " 00:00:00";
+        String endOfDay = date + " 23:59:59";
+
+        System.out.println("Start of Day: " + startOfDay);
+        System.out.println("End of Day: " + endOfDay);
+
+        return todoRepository.findByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndTdCheck(userId, startOfDay, endOfDay, "Y");
+    }
+
+    // 할 일 조회 + tdCheck = N
+    public List<MooDoTodo> findByUserIdAndN(String userId, String date) {
+        String startOfDay = date + " 00:00:00";
+        String endOfDay = date + " 23:59:59";
+
+        System.out.println("Start of Day: " + startOfDay);
+        System.out.println("End of Day: " + endOfDay);
+
+        return todoRepository.findByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndTdCheck(userId, startOfDay, endOfDay, "N");
     }
 
     // 할 일 삭제
