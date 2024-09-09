@@ -11,7 +11,35 @@ import java.util.Locale
 class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
     var todoList = mutableListOf<MooDoToDo>()
 
-    class ToDoHolder(val binding:ItemTodoListBinding) : RecyclerView.ViewHolder(binding.root)
+    interface OnItemClickLister {
+        fun onItemClick(pos:Int)
+    }
+    var onItemClickLister:OnItemClickLister? = null
+
+    inner class ToDoHolder(val binding:ItemTodoListBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                onItemClickLister?.onItemClick(adapterPosition)
+            }
+        }
+    }
+
+    // 추가
+    fun addItem(todoItem:MooDoToDo) {
+        todoList.add(todoItem)
+        notifyDataSetChanged()
+    }
+
+    // 수정
+    fun updateItem(pos: Int, toDo: MooDoToDo) {
+        todoList.set(pos, toDo)
+        notifyDataSetChanged()
+    }
+    // 삭제
+    fun removeItem(pos:Int) {
+        todoList.removeAt(pos)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoHolder {
         return ToDoHolder(ItemTodoListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -23,12 +51,9 @@ class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
 
     override fun onBindViewHolder(holder: ToDoHolder, position: Int) {
         val todoItem = todoList[position]
-        holder.binding.itemToDo.text = todoItem.tdList
 
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-        // startDate 포맷팅
-        holder.binding.startToDo.text = dateFormat.format(todoItem.startDate)
-        // endDate 포맷팅
-        holder.binding.endToDo.text = dateFormat.format(todoItem.endDate)
+        holder.binding.itemToDo.text = todoItem.tdList
+        holder.binding.startToDo.text = todoItem.startDate
+        holder.binding.endToDo.text = todoItem.endDate
     }
 }

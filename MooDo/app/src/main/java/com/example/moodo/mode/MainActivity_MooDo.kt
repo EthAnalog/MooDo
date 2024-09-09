@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -100,6 +101,17 @@ class MainActivity_MooDo : AppCompatActivity() {
         val snap = PagerSnapHelper()
         snap.attachToRecyclerView(binding.calendarCustom)
 
+        // tdList 수정, 저장, 삭제, 완료 후 tdList update
+        val activityToDoListUpdate = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val update = result.data?.getBooleanExtra("update", false) ?: false
+                if (update) {
+                    val date = saveDate.text.toString()
+                    refreshTodoList(date)
+                }
+            }
+        }
+
         // to do list 작성 및 수정, 삭제
         binding.userMooDo.setOnClickListener {
             val intent = Intent(this, MainActivity_ToDo::class.java)
@@ -108,7 +120,8 @@ class MainActivity_MooDo : AppCompatActivity() {
             intent.putExtra("userId", userId)
             intent.putExtra("selectDate", selectDate)
 
-            startActivity(intent)
+            // startActivity(intent)
+            activityToDoListUpdate.launch(intent)
         }
 
         // mode 작성
@@ -130,10 +143,29 @@ class MainActivity_MooDo : AppCompatActivity() {
                         .show()
                 }
                 else {
-                    intent.putExtra("userId", userId)
-                    intent.putExtra("selectDate", selectDate)
+                    MooDoClient.retrofit.userMoodListCheck(userId, selectDate).enqueue(object:retrofit2.Callback<Boolean> {
+                        override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                            if (response.isSuccessful) {
+                                if (response.body() == true) {
+                                    intent.putExtra("userId", userId)
+                                    intent.putExtra("selectDate", selectDate)
 
-                    startActivity(intent)
+                                    startActivity(intent)
+                                }
+                                else {
+                                    AlertDialog.Builder(binding.root.context)
+                                        .setMessage("이미 작성된 일기입니다.")
+                                        .setPositiveButton("확인", null)
+                                        .show()
+                                }
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                            Log.d("MooDoLog modeF", t.toString())
+                        }
+
+                    })
                 }
             }
             catch(e:Exception) {
@@ -153,5 +185,33 @@ class MainActivity_MooDo : AppCompatActivity() {
 
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val date = binding.saveDate.text.toString()
+        refreshTodoList(date)
+    }
+
+    private fun refreshTodoList(date:String){
+        val userId = intent.getStringExtra("id").toString()
+
+        MooDoClient.retrofit.getTodoList(userId, date).enqueue(object : retrofit2.Callback<List<MooDoToDo>> {
+            override fun onResponse(call: Call<List<MooDoToDo>>, response: Response<List<MooDoToDo>>) {
+                if (response.isSuccessful) {
+                    val todoList = response.body() ?: mutableListOf()
+                    val todoAdapter = binding.todoListLayout.adapter as ToDoAdapter
+                    todoAdapter.todoList.clear()
+                    todoAdapter.todoList.addAll(todoList)
+                    todoAdapter.notifyDataSetChanged()
+                } else {
+                    Log.d("MooDoLog", "Response is not successful: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<MooDoToDo>>, t: Throwable) {
+                Log.d("MooDoLog getTodo Fail", t.toString())
+            }
+        })
     }
 }

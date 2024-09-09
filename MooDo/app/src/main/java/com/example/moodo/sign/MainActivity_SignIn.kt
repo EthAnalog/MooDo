@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.moodo.mode.MainActivity_MooDo
 import com.example.moodo.R
-import com.example.moodo.databinding.ActivityMainSingInBinding
+import com.example.moodo.databinding.ActivityMainSignInBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoUser
 import retrofit2.Call
@@ -20,7 +20,7 @@ class MainActivity_SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val binding = ActivityMainSingInBinding.inflate(layoutInflater)
+        val binding = ActivityMainSignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -29,7 +29,7 @@ class MainActivity_SignIn : AppCompatActivity() {
         }
 
         // 로그인 버튼
-        binding.btnSingIn.setOnClickListener {
+        binding.btnSignIn.setOnClickListener {
             val id = binding.edtId.text.toString()
             val pw = binding.edtPw.text.toString()
 

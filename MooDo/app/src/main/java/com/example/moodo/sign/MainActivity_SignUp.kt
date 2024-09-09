@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.moodo.R
-import com.example.moodo.databinding.ActivityMainSingUpBinding
+import com.example.moodo.databinding.ActivityMainSignUpBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoUser
 import retrofit2.Call
@@ -21,7 +21,7 @@ class MainActivity_SignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val binding = ActivityMainSingUpBinding.inflate(layoutInflater)
+        val binding = ActivityMainSignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -184,7 +184,7 @@ class MainActivity_SignUp : AppCompatActivity() {
         })
 
         // 회원가입 버튼
-        binding.btnSingUp.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             if (checkId == true && checkPw == true && checkPwSame == true && checkAge == true && binding.edtName.text.isNotEmpty()) {
                 val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString())
                 MooDoClient.retrofit.singUp(singUp).enqueue(object:retrofit2.Callback<MooDoUser>{
