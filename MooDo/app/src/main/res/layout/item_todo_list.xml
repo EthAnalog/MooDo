@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="8dp">
+    <TextView
+        android:id="@+id/itemToDo"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="To do list"
+        android:textSize="17sp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/startToDo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시작시간"
+            android:textSize="15sp"/>
+        <TextView
+            android:id="@+id/endToDo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="종료시간"
+            android:textSize="15sp"/>
+    </LinearLayout>
+</LinearLayout>
