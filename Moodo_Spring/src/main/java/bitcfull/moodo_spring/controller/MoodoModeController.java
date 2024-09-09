@@ -39,24 +39,26 @@ public class MoodoModeController {
     @PostMapping("/insert")
     public MoodoMode insertMood(@RequestBody MoodoMode mood) {
 
+        System.out.println(mood.toString());
+
         // 사용자 정보가 있는지 확인
         if (mood.getUser() == null || mood.getUser().getId() == null) {
             throw new IllegalArgumentException("사용자 정보가 없습니다.");
         }
 
-        // 당일 혹 과거 날짜만 기록 가능 설정
-        LocalDate now = LocalDate.now();
-        String nowDate = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        if (mood.getCreatedDate().compareTo(nowDate) > 0) {
-            throw new IllegalArgumentException("다가올 날짜에는 기록할 수 없습니다.");
-        }
-
-        // 특정 날짜에 한 유저 당 1회만 기록 가능 설정
-        Optional<MoodoMode> existMood = moodoModeService.findByUserAndDate(mood.getUser().getId(), mood.getCreatedDate());
-        if (existMood.isPresent()) {
-            throw new IllegalArgumentException("중복 기록은 불가합니다.");
-        }
         return moodoModeService.insert(mood);
+    }
+
+    // 기록된 일기가 있는지 boolean return
+    @GetMapping("/listCheck/{userId}/{date}")
+    public Boolean userMoodListCheck(@PathVariable String userId, @PathVariable String date) {
+        Optional<MoodoMode> existMood = moodoModeService.findByUserAndDate(userId, date);
+        if (existMood.isPresent()) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     // 기분 기록 수정 ++ 날씨, 일기 추가
@@ -79,7 +81,4 @@ public class MoodoModeController {
     public void delete(@PathVariable Long id) {
         moodoModeService.delete(id);
     }
-
-
-
 }
