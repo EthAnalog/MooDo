@@ -44,9 +44,9 @@ public class MoodoModeController {
             System.out.println(date + " 감정 " + moodNum);
             return moodNum;
         } else {
-            // 데이터가 없을 경우 기본값을 반환하거나 예외를 던질 수 있습니다.
+            // 데이터가 없을 경우 기본값 반환 or 예외
             System.out.println(date + " 데이터 없음");
-            return 0; // 예를 들어 기본값으로 0을 반환
+            return 0; // 0 반환
         }
     }
 
