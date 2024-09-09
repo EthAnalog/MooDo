@@ -44,11 +44,11 @@ public class MoodoTodoService {
     }
 
     // 하루 단위 일정 개수 조회
-public int getTodoCountForDay(String userId, String date) {
-    String startOfDay = date + " 00:00:00";
-    String endOfDay = date + " 23:59:59";
-    return todoRepository.countByUserIdAndStartDateBetween(userId, startOfDay, endOfDay);
-}
+    public int getTodoCountForDay(String userId, String date) {
+        String startOfDay = date + " 00:00:00";
+        String endOfDay = date + " 23:59:59";
+        return todoRepository.countByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(userId, startOfDay, endOfDay);
+    }
 
     // 할 일 업데이트
     public MooDoTodo update(MooDoTodo todo) {
