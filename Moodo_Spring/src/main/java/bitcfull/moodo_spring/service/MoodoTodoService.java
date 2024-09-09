@@ -47,7 +47,11 @@ public class MoodoTodoService {
     public int getTodoCountForDay(String userId, String date) {
         String startOfDay = date + " 00:00:00";
         String endOfDay = date + " 23:59:59";
-        return todoRepository.countByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(userId, startOfDay, endOfDay);
+
+        int returnNum = todoRepository.countByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(userId, startOfDay, endOfDay);
+
+        System.out.println("date :" + returnNum);
+        return returnNum;
     }
 
     // 할 일 업데이트
