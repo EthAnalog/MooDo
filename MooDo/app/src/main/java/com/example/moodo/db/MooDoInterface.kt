@@ -31,6 +31,10 @@ interface MooDoInterface {
     @GET("api/todo/list/{userId}/{date}")
     fun getTodoList(@Path("userId") userId:String, @Path("date") date:String):Call<List<MooDoToDo>>
 
+    // 캘린더 표시할 to do list 개수 조회
+    @GET("api/todo/count/day/{userId}/{date}")
+    fun getTodoCountForDay(@Path("userId") userId: String, @Path("date") date:String):Call<Int>
+
     // 회원 to do list 조회 + tdCheck = Y
     @GET("api/todo/listY/{userId}/{date}")
     fun getTodoListY(@Path("userId") userId: String, @Path("date") date:String):Call<List<MooDoToDo>>
@@ -60,8 +64,8 @@ interface MooDoInterface {
     fun userMoodList(@Path("userId") userId: String): Call<Map<String, Any>>
 
     // 특정 날짜 유저 기분 기록 조회
-    @GET("api/mood/list/{userId}/{date}")
-    fun userMoodList(@Path("userId") userId: String, @Path("date") date: String): Call<Optional<MooDoMode>>
+    @GET("api/mood/list/mdMode/{userId}/{date}")
+    fun getMdMode(@Path("userId") userId: String, @Path("date") date: String): Call<Int>
 
     // 기분 추가
     @POST("api/mood/insert")

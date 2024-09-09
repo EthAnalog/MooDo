@@ -19,18 +19,18 @@
             android:text="1"/>
         <ImageView
             android:id="@+id/todoOval"
-            android:layout_width="5dp"
-            android:layout_height="5dp"
-            android:src="@drawable/todo_oval_none"/>
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/td_none"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:gravity="center">
         <ImageView
             android:id="@+id/itemMood"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/no_mood"/>
     </LinearLayout>
 </LinearLayout>

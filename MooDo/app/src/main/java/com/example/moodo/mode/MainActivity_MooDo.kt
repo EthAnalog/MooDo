@@ -52,7 +52,7 @@ class MainActivity_MooDo : AppCompatActivity() {
 
         // custom calendar 연결
         val monthListManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val monthAdapter = MonthAdapter().apply {
+        val monthAdapter = MonthAdapter(userId).apply {
             // 날짜 선택
             onDaySelectedListener = object :MonthAdapter.OnDaySelectedListener{
                 override fun onDaySelected(date: String) {
@@ -124,6 +124,15 @@ class MainActivity_MooDo : AppCompatActivity() {
             activityToDoListUpdate.launch(intent)
         }
 
+        // 감정 작성 후 mode update
+        val activityMoodListUpdate = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
+            if (result.resultCode == RESULT_OK) {
+                val update = result.data?.getBooleanExtra("update", false) ?: false
+                if (update) {
+                    monthAdapter.notifyDataSetChanged()
+                }
+            }
+        }
         // mode 작성
         binding.moodWriteBtn.setOnClickListener {
             val intent = Intent(this, MainActivity_ModeWrite::class.java)
@@ -150,7 +159,8 @@ class MainActivity_MooDo : AppCompatActivity() {
                                     intent.putExtra("userId", userId)
                                     intent.putExtra("selectDate", selectDate)
 
-                                    startActivity(intent)
+                                    // startActivity(intent)
+                                    activityMoodListUpdate.launch(intent)
                                 }
                                 else {
                                     AlertDialog.Builder(binding.root.context)

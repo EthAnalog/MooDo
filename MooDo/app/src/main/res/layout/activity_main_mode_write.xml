@@ -68,46 +68,76 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
-
-            <Button
-                android:id="@+id/btnMood1"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="최악"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnMood2"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnMood1"
+                    android:background="@drawable/angry"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="최악"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="나쁨"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnMood3"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnMood2"
+                    android:background="@drawable/sad"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="나쁨"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="보통"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnMood4"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnMood3"
+                    android:background="@drawable/meh"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="보통"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="좋음"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnMood5"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnMood4"
+                    android:background="@drawable/s_happy"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="좋음"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="기쁨"
-                android:textSize="18sp" />
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnMood5"
+                    android:background="@drawable/happy"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="기쁨"
+                    android:textSize="18sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
@@ -125,38 +155,62 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
-
-            <Button
-                android:id="@+id/btnWeather1"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="맑음"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnWeather2"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnWeather1"
+                    android:background="@drawable/sun"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="맑음"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="흐림"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnWeather3"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnWeather2"
+                    android:background="@drawable/cloudy"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="흐림"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="비"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnWeather4"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnWeather3"
+                    android:background="@drawable/rain"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="비"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="눈"
-                android:textSize="18sp" />
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/btnWeather4"
+                    android:background="@drawable/snow"
+                    android:padding="0dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="눈"
+                    android:textSize="18sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView

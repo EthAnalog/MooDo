@@ -99,7 +99,10 @@ class MainActivity_ModeWrite : AppCompatActivity() {
                         Log.d("MooDoLog ModeIn F", t.toString())
                     }
                 })
-                setResult(RESULT_OK, null)
+                val intent = Intent().apply {
+                    putExtra("update", true)
+                }
+                setResult(RESULT_OK, intent)
                 finish()
             }
             else {

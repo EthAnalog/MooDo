@@ -1,35 +1,34 @@
 package com.example.moodo.calendar
 
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moodo.R
-import com.example.moodo.calendar.DayAdapter.ClickItemDayListener
 import com.example.moodo.databinding.ItemListMonthBinding
+import com.example.moodo.db.MooDoClient
+import retrofit2.Call
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class MonthAdapter()
-    :RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
-    val center = Int.MAX_VALUE/2
+class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
+    val center = Int.MAX_VALUE / 2
     private var calendar = Calendar.getInstance()
     val today = calendar.time
 
-    var dayAdapter:DayAdapter? = null
+    var dayAdapter: DayAdapter? = null
 
     // interface
     interface OnDaySelectedListener {
         fun onDaySelected(date: String)
     }
-    var onDaySelectedListener:OnDaySelectedListener? = null
+    var onDaySelectedListener: OnDaySelectedListener? = null
 
-    inner class MonthHolder(val binding: ItemListMonthBinding) :RecyclerView.ViewHolder(binding.root){
-    }
+    inner class MonthHolder(val binding: ItemListMonthBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthHolder {
         return MonthHolder(ItemListMonthBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -42,7 +41,7 @@ class MonthAdapter()
     override fun onBindViewHolder(holder: MonthHolder, position: Int) {
         calendar.time = Date() // 오늘 날짜로 초기화
         calendar.set(Calendar.DAY_OF_MONTH, 1)
-        calendar.add(Calendar.MONTH, position-center)
+        calendar.add(Calendar.MONTH, position - center)
 
         // Month 표시
         holder.binding.itemMonthTxt.text = "${calendar.get(Calendar.YEAR)}년 ${calendar.get(Calendar.MONTH) + 1}월"
@@ -69,8 +68,7 @@ class MonthAdapter()
             }
         }
 
-        // adapter 생성 및 리스너 설정
-        dayAdapter = DayAdapter(tempMonth, dayList, todayPosition).apply {
+        dayAdapter = DayAdapter(tempMonth, dayList, todayPosition, userId).apply {
             clickItemDayListener = object : DayAdapter.ClickItemDayListener {
                 override fun clickItemDay(position: Int) {
                     // 클릭된 날짜 처리 및 이벤트 전달
@@ -83,6 +81,5 @@ class MonthAdapter()
 
         holder.binding.itemMonthDayList.layoutManager = GridLayoutManager(holder.binding.root.context, 7)
         holder.binding.itemMonthDayList.adapter = dayAdapter
-
     }
 }
