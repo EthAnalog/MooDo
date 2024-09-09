@@ -65,7 +65,7 @@ public class MoodoModeService {
         String startDate = startMonth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String endDate = endMonth.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        // 조회일 기준 당월 1일부터 조회일까지 가장 많은 기분값 조회(String변환)
+        // 조회일 기준 당월 1일부터 조회일까지 가장 많은 기분값 조회(Date변환)
         List<Object[]> result = modeRepository.findMoodMax(userId, startDate, endDate);
 
         // 기분값, 빈도수 Map에서 키값(기분값) 반환
