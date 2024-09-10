@@ -1,5 +1,6 @@
 package com.example.moodo.mode
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -64,7 +65,29 @@ class MainActivity_ModeWrite : AppCompatActivity() {
 
         moodButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
-                Toast.makeText(this, "선택한 기분: ${index + 1}", Toast.LENGTH_SHORT).show()
+                // 선택된 버튼 크기 크게
+                ObjectAnimator.ofFloat(button, "scaleX", 1.1f).apply {
+                    duration = 300
+                    start()
+                }
+                ObjectAnimator.ofFloat(button, "scaleY", 1.1f).apply {
+                    duration = 300
+                    start()
+                }
+
+                //  나머지 버튼 크기 원래대로
+                moodButtons.forEachIndexed{ i, otherBtn ->
+                    if (i != index) {
+                        ObjectAnimator.ofFloat(otherBtn, "scaleX", 1.0f).apply {
+                            duration = 300
+                            start()
+                        }
+                        ObjectAnimator.ofFloat(otherBtn, "scaleY", 1.0f).apply {
+                            duration = 300
+                            start()
+                        }
+                    }
+                }
                 moodInt = index + 1
             }
         }
@@ -78,7 +101,29 @@ class MainActivity_ModeWrite : AppCompatActivity() {
 
         weatherButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
-                Toast.makeText(this, "선택한 날씨: ${index + 1}", Toast.LENGTH_SHORT).show()
+                // 선택된 버튼 크기 크게
+                ObjectAnimator.ofFloat(button, "scaleX", 1.1f).apply {
+                    duration = 300
+                    start()
+                }
+                ObjectAnimator.ofFloat(button, "scaleY", 1.1f).apply {
+                    duration = 300
+                    start()
+                }
+
+                //  나머지 버튼 크기 작게
+                weatherButtons.forEachIndexed{ i, otherBtn ->
+                    if (i != index) {
+                        ObjectAnimator.ofFloat(otherBtn, "scaleX", 1.0f).apply {
+                            duration = 300
+                            start()
+                        }
+                        ObjectAnimator.ofFloat(otherBtn, "scaleY", 1.0f).apply {
+                            duration = 300
+                            start()
+                        }
+                    }
+                }
                 weather = index + 1
             }
         }

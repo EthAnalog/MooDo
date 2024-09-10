@@ -58,14 +58,19 @@ class DayAdapter(val tempMonth:Int,
 
         holder.binding.itemDayTxt.text = currentDay.date.toString()
 
-        // 요일 색상 설정
-        holder.binding.itemDayTxt.setTextColor(when(position%7){
-            0 -> R.color.red
-            6 -> R.color.blue
+        // 요일 색상 설정(R.color > Color.~로 변경)
+        val textColor = when(position%7) {
+            0 -> Color.RED
+            6 -> Color.BLUE
             else -> Color.BLACK
-        })
+        }
+        holder.binding.itemDayTxt.setTextColor(textColor)
+
         if (tempMonth != currentDay.month) {
             holder.binding.itemDayTxt.alpha = 0.4f
+        }
+        else {
+            holder.binding.itemDayTxt.alpha = 1.0f
         }
 
         // 기분 데이터에 따라 이미지 변경

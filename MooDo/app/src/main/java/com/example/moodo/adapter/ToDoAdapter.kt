@@ -53,7 +53,25 @@ class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
         val todoItem = todoList[position]
 
         holder.binding.itemToDo.text = todoItem.tdList
-        holder.binding.startToDo.text = todoItem.startDate
-        holder.binding.endToDo.text = todoItem.endDate
+
+        // 문자열 포맷 이전 시작 시간, 종료 시간 저장하는 숨겨진 textView
+        holder.binding.saveStartDate.text = todoItem.startDate
+        holder.binding.saveEndDate.text = todoItem.endDate
+
+        // 시간 포맷팅
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS", Locale.getDefault())
+        // 출력 형식
+        val outputFormat = SimpleDateFormat("M월 d일 a h시 m분", Locale.getDefault())
+
+        // startDate
+        val startDate = inputFormat.parse(todoItem.startDate)
+        val formattedStartDate = startDate?.let { outputFormat.format(it) } ?: ""
+
+        // endDate
+        val endDate = inputFormat.parse(todoItem.endDate)
+        val formattedEndDate = endDate?.let { outputFormat.format(it) } ?: ""
+
+        holder.binding.startToDo.text = formattedStartDate
+        holder.binding.endToDo.text = formattedEndDate
     }
 }

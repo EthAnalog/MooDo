@@ -185,7 +185,7 @@ class MainActivity_SignUp : AppCompatActivity() {
 
         // 회원가입 버튼
         binding.btnSignUp.setOnClickListener {
-            if (checkId == true && checkPw == true && checkPwSame == true && checkAge == true && binding.edtName.text.isNotEmpty()) {
+            if (checkId == true && checkPw == true && checkPwSame == true && checkAge == true && binding.edtName.text!!.isNotEmpty()) {
                 val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString())
                 MooDoClient.retrofit.singUp(singUp).enqueue(object:retrofit2.Callback<MooDoUser>{
                     override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
