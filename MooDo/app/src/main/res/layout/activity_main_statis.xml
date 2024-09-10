@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity_Statis">
+    <!-- 상단 정보 영역 -->
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
@@ -34,4 +35,52 @@
             android:text="MooDo"
             android:textSize="35sp" />
     </LinearLayout>
+
+    <!-- 상단 정보 영역 추가 -->
+    <LinearLayout
+        android:id="@+id/top_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3">
+
+        <!-- 최다 감정 아이콘 -->
+        <ImageView
+            android:id="@+id/tvMoodMax"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_mood"/>
+
+        <!-- 투두 리스트 달성률 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="달성률 "
+            android:layout_marginStart="16dp" />
+        <TextView
+            android:id="@+id/completeTodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0" />
+        <TextView
+            android:id="@+id/todoNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/0" />
+    </LinearLayout>
+
+    <!-- 날짜별 기록을 표시하는 RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_info" />
 </androidx.constraintlayout.widget.ConstraintLayout>

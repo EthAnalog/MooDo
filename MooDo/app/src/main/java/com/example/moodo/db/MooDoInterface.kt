@@ -1,5 +1,6 @@
 package com.example.moodo.db
 
+import android.graphics.Path.Op
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -59,19 +60,49 @@ interface MooDoInterface {
     @PUT("api/todo/check/{id}")
     fun updateCheck(@Path("id") id:Long):Call<MooDoToDo>
 
-    // 유저별 기분기록 조회
+    // 한 달 동안 기록된 계획 개수
+    @GET("api/todo/count/{userId}/{year}/{month}")
+    fun getTodoCountForMonth(@Path("userId") userId: String, @Path("year") year: Int, @Path("month") month:Int): Call<Int>
+
+    // 한 달 동안 완료된 계획 개수 (tdCheck가 'Y')
+    @GET("api/todo/completed/count/{userId}/{year}/{month}")
+    fun getCompletedTodoCountForMonth(@Path("userId") userId: String, @Path("year") year:Int, @Path("month") month: Int): Call<Int>
+
+    // mode
+    // 전체 일기 list 및 가장 많은 기분 값
     @GET("api/mood/list/{userId}")
     fun userMoodList(@Path("userId") userId: String): Call<Map<String, Any>>
 
-    // 특정 날짜 유저 기분 기록 조회
+    // 특정 날짜 일기 조회
+    @GET("api/mood/list/{userId}/{date}")
+    fun userMoodList(@Path("userId") userId:String, @Path("date") date:String):Call<Optional<MooDoMode>>
+
+    // 특정 날짜 기분값 조회
     @GET("api/mood/list/mdMode/{userId}/{date}")
     fun getMdMode(@Path("userId") userId: String, @Path("date") date: String): Call<Int>
 
-    // 기분 추가
+    // 한달 동안 일기 조회
+    @GET("api/mood/list/month/{userId}/{year}/{month}")
+    fun getUserMoodListByMonth(@Path("userId") userId:String, @Path("year") year:Int, @Path("month") month:Int):Call<List<MooDoMode>>
+
+    // 한 달 동안 기록된 가장 많은 감정
+    @GET("api/mood/moreMood/{userId}/{year}/{month}")
+    fun getUserMoodNumByMonth(@Path("userId") userId:String, @Path("year") year:Int, @Path("month") month: Int):Call<Int>
+
+    // 일기 추가
     @POST("api/mood/insert")
     fun insertMode(@Body mood:MooDoMode):Call<MooDoMode>
 
-    // 기록된 기분이 있는지 조회
+    // 기록된 일기가 있는지 조회
     @GET("api/mood/listCheck/{userId}/{date}")
     fun userMoodListCheck(@Path("userId") userId: String, @Path("date") date:String):Call<Boolean>
+
+    // 기록된 일기 수정
+    @PUT("api/mood/update/{id}")
+    fun update(@Path("id") id:Long, @Body mood: MooDoMode):Call<Optional<MooDoMode>>
+
+    // 일기 삭제
+    @DELETE("api/mood/delete/{id}")
+    fun delete(@Path("id") id:Long):Call<Void>
+
 }

@@ -18,6 +18,7 @@ import com.example.moodo.db.MooDoUser
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
+import java.util.Optional
 
 class MainActivity_ModeWrite : AppCompatActivity() {
     lateinit var binding:ActivityMainModeWriteBinding
@@ -36,12 +37,14 @@ class MainActivity_ModeWrite : AppCompatActivity() {
         // userId
         val userId = intent.getStringExtra("userId")
         val selectDate = intent.getStringExtra("selectDate")
+        val stats = intent.getStringExtra("stats")
 
         Log.d("MooDoLog Mode", userId.toString())
         Log.d("MooDoLog Mode", selectDate.toString())
 
         // 사용자 정보 가져오기
         loadUserInfo(userId!!)
+
 
         val inputFormat = SimpleDateFormat("yyyy-MM-dd")
         val parsedDate = inputFormat.parse(selectDate.toString())
@@ -54,6 +57,15 @@ class MainActivity_ModeWrite : AppCompatActivity() {
         var moodInt = 0
         var weather = 0
 
+        if (stats == "insert") {
+            binding.btnSave.text = "저장"
+        }
+        else if (stats == "update") {
+            binding.btnSave.text = "수정"
+            val diary = intent.getStringExtra("diary")
+            edtWrite.setText(diary)
+        }
+
         // 기분
         val moodButtons = listOf(
             binding.btnMood1,
@@ -62,7 +74,6 @@ class MainActivity_ModeWrite : AppCompatActivity() {
             binding.btnMood4,
             binding.btnMood5
         )
-
         moodButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
                 // 선택된 버튼 크기 크게
@@ -91,6 +102,7 @@ class MainActivity_ModeWrite : AppCompatActivity() {
                 moodInt = index + 1
             }
         }
+
         // 날씨
         val weatherButtons = listOf(
             binding.btnWeather1,
@@ -98,7 +110,6 @@ class MainActivity_ModeWrite : AppCompatActivity() {
             binding.btnWeather3,
             binding.btnWeather4
         )
-
         weatherButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
                 // 선택된 버튼 크기 크게
@@ -130,31 +141,52 @@ class MainActivity_ModeWrite : AppCompatActivity() {
 
         // 저장 버튼
         binding.btnSave.setOnClickListener {
-            if (moodInt !=  0 && weather != 0 && edtWrite.text.isNotEmpty() && user!=null) {
-                val edtTxt = edtWrite.text
-                val mode = MooDoMode(0, user!!, moodInt, selectDate!!, weather, edtTxt.toString())
-                MooDoClient.retrofit.insertMode(mode).enqueue(object :retrofit2.Callback<MooDoMode>{
-                    override fun onResponse(call: Call<MooDoMode>, response: Response<MooDoMode>) {
-                        if (response.isSuccessful){
-                            Log.d("MooDoLog ModeIn", response.body().toString())
+            if (binding.btnSave.text == "저장") {
+                if (moodInt !=  0 && weather != 0 && edtWrite.text.isNotEmpty() && user!=null) {
+                    val edtTxt = edtWrite.text
+                    val mode = MooDoMode(0, user!!, moodInt, selectDate!!, weather, edtTxt.toString())
+                    MooDoClient.retrofit.insertMode(mode).enqueue(object :retrofit2.Callback<MooDoMode>{
+                        override fun onResponse(call: Call<MooDoMode>, response: Response<MooDoMode>) {
+                            if (response.isSuccessful){
+                                Log.d("MooDoLog ModeIn", response.body().toString())
+                            }
                         }
-                    }
 
-                    override fun onFailure(call: Call<MooDoMode>, t: Throwable) {
-                        Log.d("MooDoLog ModeIn F", t.toString())
+                        override fun onFailure(call: Call<MooDoMode>, t: Throwable) {
+                            Log.d("MooDoLog ModeIn F", t.toString())
+                        }
+                    })
+                    val intent = Intent().apply {
+                        putExtra("update", true)
                     }
-                })
-                val intent = Intent().apply {
-                    putExtra("update", true)
+                    setResult(RESULT_OK, intent)
+                    finish()
                 }
-                setResult(RESULT_OK, intent)
-                finish()
+                else {
+                    AlertDialog.Builder(binding.root.context)
+                        .setMessage("기분과 날씨, 한 줄 일기를 모두 작성해주세요.")
+                        .setPositiveButton("확인", null)
+                        .show()
+                }
             }
-            else {
-                AlertDialog.Builder(binding.root.context)
-                    .setMessage("기분과 날씨, 한 줄 일기를 모두 작성해주세요.")
-                    .setPositiveButton("확인", null)
-                    .show()
+            else if (binding.btnSave.text == "수정") {
+                if (moodInt !=  0 && weather != 0 && edtWrite.text.isNotEmpty() && user!=null) {
+                    val mdDaily = edtWrite.text.toString()
+                    val intent = Intent().apply {
+                        putExtra("update", true)
+                        putExtra("mdMode", moodInt)
+                        putExtra("weather", weather)
+                        putExtra("mdDaily", mdDaily)
+                    }
+                    setResult(RESULT_OK, intent)
+                    finish()
+                }
+                else {
+                    AlertDialog.Builder(binding.root.context)
+                        .setMessage("기분과 날씨, 한 줄 일기를 모두 작성해주세요.")
+                        .setPositiveButton("확인", null)
+                        .show()
+                }
             }
         }
 
