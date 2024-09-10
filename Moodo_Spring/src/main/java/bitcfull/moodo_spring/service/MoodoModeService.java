@@ -87,4 +87,16 @@ public class MoodoModeService {
         }
         return moodMax;
     }
+
+    // 한 달 동안 기록 정보 가져오기
+    public List<MoodoMode> findByUserAndDateRange(String userId, String startDate, String endDate) {
+        return modeRepository.findByUserIdAndDateRange(userId, startDate, endDate);
+    }
+
+    // 한 달 동안 기록된 가장 많은 감정
+    public int findMostCommonMoodForMonth(String userId, String startDate, String endDate) {
+        List<Integer> moods = modeRepository.findMostCommonMoodForMonth(userId, startDate, endDate);
+
+        return moods.isEmpty() ? 0 : moods.get(0);
+    }
 }

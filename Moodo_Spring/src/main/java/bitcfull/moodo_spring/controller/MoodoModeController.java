@@ -78,13 +78,14 @@ public class MoodoModeController {
 
     // 기분 기록 수정 ++ 날씨, 일기 추가
     @PutMapping("/update/{id}")
-    public MoodoMode update(@PathVariable Long id, @RequestParam int mdMode, @RequestParam int weather, @RequestParam String mdDaily) {
+    public MoodoMode update(@PathVariable Long id, @RequestBody MoodoMode mood) {
         Optional<MoodoMode> existMood = moodoModeService.findById(id);
+        System.out.println("기분 기록 수정" + mood.toString());
         if (existMood.isPresent()) {
             MoodoMode updatedMood = existMood.get();
-            updatedMood.setMdMode(mdMode);
-            updatedMood.setWeather(weather);
-            updatedMood.setMdDaily(mdDaily);
+            updatedMood.setMdMode(mood.getMdMode());
+            updatedMood.setWeather(mood.getWeather());
+            updatedMood.setMdDaily(mood.getMdDaily());
             return moodoModeService.update(updatedMood);
         } else {
             throw new RuntimeException("기록을 찾을 수 없습니다.");
@@ -95,5 +96,34 @@ public class MoodoModeController {
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
         moodoModeService.delete(id);
+    }
+
+    // 특정 월 동안의 기분 기록 조회
+    @GetMapping("/list/month/{userId}/{year}/{month}")
+    public List<MoodoMode> getUserMoodListByMonth(@PathVariable String userId, @PathVariable int year, @PathVariable int month) {
+        // 해당 월의 첫 날과 마지막 날 계산
+        LocalDate startDate = LocalDate.of(year, month, 1);
+        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
+
+        // 날짜 포맷터 설정
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // 해당 범위의 기분 기록 조회
+        List<MoodoMode> moodList = moodoModeService.findByUserAndDateRange(userId, startDate.format(formatter), endDate.format(formatter));
+
+        return moodList;
+    }
+
+    // 한 달 동안 기록된 가장 많은 감정
+    @GetMapping("/moreMood/{userId}/{year}/{month}")
+    public int getUserMoodNumByMonth(@PathVariable String userId, @PathVariable int year, @PathVariable int month) {
+        // 해당 월의 첫 날과 마지막 날 계산
+        LocalDate startDate = LocalDate.of(year, month, 1);
+        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
+
+        // 날짜 포맷터 설정
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        return moodoModeService.findMostCommonMoodForMonth(userId, startDate.format(formatter), endDate.format(formatter));
     }
 }
