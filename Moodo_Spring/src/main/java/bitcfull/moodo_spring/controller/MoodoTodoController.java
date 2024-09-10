@@ -26,8 +26,9 @@ public class MoodoTodoController {
     @Autowired
     private MoodoTodoService todoService;
 
-    @PostMapping("/add")
-    public MooDoTodo addTodo(@RequestBody MooDoTodo todo, @RequestParam String userId) throws ParseException {
+    @PostMapping("/add/{userId}")
+    public MooDoTodo addTodo(@RequestBody MooDoTodo todo, @PathVariable String userId) throws ParseException {
+        System.out.println("to do list 저장하기 " + userId);
         // 생성 시간은 자동으로 서버에서 저장
         return todoService.insert(todo, userId);
     }
@@ -37,16 +38,34 @@ public class MoodoTodoController {
     public List<MooDoTodo> getTodoList(@PathVariable String userId,
                                        @PathVariable String date) throws Exception {
         System.out.println("전달받은 날짜: " + date);
-
         return todoService.findByUserIdAndStartDate(userId, date);
-
     }
 
-    // 할 일 완료 여부
+    // 선택된 날짜의 일정 개수 조회
+    @GetMapping("/count/day/{userId}/{date}")
+    public int getTodoCountForDay(@PathVariable String userId, @PathVariable String date) {
+        return todoService.getTodoCountForDay(userId, date);
+    }
+
+    // 할 일 조회 (선택한 날짜 + check = Y)
+    @GetMapping("/listY/{userId}/{date}")
+    public List<MooDoTodo> getTodoListY(@PathVariable String userId, @PathVariable String date) throws Exception {
+        System.out.println("전달받은 날짜: " + date);
+        return todoService.findByUserIdAndY(userId, date);
+    }
+
+    // 할 일 조회 (선택한 날짜 + check = N)
+    @GetMapping("/listN/{userId}/{date}")
+    public List<MooDoTodo> getTodoListN(@PathVariable String userId, @PathVariable String date) throws Exception {
+        System.out.println("전달받은 날짜: " + date);
+        return todoService.findByUserIdAndN(userId, date);
+    }
+
+    // 할 일 완료
     @PutMapping("/check/{id}")
-    public MooDoTodo updateCheck(@PathVariable Long id, @RequestBody String tdCheck) {
-        System.out.println("Received tdCheck value: " + tdCheck); // 로그 추가
-        return todoService.updateCheck(id, tdCheck.trim());
+    public MooDoTodo updateCheck(@PathVariable Long id) {
+        System.out.println("Received tdCheck value: " + id); // 로그 추가
+        return todoService.updateCheck(id);
     }
 
     // 검색해서 할 일 조회
@@ -69,7 +88,6 @@ public class MoodoTodoController {
             throw new RuntimeException("할 일을 찾을 수 없습니다.");
         }
     }
-
 
     // 할 일 삭제
     @DeleteMapping("/delete/{id}")

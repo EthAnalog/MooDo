@@ -27,8 +27,8 @@ public class MoodoMode {
   @Column(nullable = false)
   private int mdMode; // 기분 상태(1 ~ 5 / 나쁨 ~ 좋음 순)
 
-  @Column(name = "created_date", nullable = false)
-  private Date createdDate; //작성일자
+  @Column(name = "created_date", nullable = false, length = 10)
+  private String createdDate; //작성일자
 
   @Column(nullable = false)
   private int weather; // 날씨 (1 ~ 4 / 1: 맑음, 2:흐림, 3:비, 4:눈)

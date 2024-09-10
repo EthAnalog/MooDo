@@ -13,10 +13,10 @@
         android:id="@+id/btnClose"
         android:layout_width="65dp"
         android:layout_height="53dp"
-        android:src="@drawable/ic_back_foreground"
+        android:src="@drawable/ic_back_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back_foreground" />
+        app:srcCompat="@drawable/ic_back_gray" />
 
     <TextView
         android:id="@+id/title01"
@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="60dp"
+        android:fontFamily="@font/jalnan"
         android:text="Sign In"
-        android:textColor="@color/mint"
+        android:textColor="@color/e_red"
         android:textSize="36sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="40dp"
       android:layout_marginTop="4dp"
-        android:textSize="16sp"
+      android:textSize="16sp"
       android:text="MooDo의 다양한 기능을 이용하실 수 있습니다."
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -65,8 +65,9 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="40dp"
         android:hint="아이디"
-        app:boxStrokeColor="@color/navy"
-        app:hintTextColor="@color/navy"
+        app:boxStrokeColor="@color/e_red"
+        app:cursorColor="@color/e_red"
+        app:hintTextColor="@color/e_red"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -75,7 +76,7 @@
             android:id="@+id/edtId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorLink="#002B49" />
+            android:textColorLink="@color/e_red" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,8 +88,9 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="40dp"
-        app:boxStrokeColor="@color/navy"
-        app:hintTextColor="@color/navy"
+        app:boxStrokeColor="@color/e_red"
+        app:cursorColor="@color/e_red"
+        app:hintTextColor="@color/e_red"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -101,7 +103,7 @@
             android:importantForAccessibility="yes"
             android:inputType="textPassword"
             android:maxLength="20"
-            android:textColorLink="#002B49" />
+            android:textColorLink="@color/e_red" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <android.widget.Button
@@ -111,8 +113,8 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
-        android:background="@drawable/btn_layout"
-        android:backgroundTint="@color/navy"
+        android:background="@drawable/round_layout"
+        android:backgroundTint="@color/e_red"
         android:text="로그인"
         android:textSize="16sp"
         android:textAllCaps="false"
@@ -133,7 +135,7 @@
         android:text="회원가입"
         android:textAllCaps="false"
         android:textSize="16sp"
-        android:textColor="@color/mint"
+        android:textColor="@color/e_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
