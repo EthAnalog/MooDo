@@ -26,4 +26,14 @@ public interface ModeRepository extends JpaRepository<MoodoMode, Long> {
             "ORDER BY mcount DESC")
     List<Object[]> findMoodMax(String userId, String startDate, String endDate);
 
+    // 유저 ID와 날짜 범위로 데이터를 조회하는 쿼리
+    // 한 달 기록 조회 용
+    @Query("SELECT m FROM MoodoMode m WHERE m.user.id = :userId AND m.createdDate >= :startDate AND m.createdDate <= :endDate")
+    List<MoodoMode> findByUserIdAndDateRange(String userId, String startDate, String endDate);
+
+    // 한 달 가장 많은 감정
+    @Query("SELECT m.mdMode FROM MoodoMode m WHERE m.user.id = :userId AND m.createdDate >= :startDate AND m.createdDate <= :endDate " +
+            "GROUP BY m.mdMode ORDER BY COUNT(m.mdMode) DESC")
+    List<Integer> findMostCommonMoodForMonth(String userId, String startDate, String endDate);
+
 }
