@@ -96,18 +96,34 @@ public class MoodoTodoController {
     }
 
     // 한 달 동안 기록된 계획 개수
-    @GetMapping("/count/{userId}/{month}")
-    public int getTodoCountForMonth(@PathVariable String userId, @PathVariable String month) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
-        Date date = dateFormat.parse(month);
-        return todoService.getTodoCountForMonth(userId, date);
+    @GetMapping("/count/{userId}/{year}/{month}")
+    public int getTodoCountForMonth(@PathVariable String userId, @PathVariable int year, @PathVariable int month) throws ParseException {
+        System.out.println("한달 동안 기록된 계획");
+
+        // 해당 월의 첫 날과 마지막 날 계산
+        LocalDate startDate = LocalDate.of(year, month, 1);
+        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
+
+        // 날짜 포맷터
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        System.out.println(startDate.format(formatter));
+
+        return todoService.getTodoCountForMonth(userId, startDate.format(formatter), endDate.format(formatter));
     }
 
     // 한 달 동안 완료된 계획 개수 (tdCheck가 'Y')
-    @GetMapping("/completed/count/{userId}/{month}")
-    public int getCompletedTodoCountForMonth(@PathVariable String userId, @PathVariable String month) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
-        Date date = dateFormat.parse(month);
-        return todoService.getCompletedTodoCountForMonth(userId, date);
+    @GetMapping("/completed/count/{userId}/{year}/{month}")
+    public int getCompletedTodoCountForMonth(@PathVariable String userId, @PathVariable int year, @PathVariable int month) throws ParseException {
+        System.out.println("한달 동안 완료된 계획");
+
+        // 해당 월의 첫 날과 마지막 날 계산
+        LocalDate startDate = LocalDate.of(year, month, 1);
+        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
+
+        // 날짜 포맷터
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        System.out.println(startDate.format(formatter));
+
+        return todoService.getCompletedTodoCountForMonth(userId, startDate.format(formatter), endDate.format(formatter));
     }
 }
