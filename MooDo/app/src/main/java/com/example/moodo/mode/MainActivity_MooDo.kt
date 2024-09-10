@@ -114,6 +114,20 @@ class MainActivity_MooDo : AppCompatActivity() {
         }
 
         // to do list 작성 및 수정, 삭제
+        // recyclerView 클릭 시에도 페이지 이동
+        todoAdapter.onItemClickLister = object :ToDoAdapter.OnItemClickLister {
+            override fun onItemClick(pos: Int) {
+                val intent = Intent(this@MainActivity_MooDo, MainActivity_ToDo::class.java)
+                val selectDate = saveDate.text.toString()
+
+                intent.putExtra("userId", userId)
+                intent.putExtra("selectDate", selectDate)
+
+                // startActivity(intent)
+                activityToDoListUpdate.launch(intent)
+            }
+
+        }
         binding.userMooDo.setOnClickListener {
             val intent = Intent(this, MainActivity_ToDo::class.java)
             val selectDate = saveDate.text.toString()
@@ -159,6 +173,8 @@ class MainActivity_MooDo : AppCompatActivity() {
                                 if (response.body() == true) {
                                     intent.putExtra("userId", userId)
                                     intent.putExtra("selectDate", selectDate)
+                                    val stats = "insert"
+                                    intent.putExtra("stats", stats)
 
                                     // startActivity(intent)
                                     activityMoodListUpdate.launch(intent)
@@ -185,6 +201,16 @@ class MainActivity_MooDo : AppCompatActivity() {
             }
         }
 
+
+        // 한달 통계에서 다시 복귀할때
+        val activityStatisMood = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
+            if (result.resultCode == RESULT_OK) {
+                val update = result.data?.getBooleanExtra("update", false) ?: false
+                if (update) {
+                    monthAdapter.notifyDataSetChanged()
+                }
+            }
+        }
         // 한달 통계
         binding.statisBtn.setOnClickListener {
             val intent = Intent(this@MainActivity_MooDo, MainActivity_Statis::class.java)
@@ -194,7 +220,9 @@ class MainActivity_MooDo : AppCompatActivity() {
             intent.putExtra("userId", userId)
             intent.putExtra("selectDate", selectDate)
 
-            startActivity(intent)
+            // startActivity(intent)
+
+            activityStatisMood.launch(intent)
         }
     }
 

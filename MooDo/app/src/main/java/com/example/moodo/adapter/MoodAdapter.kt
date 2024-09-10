@@ -2,17 +2,47 @@ package com.example.moodo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moodo.databinding.ItemMoodBinding
+import com.example.moodo.R
+import com.example.moodo.databinding.ItemStatisBinding
 import com.example.moodo.db.MooDoMode
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class MoodAdapter() : RecyclerView.Adapter<MoodAdapter.MoodViewHolder>() {
     val moodList = mutableListOf<MooDoMode>()
 
-    class MoodViewHolder(val binding:ItemMoodBinding) : RecyclerView.ViewHolder(binding.root)
+    interface OnItemClickLister {
+        fun onItemClick(pos:Int)
+        fun onItemLongClcik(pos:Int)
+    }
+    var onItemClickLister:OnItemClickLister? = null
+    inner class MoodViewHolder(val binding:ItemStatisBinding) : RecyclerView.ViewHolder(binding.root) {
+        init  {
+            itemView.setOnClickListener {
+                onItemClickLister?.onItemClick(adapterPosition)
+            }
+            itemView.setOnLongClickListener {
+                onItemClickLister?.onItemLongClcik(adapterPosition)
+                true
+            }
+        }
+    }
+
+    // 삭제
+    fun removeItem(pos:Int) {
+        moodList.removeAt(pos)
+        notifyDataSetChanged()
+    }
+    // 수정
+    fun updateItem(pos:Int, mode: MooDoMode) {
+        moodList.set(pos, mode)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoodViewHolder {
-        return MoodViewHolder(ItemMoodBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return MoodViewHolder(ItemStatisBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun getItemCount(): Int {
@@ -22,7 +52,35 @@ class MoodAdapter() : RecyclerView.Adapter<MoodAdapter.MoodViewHolder>() {
     override fun onBindViewHolder(holder: MoodViewHolder, position: Int) {
         val modeItem = moodList[position]
 
-        holder.binding.tvMoodValue.text = modeItem.mdMode.toString()
-        holder.binding.tvDate.text = modeItem.createdDate
+        when(modeItem.mdMode) {
+            1 -> holder.binding.moodIcon.setImageResource(R.drawable.angry)
+            2 -> holder.binding.moodIcon.setImageResource(R.drawable.sad)
+            3 -> holder.binding.moodIcon.setImageResource(R.drawable.meh)
+            4 -> holder.binding.moodIcon.setImageResource(R.drawable.s_happy)
+            5 -> holder.binding.moodIcon.setImageResource(R.drawable.happy)
+            else -> holder.binding.moodIcon.setImageResource(R.drawable.no_mood)
+        }
+
+        when(modeItem.weather) {
+            1 -> holder.binding.weatherIcon.setImageResource(R.drawable.sun)
+            2 -> holder.binding.weatherIcon.setImageResource(R.drawable.cloudy)
+            3 -> holder.binding.weatherIcon.setImageResource(R.drawable.rain)
+            4 -> holder.binding.weatherIcon.setImageResource(R.drawable.snow)
+            else -> holder.binding.moodIcon.setImageResource(R.drawable.no_mood)
+        }
+
+        // 포맷팅 전 시간 저장
+        holder.binding.saveDescription.text = modeItem.createdDate
+
+        // 시간 포맷팅
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        // 출력 형식
+        val outputFormat = SimpleDateFormat("yyyy년 M월 d일", Locale.getDefault())
+
+        val formatter = inputFormat.parse(modeItem.createdDate)
+        val formattedDate = formatter?.let { outputFormat.format(it) } ?: ""
+        holder.binding.moodDescription.text = formattedDate
+
+        holder.binding.oneLineDiary.text = modeItem.mdDaily
     }
 }

@@ -15,39 +15,62 @@
         android:id="@+id/itemToDo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:text="To do list"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/saveStartDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/saveEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/startToDo"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gmarketsans_light"
-            android:text="시작시간" />
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="시작일"
+                android:textColor="@color/gray"/>
+            <TextView
+                android:id="@+id/startToDo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="시작시간"
+                android:textColor="@color/gray"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gmarketsans_light"
-            android:text=" ~ " />
-
-        <TextView
-            android:id="@+id/endToDo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/gmarketsans_light"
-            android:text="종료시간" />
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="종료일"
+                android:textColor="@color/gray"/>
+            <TextView
+                android:id="@+id/endToDo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="종료시간"
+                android:textColor="@color/gray"/>
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
-
-

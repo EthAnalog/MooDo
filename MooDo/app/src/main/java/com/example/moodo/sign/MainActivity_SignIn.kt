@@ -63,6 +63,7 @@ class MainActivity_SignIn : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         // 뒤로가기 버튼
         binding.btnClose.setOnClickListener {
             setResult(RESULT_CANCELED, intent)

@@ -1,6 +1,7 @@
 package com.example.moodo.calendar
 
 import android.graphics.Color
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,11 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moodo.R
 import com.example.moodo.databinding.ItemListDayBinding
 import com.example.moodo.db.MooDoClient
+import com.example.moodo.db.MooDoMode
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.Optional
 
 class DayAdapter(val tempMonth:Int,
                  val dayList:MutableList<Date>,
@@ -55,14 +58,19 @@ class DayAdapter(val tempMonth:Int,
 
         holder.binding.itemDayTxt.text = currentDay.date.toString()
 
-        // 요일 색상 설정
-        holder.binding.itemDayTxt.setTextColor(when(position%7){
-            0 -> R.color.red
-            6 -> R.color.blue
+        // 요일 색상 설정(R.color > Color.~로 변경)
+        val textColor = when(position%7) {
+            0 -> Color.RED
+            6 -> Color.BLUE
             else -> Color.BLACK
-        })
+        }
+        holder.binding.itemDayTxt.setTextColor(textColor)
+
         if (tempMonth != currentDay.month) {
             holder.binding.itemDayTxt.alpha = 0.4f
+        }
+        else {
+            holder.binding.itemDayTxt.alpha = 1.0f
         }
 
         // 기분 데이터에 따라 이미지 변경
@@ -73,11 +81,11 @@ class DayAdapter(val tempMonth:Int,
                 if (response.isSuccessful){
                     if (response.body() != null) {
                         when(response.body()) {
-                            1 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_angry)
-                            2 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_sad)
-                            3 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_meh)
-                            4 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_s_happy)
-                            5 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_happy)
+                            1 -> holder.binding.itemMood.setImageResource(R.drawable.angry)
+                            2 -> holder.binding.itemMood.setImageResource(R.drawable.sad)
+                            3 -> holder.binding.itemMood.setImageResource(R.drawable.meh)
+                            4 -> holder.binding.itemMood.setImageResource(R.drawable.s_happy)
+                            5 -> holder.binding.itemMood.setImageResource(R.drawable.happy)
                             else -> holder.binding.itemMood.setImageResource(R.drawable.no_mood)
                         }
                     }
