@@ -57,16 +57,7 @@ class MainActivity_ModeWrite : AppCompatActivity() {
         var moodInt = 0
         var weather = 0
 
-        if (stats == "insert") {
-            binding.btnSave.text = "저장"
-        }
-        else if (stats == "update") {
-            binding.btnSave.text = "수정"
-            val diary = intent.getStringExtra("diary")
-            edtWrite.setText(diary)
-        }
-
-        // 기분
+        // 기분 버튼 배열
         val moodButtons = listOf(
             binding.btnMood1,
             binding.btnMood2,
@@ -74,6 +65,14 @@ class MainActivity_ModeWrite : AppCompatActivity() {
             binding.btnMood4,
             binding.btnMood5
         )
+        // 날씨 버튼 배열
+        val weatherButtons = listOf(
+            binding.btnWeather1,
+            binding.btnWeather2,
+            binding.btnWeather3,
+            binding.btnWeather4
+        )
+
         moodButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
                 // 선택된 버튼 크기 크게
@@ -86,14 +85,14 @@ class MainActivity_ModeWrite : AppCompatActivity() {
                     start()
                 }
 
-                //  나머지 버튼 크기 원래대로
+                //  나머지 버튼 크기 작게
                 moodButtons.forEachIndexed{ i, otherBtn ->
                     if (i != index) {
-                        ObjectAnimator.ofFloat(otherBtn, "scaleX", 1.0f).apply {
+                        ObjectAnimator.ofFloat(otherBtn, "scaleX", 0.9f).apply {
                             duration = 300
                             start()
                         }
-                        ObjectAnimator.ofFloat(otherBtn, "scaleY", 1.0f).apply {
+                        ObjectAnimator.ofFloat(otherBtn, "scaleY", 0.9f).apply {
                             duration = 300
                             start()
                         }
@@ -102,14 +101,6 @@ class MainActivity_ModeWrite : AppCompatActivity() {
                 moodInt = index + 1
             }
         }
-
-        // 날씨
-        val weatherButtons = listOf(
-            binding.btnWeather1,
-            binding.btnWeather2,
-            binding.btnWeather3,
-            binding.btnWeather4
-        )
         weatherButtons.forEachIndexed { index, button ->
             button.setOnClickListener {
                 // 선택된 버튼 크기 크게
@@ -125,17 +116,81 @@ class MainActivity_ModeWrite : AppCompatActivity() {
                 //  나머지 버튼 크기 작게
                 weatherButtons.forEachIndexed{ i, otherBtn ->
                     if (i != index) {
-                        ObjectAnimator.ofFloat(otherBtn, "scaleX", 1.0f).apply {
+                        ObjectAnimator.ofFloat(otherBtn, "scaleX", 0.9f).apply {
                             duration = 300
                             start()
                         }
-                        ObjectAnimator.ofFloat(otherBtn, "scaleY", 1.0f).apply {
+                        ObjectAnimator.ofFloat(otherBtn, "scaleY", 0.9f).apply {
                             duration = 300
                             start()
                         }
                     }
                 }
                 weather = index + 1
+            }
+        }
+
+        if (stats == "insert") {
+            binding.btnSave.text = "저장"
+        }
+        else if (stats == "update") {
+            binding.btnSave.text = "수정"
+            val diary = intent.getStringExtra("diary")
+            moodInt = intent.getIntExtra("mdMode", 0)
+            weather = intent.getIntExtra("weather", 0)
+            edtWrite.setText(diary)
+
+            // 기분 버튼 크기 변경 (선택된 버튼 크기 증가)
+            if (moodInt > 0) {
+                for (i in 0..4) {
+                    val selectedButton = moodButtons[i]
+                    if (i == (moodInt-1)) {
+                        ObjectAnimator.ofFloat(selectedButton, "scaleX", 1.1f).apply {
+                            duration = 300
+                            start()
+                        }
+                        ObjectAnimator.ofFloat(selectedButton, "scaleY", 1.1f).apply {
+                            duration = 300
+                            start()
+                        }
+                    }
+                    else {
+                        ObjectAnimator.ofFloat(selectedButton, "scaleX", 0.9f).apply {
+                            duration = 300
+                            start()
+                        }
+                        ObjectAnimator.ofFloat(selectedButton, "scaleY", 0.9f).apply {
+                            duration = 300
+                            start()
+                        }
+                    }
+                }
+            }
+            // 날씨 버튼 크기 변경 (선택된 버튼 크기 증가)
+            if (weather > 0) {
+                for (i in 0..3) {
+                    val selectedButton = weatherButtons[i]
+                    if (i == (weather-1)) {
+                        ObjectAnimator.ofFloat(selectedButton, "scaleX", 1.1f).apply {
+                            duration = 300
+                            start()
+                        }
+                        ObjectAnimator.ofFloat(selectedButton, "scaleY", 1.1f).apply {
+                            duration = 300
+                            start()
+                        }
+                    }
+                    else {
+                        ObjectAnimator.ofFloat(selectedButton, "scaleX", 0.9f).apply {
+                            duration = 300
+                            start()
+                        }
+                        ObjectAnimator.ofFloat(selectedButton, "scaleY", 0.9f).apply {
+                            duration = 300
+                            start()
+                        }
+                    }
+                }
             }
         }
 

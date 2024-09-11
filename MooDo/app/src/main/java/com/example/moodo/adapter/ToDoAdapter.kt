@@ -59,7 +59,7 @@ class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
         holder.binding.saveEndDate.text = todoItem.endDate
 
         // 시간 포맷팅
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS", Locale.getDefault())
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         // 출력 형식
         val outputFormat = SimpleDateFormat("M월 d일 a h시 m분", Locale.getDefault())
 

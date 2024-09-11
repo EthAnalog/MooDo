@@ -1,5 +1,6 @@
 package com.example.moodo.sign
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -187,7 +188,7 @@ class MainActivity_SignUp : AppCompatActivity() {
         binding.btnSignUp.setOnClickListener {
             if (checkId == true && checkPw == true && checkPwSame == true && checkAge == true && binding.edtName.text!!.isNotEmpty()) {
                 val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString())
-                MooDoClient.retrofit.singUp(singUp).enqueue(object:retrofit2.Callback<MooDoUser>{
+                MooDoClient.retrofit.signUp(singUp).enqueue(object:retrofit2.Callback<MooDoUser>{
                     override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                         setResult(RESULT_OK, intent)
                         finish()
@@ -205,7 +206,6 @@ class MainActivity_SignUp : AppCompatActivity() {
                     .show()
             }
         }
-
         // 뒤로가기 버튼
         binding.btnClose.setOnClickListener {
             setResult(RESULT_CANCELED, intent)

@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,10 +26,12 @@ import java.util.Optional
 class MainActivity_Statis : AppCompatActivity() {
     // 사용자 정보 저장
     var user:MooDoUser? = null
+
+    lateinit var binding:ActivityMainStatisBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val binding = ActivityMainStatisBinding.inflate(layoutInflater)
+        binding = ActivityMainStatisBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -51,6 +54,9 @@ class MainActivity_Statis : AppCompatActivity() {
             year = dateParts[0].toInt() // 년도 추출
             month = dateParts[1].toInt() // 월 추출
         }
+
+        // 가장 많은 감정 가져오기
+        moodNumByMonth(userId, year, month)
 
         // adapter
         val moodAdapter = MoodAdapter()
@@ -79,14 +85,14 @@ class MainActivity_Statis : AppCompatActivity() {
         })
 
         // 달성률 표시
-        var todoNum = "0"
-        var completeTodoNum = "0"
+        var allTodo = "0"
+        var completeTodo = "0"
         MooDoClient.retrofit.getTodoCountForMonth(userId, year, month).enqueue(object:retrofit2.Callback<Int>{
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful){
                     Log.d("MooDoLog todoCnt", response.body().toString())
-                    todoNum = response.body().toString()
-                    binding.todoNum.text = "/${todoNum}"
+                    allTodo = response.body().toString()
+                    binding.allTodo.text = "/${allTodo}"
                 }
                 else {
                     Log.d("MooDoLog todoCnt", "Response is not successful: ${response.code()}")
@@ -101,8 +107,8 @@ class MainActivity_Statis : AppCompatActivity() {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful){
                     Log.d("MooDoLog todoCnt", response.body().toString())
-                    completeTodoNum = response.body().toString()
-                    binding.completeTodo.text = completeTodoNum
+                    completeTodo = response.body().toString()
+                    binding.completeTodo.text = completeTodo
                 }
                 else {
                     Log.d("MooDoLog todoCnt", "Response is not successful: ${response.code()}")
@@ -114,28 +120,6 @@ class MainActivity_Statis : AppCompatActivity() {
             }
         })
 
-        // 한달 동안 기록된 가장 많은 감정
-        MooDoClient.retrofit.getUserMoodNumByMonth(userId, year, month).enqueue(object:retrofit2.Callback<Int>{
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful) {
-                    when(response.body()) {
-                        1-> binding.tvMoodMax.setImageResource(R.drawable.angry)
-                        2-> binding.tvMoodMax.setImageResource(R.drawable.sad)
-                        3-> binding.tvMoodMax.setImageResource(R.drawable.meh)
-                        4-> binding.tvMoodMax.setImageResource(R.drawable.s_happy)
-                        5-> binding.tvMoodMax.setImageResource(R.drawable.happy)
-                        else-> binding.tvMoodMax.setImageResource(R.drawable.no_mood)
-                    }
-                }else {
-                    Log.d("MooDoLog moodIcon", "Response is not successful: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                Log.d("MooDoLog moodIcon Fail", t.toString())
-            }
-
-        })
 
         var position = 0
         // 수정 intent 처리
@@ -159,6 +143,8 @@ class MainActivity_Statis : AppCompatActivity() {
                         ) {
                             if (response.isSuccessful) {
                                 moodAdapter.updateItem(position, updateMode)
+                                moodAdapter.notifyDataSetChanged()
+                                moodNumByMonth(userId, year, month)
                                 Log.d("MooDoLog modeUp", response.body().toString())
                             }
                             else {
@@ -183,10 +169,15 @@ class MainActivity_Statis : AppCompatActivity() {
 
                 val stats = "update"
                 val diary = moodAdapter.moodList[position].mdDaily
+                val mdMode = moodAdapter.moodList[position].mdMode
+                val weather = moodAdapter.moodList[position].weather
+
                 intent.putExtra("userId", userId)
                 intent.putExtra("stats", stats)
                 intent.putExtra("selectDate", selectDate)
                 intent.putExtra("diary", diary)
+                intent.putExtra("mdMode", mdMode)
+                intent.putExtra("weather", weather)
 
                 activityUpdate.launch(intent)
             }
@@ -242,11 +233,59 @@ class MainActivity_Statis : AppCompatActivity() {
                 } else {
                     Log.d("MooDoLog Response", "Error: ${response.code()} - ${response.message()}")
                 }
+                binding.userName.text = user!!.name.toString()
             }
 
             override fun onFailure(call: Call<MooDoUser>, t: Throwable) {
                 Log.d("MooDoLog Response", t.toString())
             }
         })
+    }
+    // 색상, 이모지 설정
+    private fun updateEmoji(emojiImg: Int, mood:String, colorRes:Int, backColorRes:Int) {
+        binding.tvMoodMax.setImageResource(emojiImg)
+        binding.txtEmotion.text = mood
+
+        val textColor = ContextCompat.getColor(this, colorRes)
+        binding.txtEmotion.setTextColor(textColor)
+
+        binding.moodColorLayout.backgroundTintList = ContextCompat.getColorStateList(this, backColorRes)
+    }
+    private fun moodNumByMonth(userId: String, year:Int, month:Int) {
+        // 한달 동안 기록된 가장 많은 감정
+        MooDoClient.retrofit.getUserMoodNumByMonth(userId, year, month).enqueue(object:retrofit2.Callback<Int>{
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    when(response.body()) {
+                        1-> {
+                            updateEmoji(R.drawable.angry, "이번 달은 최악의 기분을 느낀 날이 많았어요.", R.color.e_red, R.color.angry)
+                        }
+                        2-> {
+                            updateEmoji(R.drawable.sad, "이번 달은 기분이 나빴던 날이 많았어요.", R.color.e_blue, R.color.sad)
+                        }
+                        3-> {
+                            updateEmoji(R.drawable.meh, "이번 달은 평온한 기분으로 보내신 날이 가장 많았어요", R.color.e_apricot, R.color.meh)
+                        }
+                        4-> {
+                            updateEmoji(R.drawable.s_happy, "이번 달은 기분 좋은 날이 가장 많았어요.", R.color.e_green, R.color.s_happy)
+                        }
+                        5-> {
+                            updateEmoji(R.drawable.happy, "이번 달은 기분이 최고였던 날이 가장 많았어요!", R.color.e_yellow, R.color.happy)
+                        }
+                        else-> {
+                            updateEmoji(R.drawable.no_mood, "이번 달은 기분이 기록되지 않았어요.", R.color.black, R.color.white)
+                        }
+                    }
+                }else {
+                    Log.d("MooDoLog moodIcon", "Response is not successful: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Log.d("MooDoLog moodIcon Fail", t.toString())
+            }
+
+        })
+
     }
 }

@@ -19,4 +19,10 @@
     <color name="e_green">#AAD871</color>
     <color name="e_apricot">#FFBD6D</color>
 
+    <color name="angry">#EFB3A6</color>
+    <color name="sad">#C1DBE8</color>
+    <color name="meh">#F3DCC0</color>
+    <color name="s_happy">#DAEAC6</color>
+    <color name="happy">#FEE6A2</color>
+
 </resources>

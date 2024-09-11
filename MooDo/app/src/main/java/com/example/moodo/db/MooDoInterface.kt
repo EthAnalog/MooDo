@@ -1,6 +1,5 @@
 package com.example.moodo.db
 
-import android.graphics.Path.Op
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -8,13 +7,12 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
-import retrofit2.http.Query
 import java.util.Optional
 
 interface MooDoInterface {
     // 회원가입
     @POST("api/user/signup")
-    fun singUp(@Body user:MooDoUser):Call<MooDoUser>
+    fun signUp(@Body user:MooDoUser):Call<MooDoUser>
 
     // 로그인
     @POST("api/user/login")
