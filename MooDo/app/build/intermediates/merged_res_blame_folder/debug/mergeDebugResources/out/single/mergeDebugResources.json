@@ -1,0 +1,362 @@
+[
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_back_background.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_back_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main_sign_in.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main_sign_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_s_happy.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\s_happy.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_plus.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\plus.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main_to_do.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main_to_do.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_back_gray.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_back_gray.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_back_w.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_back_w.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_logo_img.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\logo_img.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_arrow_right.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\arrow_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_angry.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\angry.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_weather_snow.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_weather_snow.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_happy.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\happy.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_kblz_bold.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\kblz_bold.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_binggraetaom.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\binggraetaom.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_item_mood.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\item_mood.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_item_list_day.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\item_list_day.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_td_has.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\td_has.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_jalnan.otf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\jalnan.otf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_sad.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\sad.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_gmarketsans_medium.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\gmarketsans_medium.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_main_header.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\main_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_btn.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\btn.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_radius_btn.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\radius_btn.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_snow.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\snow.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_emotion_s_happy.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_emotion_s_happy.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_calendar.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\calendar.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_kblz.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\kblz.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_statistics.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_statistics.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_box_border.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\box_border.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_btn_layout.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\btn_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_gmarketsans_bold.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\gmarketsans_bold.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_back_foreground.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_back_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_weather_rain.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_weather_rain.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_emotion_sad.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_emotion_sad.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_jalnan_ttf.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\jalnan_ttf.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_no_mood.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\no_mood.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main_statis.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main_statis.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\navigation\\nav_graph.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_weather_cloudy.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_weather_cloudy.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_font.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\font.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_weather_sun.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_weather_sun.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_cloudy.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\cloudy.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_binggrae.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\binggrae.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_rain.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\rain.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_todo_oval.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\todo_oval.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_mt_logo.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\mt_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main_mode_write.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main_mode_write.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main_sign_up.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_bg.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\bg.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_logo.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_meh.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\meh.png"
+    },
+    {
+        "merged": "com.example.moodo.app-debug-47:/layout_activity_main_sign_up.xml.flat",
+        "source": "com.example.moodo.app-main-49:/layout/activity_main_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\font_gmarketsans_light.ttf.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\font\\gmarketsans_light.ttf"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_sun.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\sun.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_item_statis.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\item_statis.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_item_todo_list.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\item_todo_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_round_layout.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\round_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_bg_square.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\bg_square.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main_moo_do.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main_moo_do.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_td_plus.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\td_plus.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_btn_border.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\btn_border.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_bg_gradation.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\bg_gradation.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_emotion_happy.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_emotion_happy.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_todo_oval_none.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\todo_oval_none.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_item_list_month.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\item_list_month.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_shape.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\shape.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_statistics.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\statistics.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_td_none.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\td_none.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\layout_activity_main_to_do_write.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\layout\\activity_main_to_do_write.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_td_logo.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\td_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_emotion_meh.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_emotion_meh.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_arrow_left.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\arrow_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\drawable_ic_emotion_angry.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\drawable\\ic_emotion_angry.png"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-47:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-49:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    }
+]
