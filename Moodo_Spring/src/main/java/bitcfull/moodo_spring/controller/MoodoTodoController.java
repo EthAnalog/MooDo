@@ -41,12 +41,6 @@ public class MoodoTodoController {
         return todoService.findByUserIdAndStartDate(userId, date);
     }
 
-    // 선택된 날짜의 일정 개수 조회
-    @GetMapping("/count/day/{userId}/{date}")
-    public int getTodoCountForDay(@PathVariable String userId, @PathVariable String date) {
-        return todoService.getTodoCountForDay(userId, date);
-    }
-
     // 할 일 조회 (선택한 날짜 + check = Y)
     @GetMapping("/listY/{userId}/{date}")
     public List<MooDoTodo> getTodoListY(@PathVariable String userId, @PathVariable String date) throws Exception {
@@ -69,9 +63,10 @@ public class MoodoTodoController {
     }
 
     // 검색해서 할 일 조회
-    @GetMapping("/{id}")
-    public Optional<MooDoTodo> getTodoById(@PathVariable Long id) {
-        return todoService.findById(id);
+    @GetMapping("/search/{userId}")
+    public List<MooDoTodo> searchTodos(@PathVariable String userId, @RequestParam String keyword){
+        System.out.println("검색어 : " + keyword);
+        return todoService.searchTodos(userId, keyword);
     }
 
     // 할 일 수정
@@ -96,34 +91,24 @@ public class MoodoTodoController {
     }
 
     // 한 달 동안 기록된 계획 개수
-    @GetMapping("/count/{userId}/{year}/{month}")
-    public int getTodoCountForMonth(@PathVariable String userId, @PathVariable int year, @PathVariable int month) throws ParseException {
-        System.out.println("한달 동안 기록된 계획");
-
-        // 해당 월의 첫 날과 마지막 날 계산
-        LocalDate startDate = LocalDate.of(year, month, 1);
-        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
-
-        // 날짜 포맷터
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        System.out.println(startDate.format(formatter));
-
-        return todoService.getTodoCountForMonth(userId, startDate.format(formatter), endDate.format(formatter));
+    @GetMapping("/count/{userId}/{month}")
+    public int getTodoCountForMonth(@PathVariable String userId, @PathVariable String month) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+        Date date = dateFormat.parse(month);
+        return todoService.getTodoCountForMonth(userId, date);
     }
 
     // 한 달 동안 완료된 계획 개수 (tdCheck가 'Y')
-    @GetMapping("/completed/count/{userId}/{year}/{month}")
-    public int getCompletedTodoCountForMonth(@PathVariable String userId, @PathVariable int year, @PathVariable int month) throws ParseException {
-        System.out.println("한달 동안 완료된 계획");
+    @GetMapping("/completed/count/{userId}/{month}")
+    public int getCompletedTodoCountForMonth(@PathVariable String userId, @PathVariable String month) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+        Date date = dateFormat.parse(month);
+        return todoService.getCompletedTodoCountForMonth(userId, date);
+    }
 
-        // 해당 월의 첫 날과 마지막 날 계산
-        LocalDate startDate = LocalDate.of(year, month, 1);
-        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
-
-        // 날짜 포맷터
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        System.out.println(startDate.format(formatter));
-
-        return todoService.getCompletedTodoCountForMonth(userId, startDate.format(formatter), endDate.format(formatter));
+    // 선택된 날짜의 일정 개수 조회
+    @GetMapping("/count/day/{userId}/{date}")
+    public int getTodoCountForDay(@PathVariable String userId, @PathVariable String date) {
+        return todoService.getTodoCountForDay(userId, date);
     }
 }
