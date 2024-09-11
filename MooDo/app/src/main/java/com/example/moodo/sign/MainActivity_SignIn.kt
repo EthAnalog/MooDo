@@ -56,13 +56,11 @@ class MainActivity_SignIn : AppCompatActivity() {
                 }
             })
         }
-
-        // 회원가입 버튼 처리
+        // 회원가입 버튼
         binding.btnSignUp.setOnClickListener {
             val intent = Intent(this@MainActivity_SignIn, MainActivity_SignUp::class.java)
             startActivity(intent)
         }
-
 
         // 뒤로가기 버튼
         binding.btnClose.setOnClickListener {

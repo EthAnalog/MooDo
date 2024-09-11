@@ -1,5 +1,6 @@
 package com.example.moodo.sign
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -186,8 +187,8 @@ class MainActivity_SignUp : AppCompatActivity() {
         // 회원가입 버튼
         binding.btnSignUp.setOnClickListener {
             if (checkId == true && checkPw == true && checkPwSame == true && checkAge == true && binding.edtName.text!!.isNotEmpty()) {
-                val signUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString())
-                MooDoClient.retrofit.signUp(signUp).enqueue(object:retrofit2.Callback<MooDoUser>{
+                val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString())
+                MooDoClient.retrofit.signUp(singUp).enqueue(object:retrofit2.Callback<MooDoUser>{
                     override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                         setResult(RESULT_OK, intent)
                         finish()
@@ -199,13 +200,13 @@ class MainActivity_SignUp : AppCompatActivity() {
                 })
             }
             else {
+//                AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
                 AlertDialog.Builder(this)
                     .setMessage("회원가입 양식을 확인해주세요.")
                     .setPositiveButton("확인", null)
                     .show()
             }
         }
-
         // 뒤로가기 버튼
         binding.btnClose.setOnClickListener {
             setResult(RESULT_CANCELED, intent)

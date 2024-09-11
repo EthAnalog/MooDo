@@ -9,53 +9,65 @@
     android:background="@color/white"
     tools:context=".sign.MainActivity_SignIn">
 
+    <!-- header -->
     <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
+        android:layout_margin="5dp"
         android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/btnClose"
-            android:layout_width="65dp"
-            android:layout_height="53dp"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
             android:src="@drawable/ic_back_gray"
-            app:srcCompat="@drawable/ic_back_gray" />
+            android:gravity="start" />
 
-        <TextView
-            android:id="@+id/title01"
+        <View
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/jalnan"
-            android:gravity="end"
-            android:text="Sign In"
-            android:textColor="@color/e_red"
-            android:textSize="36sp" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/logo_img"
+            android:layout_marginEnd="5dp"
+            android:scaleType="center" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/title01"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/jalnan"
+        android:text="Sign In"
+        android:textColor="@color/e_red"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/title01">
 
         <TextView
             android:id="@+id/textView"

@@ -79,7 +79,7 @@ class MainActivity_MooDo : AppCompatActivity() {
                         }
                     })
                     saveDate.text = date
-
+                    Log.d("MooDoLog saveDate", saveDate.text.toString())
 
                     val inputFormat = SimpleDateFormat("yyyy-MM-dd")
                     val parsedDate = inputFormat.parse(saveDate.text.toString())
@@ -112,7 +112,6 @@ class MainActivity_MooDo : AppCompatActivity() {
                 }
             }
         }
-
         // to do list 작성 및 수정, 삭제
         // recyclerView 클릭 시에도 페이지 이동
         todoAdapter.onItemClickLister = object :ToDoAdapter.OnItemClickLister {
@@ -235,7 +234,7 @@ class MainActivity_MooDo : AppCompatActivity() {
     private fun refreshTodoList(date:String){
         val userId = intent.getStringExtra("id").toString()
 
-        MooDoClient.retrofit.getTodoList(userId, date).enqueue(object : retrofit2.Callback<List<MooDoToDo>> {
+        MooDoClient.retrofit.getTodoListN(userId, date).enqueue(object : retrofit2.Callback<List<MooDoToDo>> {
             override fun onResponse(call: Call<List<MooDoToDo>>, response: Response<List<MooDoToDo>>) {
                 if (response.isSuccessful) {
                     val todoList = response.body() ?: mutableListOf()

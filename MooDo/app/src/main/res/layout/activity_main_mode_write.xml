@@ -8,38 +8,56 @@
     android:background="@color/white"
     tools:context=".mode.MainActivity_ModeWrite">
 
-    <ImageView
-        android:id="@+id/btnClose"
-        android:layout_width="65dp"
-        android:layout_height="53dp"
-        android:src="@drawable/ic_back_gray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back_gray" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
+    <!-- header -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_back_gray"
+            android:gravity="start" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/logo_img"
+            android:layout_marginEnd="5dp"
+            android:scaleType="center" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/title"
+        android:layout_width="190dp"
+        android:layout_height="70dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:fontFamily="@font/jalnan"
-        android:text="Mood Tracker"
-        android:textColor="@color/e_red"
-        android:textSize="22sp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/mt_logo"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnClose" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/wrap"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
-        android:gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,37 +67,33 @@
             android:id="@+id/selectDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:fontFamily="@font/jalnan"
             android:text="날짜"
-            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/emotionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:fontFamily="@font/jalnan"
             android:layout_marginBottom="10dp"
             android:text="오늘 나의 기분은?"
-            android:textSize="18sp" />
-
+            android:textSize="16sp" />
         <!-- 감정 start -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/round_layout"
-            android:elevation="10dp"
+            android:background="@drawable/box_border"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="15dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -97,9 +111,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -117,9 +132,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -137,9 +153,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -157,8 +174,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -176,32 +195,28 @@
             </LinearLayout>
         </LinearLayout>
         <!-- 기분 end -->
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
+            android:fontFamily="@font/jalnan"
             android:text="오늘 날씨는?"
             android:textSize="18sp" />
-
         <!-- 날씨 start -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/round_layout"
-            android:elevation="10dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box_border"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="15dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -220,9 +235,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -241,9 +257,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -262,8 +279,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -282,27 +301,23 @@
             </LinearLayout>
         </LinearLayout>
         <!-- 날씨 end -->
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:text="한줄 일기"
+            android:fontFamily="@font/jalnan"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/writeDaily"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp"
             android:background="@drawable/box_border"
             android:hint="일기"
             android:padding="15dp" />
     </LinearLayout>
-
 
     <android.widget.Button
         android:id="@+id/btnSave"
@@ -310,7 +325,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/round_layout"
         android:backgroundTint="@color/e_red"
         android:text="저장"

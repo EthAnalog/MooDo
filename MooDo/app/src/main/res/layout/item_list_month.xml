@@ -4,34 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/itemMonthTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/arrow_left"/>
-
-        <TextView
-            android:id="@+id/itemMonthTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0000년 00월"
-            android:layout_weight="4"
-            android:fontFamily="@font/jalnan"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/arrow_right" />
-    </LinearLayout>
+        android:fontFamily="@font/kblz_bold"
+        android:padding="10dp"
+        android:gravity="start"
+        android:text="0000년 00월"
+        android:textSize="25sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,53 +21,65 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="일"
+            android:text="Sun"
             android:textColor="@color/red"
+            android:fontFamily="@font/kblz_bold"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="월"
+            android:text="Mon"
+            android:textColor="@color/black"
+            android:fontFamily="@font/kblz_bold"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="화"
+            android:text="Tue"
+            android:textColor="@color/black"
+            android:fontFamily="@font/kblz_bold"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="수"
+            android:text="Wed"
+            android:textColor="@color/black"
+            android:fontFamily="@font/kblz_bold"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="목"
+            android:text="Thu"
+            android:textColor="@color/black"
+            android:fontFamily="@font/kblz_bold"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="금"
+            android:text="Fri"
+            android:textColor="@color/black"
+            android:fontFamily="@font/kblz_bold"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="토"
+            android:text="Sat"
             android:textColor="@color/blue"
+            android:fontFamily="@font/kblz_bold"
             android:gravity="center"
-            android:textSize="16sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <View
@@ -94,9 +87,7 @@
         android:layout_height="1dp"
         android:layout_marginHorizontal="5dp"
         android:layout_marginVertical="3dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:background="#ddd" />
+        android:background="#bbb"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/itemMonthDayList"
