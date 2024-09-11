@@ -200,7 +200,6 @@ class MainActivity_SignUp : AppCompatActivity() {
                 })
             }
             else {
-//                AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
                 AlertDialog.Builder(this)
                     .setMessage("회원가입 양식을 확인해주세요.")
                     .setPositiveButton("확인", null)

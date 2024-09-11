@@ -101,7 +101,7 @@ class MainActivity_ToDo : AppCompatActivity() {
         toDoAdapter.onItemClickLister = object :ToDoAdapter.OnItemClickLister{
             override fun onItemClick(pos: Int) {
                 position = pos
-                if (tdListStats != "Active") {
+                if (tdListStats != "Complete") {
                     binding.btnUpdate.isVisible = true
                     binding.btnComplete.isVisible = true
                     binding.btnDelete.isVisible = true
@@ -118,18 +118,28 @@ class MainActivity_ToDo : AppCompatActivity() {
                 val startDay = it.data?.getStringExtra("startDay").toString()
                 val endDay = it.data?.getStringExtra("endDay").toString()
                 val toDoStr = it.data?.getStringExtra("toDoStr").toString()
+                val toDoColor = it.data?.getStringExtra("toDoColor").toString()
 
 
                 Log.d("MooDoLog sD fm", startDay)
 
                 // 사용자 정보가 로드되었는지 확인 후 저장
                 if (user != null) {
-                    val insertList = MooDoToDo(0, user!!, toDoStr, startDay, endDay, null, null)
+                    val insertList = MooDoToDo(0, user!!, toDoStr, startDay, endDay, null, null, toDoColor)
                     MooDoClient.retrofit.addTodo(insertList, userId.toString()).enqueue(object : retrofit2.Callback<MooDoToDo> {
                         override fun onResponse(call: Call<MooDoToDo>, response: Response<MooDoToDo>) {
                             if (response.isSuccessful) {
                                 Log.d("MooDoLog ToDoSuccess", response.body().toString())
-                                response.body()?.let { it1 -> toDoAdapter.addItem(it1) }
+
+                                if (tdListStats == "All") {
+                                    allTodoList(userId, selectDate)
+                                }
+                                else if(tdListStats == "Active") {
+                                    activeTodoList(userId, selectDate)
+                                }
+                                else {
+                                    completeTodoList(userId, selectDate)
+                                }
                             } else {
                                 Log.d("MooDoLog ToDo Error", "Error: ${response.code()} - ${response.message()}")
                             }
@@ -168,6 +178,148 @@ class MainActivity_ToDo : AppCompatActivity() {
             }
         }
 
+        // 수정 intent 처리
+        val activityUpdate = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val startDay = it.data?.getStringExtra("startDay").toString()
+                val endDay = it.data?.getStringExtra("endDay").toString()
+                val toDoStr = it.data?.getStringExtra("toDoStr").toString()
+                val toDoColor = it.data?.getStringExtra("toDoColor").toString()
+
+                Log.d("MooDoLog update sD fm", startDay)
+
+                // 사용자 정보가 로드되었는지 확인 후 저장
+                if (user != null) {
+                    val idx = toDoAdapter.todoList[position].idx
+                    val insertList = MooDoToDo(idx, user!!, toDoStr, startDay, endDay, null, null, toDoColor)
+
+                    MooDoClient.retrofit.updateTodo(idx, insertList)
+                        .enqueue(object : retrofit2.Callback<MooDoToDo> {
+                            override fun onResponse(
+                                call: Call<MooDoToDo>,
+                                response: Response<MooDoToDo>
+                            ) {
+                                if (response.isSuccessful) {
+                                    Log.d("MooDoLog upToDoSuccess", response.body().toString())
+                                    toDoAdapter.updateItem(position, insertList)
+                                } else {
+                                    Log.d(
+                                        "MooDoLog upToDo Error",
+                                        "Error: ${response.code()} - ${response.message()}"
+                                    )
+                                }
+                            }
+
+                            override fun onFailure(call: Call<MooDoToDo>, t: Throwable) {
+                                Log.d("MooDoLog Response upToDoFail", t.toString())
+                            }
+
+                        })
+                } else {
+                    Log.d("MooDoLog Error", "User is null, unable to save ToDo")
+                }
+            }
+            btnVisible()
+        }
+        // 수정 버튼
+        binding.btnUpdate.setOnClickListener {
+            // 완료되지 않은 일정만 수정 가능
+            if (toDoAdapter.todoList[position].tdCheck == "N") {
+                val intent = Intent(this@MainActivity_ToDo, MainActivity_ToDo_Write::class.java)
+                intent.putExtra("userId", userId)
+                val stats = "update"
+                intent.putExtra("stats", stats)
+
+                val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+                val outputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val outputTimeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+
+                val startDate = toDoAdapter.todoList[position].startDate
+                val endDate = toDoAdapter.todoList[position].endDate
+
+                val date = inputFormat.parse(startDate)
+                val date2 = inputFormat.parse(endDate)
+
+                // Date 객체를 날짜와 시간 문자열 변환
+                val startDay = date?.let { outputDateFormat.format(it) } ?: ""
+                val startTime = date?.let { outputTimeFormat.format(it) } ?: ""
+                val endDay = date2?.let { outputDateFormat.format(it) } ?: ""
+                val endTime = date2?.let { outputTimeFormat.format(it) } ?: ""
+
+                intent.putExtra("startDay", startDay)
+                intent.putExtra("startTime", startTime)
+                intent.putExtra("endDay", endDay)
+                intent.putExtra("endTime", endTime)
+
+                val tdStr = toDoAdapter.todoList[position].tdList
+                intent.putExtra("tdStr", tdStr)
+
+                val toDoColor = toDoAdapter.todoList[position].color
+                intent.putExtra("toDoColor", toDoColor)
+
+                activityUpdate.launch(intent)
+            }
+            else {
+                AlertDialog.Builder(binding.root.context)
+                    .setMessage("이미 완료된 일정은 수정할 수 없습니다.")
+                    .setPositiveButton("확인", null)
+                    .show()
+            }
+        }
+
+        // 완료 버튼
+        binding.btnComplete.setOnClickListener {
+            if (toDoAdapter.todoList[position].tdCheck == "N") {
+                val idx = toDoAdapter.todoList[position].idx
+
+                MooDoClient.retrofit.updateCheck(idx)
+                    .enqueue(object : retrofit2.Callback<MooDoToDo> {
+                        override fun onResponse(
+                            call: Call<MooDoToDo>,
+                            response: Response<MooDoToDo>
+                        ) {
+                            if (response.isSuccessful) {
+                                Log.d("MooDoLog y", response.body().toString())
+                                if (tdListStats == "All") {
+                                    allTodoList(userId, selectDate)
+                                }
+                                else if(tdListStats == "Active") {
+                                    activeTodoList(userId, selectDate)
+                                }
+                            }
+                        }
+                        override fun onFailure(call: Call<MooDoToDo>, t: Throwable) {
+                            Log.d("MooDoLog y", t.toString())
+                        }
+                    })
+
+                btnVisible()
+            }
+            else {
+                AlertDialog.Builder(binding.root.context)
+                    .setMessage("이미 완료된 일정입니다.")
+                    .setPositiveButton("확인", null)
+                    .show()
+            }
+        }
+
+        // 삭제 버튼
+        binding.btnDelete.setOnClickListener {
+            val deleteItem = toDoAdapter.todoList.get(position)
+
+            MooDoClient.retrofit.deleteTodo(deleteItem.idx).enqueue(object:retrofit2.Callback<Void>{
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful){
+                        toDoAdapter.removeItem(position)
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Log.d("MooDoLog Del Fail", t.toString())
+                }
+            })
+            btnVisible()
+        }
 
         // 뒤로가기
         binding.btnClose.setOnClickListener {

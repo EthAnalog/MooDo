@@ -16,16 +16,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivityHeader"
-            android:exported="false"
-            android:theme="@style/Theme.MooDo" />
-        <activity
-            android:name=".DialogStyle"
-            android:exported="false" />
-        <activity
-            android:name=".todolist.MainActivity_ToDo_Update"
-            android:exported="false" />
-        <activity
             android:name=".todolist.MainActivity_ToDo_Write"
             android:exported="false" />
         <activity
@@ -39,9 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".sign.MainActivity_SignIn"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity_Calendar"
             android:exported="false" />
         <activity
             android:name=".mode.MainActivity_MooDo"

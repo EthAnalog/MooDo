@@ -37,4 +37,7 @@ public class MooDoTodo {
 
     @Column(nullable = false)
     private Date createdDate; // 작성일
+
+    @Column(nullable = false)
+    private String color; // 색깔
 }

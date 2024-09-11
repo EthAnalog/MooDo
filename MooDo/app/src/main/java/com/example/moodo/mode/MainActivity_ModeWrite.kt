@@ -246,10 +246,10 @@ class MainActivity_ModeWrite : AppCompatActivity() {
         }
 
         // 뒤로 가기
-//        binding.btnClose.setOnClickListener {
-//            setResult(RESULT_CANCELED, null)
-//            finish()
-//        }
+        binding.btnClose.setOnClickListener {
+            setResult(RESULT_CANCELED, null)
+            finish()
+        }
     }
     // 사용자 정보를 비동기적으로 로드
     private fun loadUserInfo(userId: String) {
