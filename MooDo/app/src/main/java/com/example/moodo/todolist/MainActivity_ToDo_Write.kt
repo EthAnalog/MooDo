@@ -1,5 +1,6 @@
 package com.example.moodo.todolist
 
+import android.animation.ObjectAnimator
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -38,11 +39,57 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
 
         // 체크
         var toDoCheck = false
+        var toDoColor = "none"
 
         // 뒤로가기
         binding.btnClose.setOnClickListener {
             setResult(RESULT_CANCELED, null)
             finish()
+        }
+
+        // 일정 색깔 버튼 배열
+        val colorButtons = listOf(
+            binding.colorRed,
+            binding.colorBlue,
+            binding.colorOrange,
+            binding.colorGreen,
+            binding.colorYellow
+        )
+
+        colorButtons.forEachIndexed { index, btn ->
+            btn.setOnClickListener {
+                // 선택된 버튼 크기 크게
+                ObjectAnimator.ofFloat(btn, "scaleX", 1.1f).apply {
+                    duration = 300
+                    start()
+                }
+                ObjectAnimator.ofFloat(btn, "scaleY", 1.1f).apply {
+                    duration = 300
+                    start()
+                }
+
+                //  나머지 버튼 크기 작게
+                colorButtons.forEachIndexed{ i, otherBtn ->
+                    if (i != index) {
+                        ObjectAnimator.ofFloat(otherBtn, "scaleX", 0.9f).apply {
+                            duration = 300
+                            start()
+                        }
+                        ObjectAnimator.ofFloat(otherBtn, "scaleY", 0.9f).apply {
+                            duration = 300
+                            start()
+                        }
+                    }
+                }
+                when(index) {
+                    0->toDoColor="red"
+                    1->toDoColor="blue"
+                    2->toDoColor="orange"
+                    3->toDoColor="green"
+                    4->toDoColor="yellow"
+                    else -> toDoColor="none"
+                }
+            }
         }
 
         // 일정 추가 버튼 클릭 시
@@ -61,12 +108,21 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
             val inEndDay = intent.getStringExtra("endDay")
             val inEndTime = intent.getStringExtra("endTime")
             val tdStr = intent.getStringExtra("tdStr")
+            toDoColor = intent.getStringExtra("toDoColor").toString()
 
             startDay.text = inStartDay
             startTime.text = inStartTime
             endDay.text = inEndDay
             endTime.text = inEndTime
             edtTodo.setText(tdStr)
+
+            when (toDoColor) {
+                "red" -> colorButtons[0].performClick()
+                "blue" -> colorButtons[1].performClick()
+                "orange" -> colorButtons[2].performClick()
+                "green" -> colorButtons[3].performClick()
+                "yellow" -> colorButtons[4].performClick()
+            }
         }
 
         // startDay Click
@@ -182,10 +238,27 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
                 Log.d("MooDoLog Write Start", startDate.toString())
                 Log.d("MooDoLog Write Start Str", startStr)
 
+                // 오늘 날짜 구하기
+                val today = Calendar.getInstance().apply {
+                    set(Calendar.HOUR_OF_DAY, 0)
+                    set(Calendar.MINUTE, 0)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }.time
+
                 // 시작일이 종료일보다 멀 때
                 if (endDate.before(startDate)) {
                     AlertDialog.Builder(this)
                         .setMessage("일정 시작일과 종료일을 확인하세요.")
+                        .setPositiveButton("확인", null)
+                        .show()
+
+                    toDoCheck = false
+                }
+                // 시작일이 오늘보다 이전일 때
+                else if (startDate.before(today)) {
+                    AlertDialog.Builder(this)
+                        .setMessage("시작일이 오늘보다 이전입니다. 오늘 이후로 설정하세요.")
                         .setPositiveButton("확인", null)
                         .show()
 
@@ -196,15 +269,16 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
                     Log.d("MooDoLog Write Success", edtTodo.text.toString())
                     Log.d("MooDoLog Write Success", startDate.toString())
                     Log.d("MooDoLog Write Success", endDate.toString())
+                    if (toDoColor!="none") {
+                        // 일정 저장
+                        intent.putExtra("startDay",startStr)
+                        intent.putExtra("endDay", endStr)
+                        intent.putExtra("toDoStr", edtTodo.text.toString())
+                        intent.putExtra("toDoColor", toDoColor)
 
-                    // 일정 저장
-                    intent.putExtra("startDay",startStr)
-                    intent.putExtra("endDay", endStr)
-                    intent.putExtra("toDoStr", edtTodo.text.toString())
-
-                    setResult(RESULT_OK, intent)
-                    finish()
-
+                        setResult(RESULT_OK, intent)
+                        finish()
+                    }
                 }
             }
         }

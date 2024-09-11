@@ -9,15 +9,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.moodo.MainActivity_Statis
 import com.example.moodo.R
+import com.example.moodo.adapter.CalendarToDoAdapter
 import com.example.moodo.calendar.MonthAdapter
 import com.example.moodo.databinding.ActivityMainMooDoBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoToDo
-import com.example.moodo.adapter.ToDoAdapter
+import com.example.moodo.db.MooDoUser
 import com.example.moodo.todolist.MainActivity_ToDo
 import retrofit2.Call
 import retrofit2.Response
@@ -41,12 +44,11 @@ class MainActivity_MooDo : AppCompatActivity() {
 
         // 사용자 id
         val userId = intent.getStringExtra("id").toString()
-
         // 선택한 날짜 저장할 TextView 변수
         val saveDate = binding.saveDate
 
         // tdAdapter
-        val todoAdapter = ToDoAdapter()
+        val todoAdapter = CalendarToDoAdapter()
         binding.todoListLayout.adapter = todoAdapter
         binding.todoListLayout.layoutManager = LinearLayoutManager(this)
 
@@ -59,7 +61,7 @@ class MainActivity_MooDo : AppCompatActivity() {
                     Log.d("MooDoLog Id", userId)
                     Log.d("MooDoLog day", date)
 
-                    MooDoClient.retrofit.getTodoList(userId, date).enqueue(object :retrofit2.Callback<List<MooDoToDo>>{
+                    MooDoClient.retrofit.getTodoListN(userId, date).enqueue(object :retrofit2.Callback<List<MooDoToDo>>{
                         override fun onResponse(
                             call: Call<List<MooDoToDo>>,
                             response: Response<List<MooDoToDo>>
@@ -80,14 +82,6 @@ class MainActivity_MooDo : AppCompatActivity() {
                     })
                     saveDate.text = date
                     Log.d("MooDoLog saveDate", saveDate.text.toString())
-
-                    val inputFormat = SimpleDateFormat("yyyy-MM-dd")
-                    val parsedDate = inputFormat.parse(saveDate.text.toString())
-
-                    val outputFormat = SimpleDateFormat("yyyy년 MM월 dd일")
-                    val formattedDate = outputFormat.format(parsedDate)
-
-                    binding.selectTxt.text = formattedDate
                 }
             }
         }
@@ -114,7 +108,7 @@ class MainActivity_MooDo : AppCompatActivity() {
         }
         // to do list 작성 및 수정, 삭제
         // recyclerView 클릭 시에도 페이지 이동
-        todoAdapter.onItemClickLister = object :ToDoAdapter.OnItemClickLister {
+        todoAdapter.onItemClickLister = object :CalendarToDoAdapter.OnItemClickLister {
             override fun onItemClick(pos: Int) {
                 val intent = Intent(this@MainActivity_MooDo, MainActivity_ToDo::class.java)
                 val selectDate = saveDate.text.toString()
@@ -127,7 +121,7 @@ class MainActivity_MooDo : AppCompatActivity() {
             }
 
         }
-        binding.userMooDo.setOnClickListener {
+        binding.btnWrite.setOnClickListener {
             val intent = Intent(this, MainActivity_ToDo::class.java)
             val selectDate = saveDate.text.toString()
 
@@ -238,7 +232,7 @@ class MainActivity_MooDo : AppCompatActivity() {
             override fun onResponse(call: Call<List<MooDoToDo>>, response: Response<List<MooDoToDo>>) {
                 if (response.isSuccessful) {
                     val todoList = response.body() ?: mutableListOf()
-                    val todoAdapter = binding.todoListLayout.adapter as ToDoAdapter
+                    val todoAdapter = binding.todoListLayout.adapter as CalendarToDoAdapter
                     todoAdapter.todoList.clear()
                     todoAdapter.todoList.addAll(todoList)
                     todoAdapter.notifyDataSetChanged()

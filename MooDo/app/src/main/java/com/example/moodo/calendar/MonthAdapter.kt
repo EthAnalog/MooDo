@@ -48,14 +48,14 @@ class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.Month
 
         val tempMonth = calendar.get(Calendar.MONTH)
 
-        // 6주 * 7일 날짜 리스트 생성
-        val dayList: MutableList<Date> = MutableList(6 * 7) { Date() }
+        // 5주 * 7일 날짜 리스트 생성
+        val dayList: MutableList<Date> = MutableList(5 * 7) { Date() }
         val tempCalendar = calendar.clone() as Calendar // 임시 캘린더로 날짜 계산
         tempCalendar.add(Calendar.DAY_OF_MONTH, -(tempCalendar.get(Calendar.DAY_OF_WEEK) - 1)) // 첫 주의 일요일로 이동
 
         var todayPosition = -1 // 현재 날짜의 위치를 저장할 변수
 
-        for (i in 0 until 6) {
+        for (i in 0 until 5) {
             for (k in 0 until 7) {
                 dayList[i * 7 + k] = tempCalendar.time
 

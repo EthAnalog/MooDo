@@ -53,19 +53,19 @@ class MoodAdapter() : RecyclerView.Adapter<MoodAdapter.MoodViewHolder>() {
         val modeItem = moodList[position]
 
         when(modeItem.mdMode) {
-            1 -> holder.binding.moodIcon.setImageResource(R.drawable.angry)
-            2 -> holder.binding.moodIcon.setImageResource(R.drawable.sad)
-            3 -> holder.binding.moodIcon.setImageResource(R.drawable.meh)
-            4 -> holder.binding.moodIcon.setImageResource(R.drawable.s_happy)
-            5 -> holder.binding.moodIcon.setImageResource(R.drawable.happy)
+            1 -> holder.binding.moodIcon.setImageResource(R.drawable.ic_emotion_angry)
+            2 -> holder.binding.moodIcon.setImageResource(R.drawable.ic_emotion_sad)
+            3 -> holder.binding.moodIcon.setImageResource(R.drawable.ic_emotion_meh)
+            4 -> holder.binding.moodIcon.setImageResource(R.drawable.ic_emotion_s_happy)
+            5 -> holder.binding.moodIcon.setImageResource(R.drawable.ic_emotion_happy)
             else -> holder.binding.moodIcon.setImageResource(R.drawable.no_mood)
         }
 
         when(modeItem.weather) {
-            1 -> holder.binding.weatherIcon.setImageResource(R.drawable.sun)
-            2 -> holder.binding.weatherIcon.setImageResource(R.drawable.cloudy)
-            3 -> holder.binding.weatherIcon.setImageResource(R.drawable.rain)
-            4 -> holder.binding.weatherIcon.setImageResource(R.drawable.snow)
+            1 -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_weather_sun)
+            2 -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_weather_cloudy)
+            3 -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_weather_rain)
+            4 -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_weather_snow)
             else -> holder.binding.moodIcon.setImageResource(R.drawable.no_mood)
         }
 

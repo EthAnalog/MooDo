@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+
+    <!-- 둥근 모서리 적용 -->
+    <corners android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp"
+        android:topLeftRadius="24dp"
+        android:topRightRadius="24dp"/>
+
+    <!-- 배경색 적용 -->
+    <solid android:color="#ffd5ca"/>
+
+</shape>

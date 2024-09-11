@@ -79,7 +79,7 @@
             android:id="@+id/tvMoodMax"
             android:layout_width="160dp"
             android:layout_height="140dp"
-            android:src="@drawable/happy"
+            android:src="@drawable/ic_emotion_happy"
             android:contentDescription="감정아이콘" />
 
         <LinearLayout

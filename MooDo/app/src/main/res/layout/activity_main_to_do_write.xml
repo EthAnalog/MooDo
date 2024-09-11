@@ -9,7 +9,7 @@
     tools:context=".todolist.MainActivity_ToDo_Write">
 
     <LinearLayout
-        android:id="@+id/linearLayout7"
+        android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -44,23 +44,18 @@
         android:id="@+id/linearLayout8"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
-
+        app:layout_constraintTop_toBottomOf="@+id/header">
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="일정을 입력해주세요"
+            android:fontFamily="@font/kblz_bold"
             android:textSize="18sp" />
         <!-- 시작일 start -->
         <LinearLayout
@@ -76,6 +71,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="시작일"
+                android:fontFamily="@font/kblz_bold"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -91,6 +87,7 @@
                     android:background="@drawable/box_border"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:fontFamily="@font/kblz_bold"
                     android:text="0000/00/00" />
 
                 <TextView
@@ -100,6 +97,7 @@
                     android:background="@drawable/box_border"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:fontFamily="@font/kblz_bold"
                     android:text="00:00" />
             </LinearLayout>
         </LinearLayout>
@@ -117,6 +115,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="종료일"
+                android:fontFamily="@font/kblz_bold"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -132,6 +131,7 @@
                     android:background="@drawable/box_border"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:fontFamily="@font/kblz_bold"
                     android:text="0000/00/00" />
 
                 <TextView
@@ -141,6 +141,7 @@
                     android:background="@drawable/box_border"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:fontFamily="@font/kblz_bold"
                     android:text="23:59" />
             </LinearLayout>
         </LinearLayout>
@@ -153,23 +154,91 @@
             android:background="@drawable/box_border"
             android:hint="일정 (최대 200자)"
             android:maxLength="200"
+            android:fontFamily="@font/kblz_bold"
             android:padding="10dp" />
-    </LinearLayout>
 
-    <android.widget.Button
-        android:id="@+id/btnSave"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/round_layout"
-        android:backgroundTint="@color/e_red"
-        android:text="저장"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="일정을 표기할 색상을 선택하세요."
+            android:fontFamily="@font/kblz_bold"
+            android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box_border"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/colorRed"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/td_select_red" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/colorBlue"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/td_select_blue" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/colorOrange"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/td_select_orange" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/colorGreen"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/td_select_green" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageButton
+                    android:id="@+id/colorYellow"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/td_select_yellow" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.widget.Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round_layout"
+            android:backgroundTint="@color/e_red"
+            android:text="저장"
+            android:textColor="@color/white"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

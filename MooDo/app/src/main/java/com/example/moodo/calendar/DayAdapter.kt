@@ -11,6 +11,7 @@ import com.example.moodo.R
 import com.example.moodo.databinding.ItemListDayBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoMode
+import com.example.moodo.db.MooDoUser
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
@@ -23,7 +24,7 @@ class DayAdapter(val tempMonth:Int,
                  val todayPosition:Int,
                  val userId:String)
     :RecyclerView.Adapter<DayAdapter.DayHolder>() {
-    val row = 6
+    val row = 5
 
     // 선택된 날짜
     var selectedPosition = -1
@@ -36,11 +37,14 @@ class DayAdapter(val tempMonth:Int,
     inner class DayHolder(val binding: ItemListDayBinding) :RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemDayLayout.setOnClickListener {
-                // 날짜 클릭
-                val pos = adapterPosition
-                Toast.makeText(binding.root.context, "${dayList[pos]}", Toast.LENGTH_SHORT).show()
+                val previousPosition = selectedPosition
+                selectedPosition = adapterPosition
 
-                clickItemDayListener?.clickItemDay(pos)
+                // 이전 선택 항목과 현재 선택 항목을 업데이트
+                notifyItemChanged(previousPosition)
+                notifyItemChanged(selectedPosition)
+
+                clickItemDayListener?.clickItemDay(selectedPosition)
             }
         }
     }
@@ -55,6 +59,8 @@ class DayAdapter(val tempMonth:Int,
 
     override fun onBindViewHolder(holder: DayHolder, position: Int) {
         val currentDay = dayList[position]
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDay)
 
         holder.binding.itemDayTxt.text = currentDay.date.toString()
 
@@ -66,6 +72,7 @@ class DayAdapter(val tempMonth:Int,
         }
         holder.binding.itemDayTxt.setTextColor(textColor)
 
+        // 현재 월이 아닌 날짜 투명하게
         if (tempMonth != currentDay.month) {
             holder.binding.itemDayTxt.alpha = 0.4f
         }
@@ -73,49 +80,75 @@ class DayAdapter(val tempMonth:Int,
             holder.binding.itemDayTxt.alpha = 1.0f
         }
 
-        // 기분 데이터에 따라 이미지 변경
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val formattedDate = dateFormat.format(currentDay)
-        MooDoClient.retrofit.getMdMode(userId, formattedDate).enqueue(object:retrofit2.Callback<Int>{
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful){
-                    if (response.body() != null) {
-                        when(response.body()) {
-                            1 -> holder.binding.itemMood.setImageResource(R.drawable.angry)
-                            2 -> holder.binding.itemMood.setImageResource(R.drawable.sad)
-                            3 -> holder.binding.itemMood.setImageResource(R.drawable.meh)
-                            4 -> holder.binding.itemMood.setImageResource(R.drawable.s_happy)
-                            5 -> holder.binding.itemMood.setImageResource(R.drawable.happy)
-                            else -> holder.binding.itemMood.setImageResource(R.drawable.no_mood)
-                        }
-                    }
-                    else {
-                        holder.binding.itemMood.setImageResource(R.drawable.no_mood)
-                    }
-                }
-                else{
-                    holder.binding.itemMood.setImageResource(R.drawable.no_mood)
-                }
-            }
+        Log.d("MooDoDate", formattedDate)
 
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                Log.d("MooDoLog modFail", t.toString())
-            }
-        })
-        MooDoClient.retrofit.getTodoCountForDay(userId, formattedDate).enqueue(object:retrofit2.Callback<Int>{
+        // user가 null이 아닐 때만 생일 비교 작업 수행
+//        if (user != null) {
+//            val birthDayFormat = SimpleDateFormat("MM-dd", Locale.getDefault())
+//            val userBirthday = birthDayFormat.format(SimpleDateFormat("yyyy/MM/dd").parse(user!!.age)) // 생일을 MM-dd 형식으로 변환
+//            val formattedBirth = birthDayFormat.format(currentDay)
+//            Log.d("MooDoUser", userBirthday)
+//
+//            // 생일인 경우 처리
+//            if (userBirthday == formattedBirth) {
+//                Log.d("MooDoUser", userBirthday)
+//                updateTodo(holder, userId, formattedDate)
+//                MooDoClient.retrofit.getMdMode(userId, formattedDate).enqueue(object : retrofit2.Callback<Int> {
+//                    override fun onResponse(call: Call<Int>, response: Response<Int>) {
+//                        if (response.isSuccessful) {
+//                            when (response.body()) {
+//                                1 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_angry)
+//                                2 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_sad)
+//                                3 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_meh)
+//                                4 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_s_happy)
+//                                5 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_happy)
+//                                else -> holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+//                            }
+//                        } else {
+//                            holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+//                        }
+//                    }
+//                    override fun onFailure(call: Call<Int>, t: Throwable) {
+//                        holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+//                    }
+//                })
+//            } else {
+//                updateMood(holder, userId, formattedDate)
+//                updateTodo(holder, userId, formattedDate)
+//            }
+//        } else {
+//            // 유저 정보가 없으면 생일 비교를 건너뛰고 기본 감정 처리
+//            updateMood(holder, userId, formattedDate)
+//            updateTodo(holder, userId, formattedDate)
+//        }
+
+        updateMood(holder, userId, formattedDate)
+        updateTodo(holder, userId, formattedDate)
+
+        if (selectedPosition== -1 && todayPosition == position) {
+            selectedPosition = todayPosition
+            clickItemDayListener?.clickItemDay(selectedPosition)
+        }
+
+        // 선택된 항목 배경색 설정
+        if (selectedPosition == position) {
+            holder.binding.itemDayTxt.setBackgroundResource(R.drawable.select_day)
+            holder.binding.itemDayTxt.setTextColor(Color.WHITE)
+        } else {
+            holder.binding.itemDayTxt.setBackgroundResource(R.drawable.none_select_day)
+            holder.binding.itemDayTxt.setTextColor(Color.BLACK)
+        }
+    }
+    // 기분 및 할 일 데이터
+    private fun updateTodo(holder: DayHolder, userId: String, formattedDate: String) {
+        MooDoClient.retrofit.getTodoCountForDay(userId, formattedDate).enqueue(object : retrofit2.Callback<Int> {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful){
-                    if (response.body() != null) {
-                        when(response.body()) {
-                            0 -> holder.binding.todoOval.setImageResource(R.drawable.td_none)
-                            else -> holder.binding.todoOval.setImageResource(R.drawable.td_has)
-                        }
+                if (response.isSuccessful) {
+                    when (response.body()) {
+                        0 -> holder.binding.todoOval.setImageResource(R.drawable.td_none)
+                        else -> holder.binding.todoOval.setImageResource(R.drawable.td_has)
                     }
-                    else {
-                        holder.binding.todoOval.setImageResource(R.drawable.td_none)
-                    }
-                }
-                else{
+                } else {
                     holder.binding.todoOval.setImageResource(R.drawable.td_none)
                 }
             }
@@ -124,10 +157,27 @@ class DayAdapter(val tempMonth:Int,
                 Log.d("MooDoLog emjFail", t.toString())
             }
         })
+    }
+    private fun updateMood(holder:DayHolder, userId:String, formattedDate: String) {
+        MooDoClient.retrofit.getMdMode(userId, formattedDate).enqueue(object : retrofit2.Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    when (response.body()) {
+                        1 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_angry)
+                        2 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_sad)
+                        3 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_meh)
+                        4 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_s_happy)
+                        5 -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_happy)
+                        else -> holder.binding.itemMood.setImageResource(R.drawable.no_mood)
+                    }
+                } else {
+                    holder.binding.itemMood.setImageResource(R.drawable.no_mood)
+                }
+            }
 
-        if (selectedPosition== -1 && todayPosition == position) {
-            selectedPosition = todayPosition
-            clickItemDayListener?.clickItemDay(selectedPosition)
-        }
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Log.d("MooDoLog modFail", t.toString())
+            }
+        })
     }
 }

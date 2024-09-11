@@ -37,16 +37,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/selectDay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="0dp"
@@ -56,7 +46,7 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectDay">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
             android:id="@+id/allList"
@@ -65,6 +55,8 @@
             android:background="#00FF0000"
             android:minWidth="0dp"
             android:minHeight="0dp"
+            android:fontFamily="@font/gmarketsans_bold"
+            android:textSize="15sp"
             android:text="All"
             android:textColor="@color/gray" />
 
@@ -75,6 +67,8 @@
             android:background="#00FF0000"
             android:minWidth="0dp"
             android:minHeight="0dp"
+            android:fontFamily="@font/gmarketsans_bold"
+            android:textSize="15sp"
             android:text="Complete"
             android:textColor="@color/black" />
 
@@ -85,6 +79,8 @@
             android:background="#00FF0000"
             android:minWidth="0dp"
             android:minHeight="0dp"
+            android:fontFamily="@font/gmarketsans_bold"
+            android:textSize="15sp"
             android:text="Active"
             android:textColor="@color/black" />
     </LinearLayout>
@@ -124,7 +120,7 @@
         app:tint="@color/e_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/angry" />
+        app:srcCompat="@drawable/td_update" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:visibility="gone"
@@ -138,7 +134,7 @@
         app:tint="@color/e_red"
         app:layout_constraintBottom_toTopOf="@+id/btnUpdate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/angry" />
+        app:srcCompat="@drawable/td_complete" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:visibility="gone"
@@ -152,6 +148,6 @@
         app:tint="@color/e_red"
         app:layout_constraintBottom_toTopOf="@+id/btnComplete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/angry" />
+        app:srcCompat="@drawable/td_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
