@@ -52,9 +52,12 @@ class MainActivity : AppCompatActivity() {
             MooDoClient.retrofit.login(loginUser).enqueue(object:retrofit2.Callback<MooDoUser>{
                 override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                     if (response.isSuccessful) {
+                        Log.d("MooDoLog UserInfo", response.body().toString())
+                        val age = response.body()!!.age
                         // main Page 이동
                         val intent = Intent(this@MainActivity, MainActivity_MooDo::class.java)
                         intent.putExtra("id", id)
+                        intent.putExtra("age", age)
                         startActivity(intent)
                     }
                     // 로그인 실패

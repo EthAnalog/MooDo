@@ -31,6 +31,7 @@ import java.util.Locale
 
 class MainActivity_MooDo : AppCompatActivity() {
     lateinit var binding:ActivityMainMooDoBinding
+    var user:MooDoUser? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -44,6 +45,10 @@ class MainActivity_MooDo : AppCompatActivity() {
 
         // 사용자 id
         val userId = intent.getStringExtra("id").toString()
+        val userAge = intent.getStringExtra("age").toString()
+
+        Log.d("MooDoLog UserInfo", userAge)
+
         // 선택한 날짜 저장할 TextView 변수
         val saveDate = binding.saveDate
 
@@ -54,7 +59,7 @@ class MainActivity_MooDo : AppCompatActivity() {
 
         // custom calendar 연결
         val monthListManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val monthAdapter = MonthAdapter(userId).apply {
+        val monthAdapter = MonthAdapter(userId, userAge).apply {
             // 날짜 선택
             onDaySelectedListener = object :MonthAdapter.OnDaySelectedListener{
                 override fun onDaySelected(date: String) {

@@ -22,7 +22,8 @@ import java.util.Optional
 class DayAdapter(val tempMonth:Int,
                  val dayList:MutableList<Date>,
                  val todayPosition:Int,
-                 val userId:String)
+                 val userId:String,
+                 val userAge:String)
     :RecyclerView.Adapter<DayAdapter.DayHolder>() {
     val row = 5
 
@@ -82,48 +83,41 @@ class DayAdapter(val tempMonth:Int,
 
         Log.d("MooDoDate", formattedDate)
 
-        // user가 null이 아닐 때만 생일 비교 작업 수행
-//        if (user != null) {
-//            val birthDayFormat = SimpleDateFormat("MM-dd", Locale.getDefault())
-//            val userBirthday = birthDayFormat.format(SimpleDateFormat("yyyy/MM/dd").parse(user!!.age)) // 생일을 MM-dd 형식으로 변환
-//            val formattedBirth = birthDayFormat.format(currentDay)
-//            Log.d("MooDoUser", userBirthday)
-//
-//            // 생일인 경우 처리
-//            if (userBirthday == formattedBirth) {
-//                Log.d("MooDoUser", userBirthday)
-//                updateTodo(holder, userId, formattedDate)
-//                MooDoClient.retrofit.getMdMode(userId, formattedDate).enqueue(object : retrofit2.Callback<Int> {
-//                    override fun onResponse(call: Call<Int>, response: Response<Int>) {
-//                        if (response.isSuccessful) {
-//                            when (response.body()) {
-//                                1 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_angry)
-//                                2 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_sad)
-//                                3 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_meh)
-//                                4 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_s_happy)
-//                                5 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_happy)
-//                                else -> holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
-//                            }
-//                        } else {
-//                            holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
-//                        }
-//                    }
-//                    override fun onFailure(call: Call<Int>, t: Throwable) {
-//                        holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
-//                    }
-//                })
-//            } else {
-//                updateMood(holder, userId, formattedDate)
-//                updateTodo(holder, userId, formattedDate)
-//            }
-//        } else {
-//            // 유저 정보가 없으면 생일 비교를 건너뛰고 기본 감정 처리
-//            updateMood(holder, userId, formattedDate)
-//            updateTodo(holder, userId, formattedDate)
-//        }
+        val birthDayFormat = SimpleDateFormat("MM-dd", Locale.getDefault())
+        val userBirthday = birthDayFormat.format(SimpleDateFormat("yyyy/MM/dd").parse(userAge)) // 생일을 MM-dd 형식으로 변환
+        val formattedBirth = birthDayFormat.format(currentDay)
+        Log.d("MooDoLog UserInfo", userBirthday)
 
-        updateMood(holder, userId, formattedDate)
-        updateTodo(holder, userId, formattedDate)
+        // 생일인 경우 날짜에 표기
+        if (userBirthday == formattedBirth) {
+            Log.d("MooDoLog UserInfo", userBirthday)
+            updateTodo(holder, userId, formattedDate)
+            MooDoClient.retrofit.getMdMode(userId, formattedDate).enqueue(object : retrofit2.Callback<Int> {
+                override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                    if (response.isSuccessful) {
+                        when (response.body()) {
+                            1 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_angry)
+                            2 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_sad)
+                            3 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_meh)
+                            4 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_s_happy)
+                            5 -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_happy)
+                            else -> holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+                        }
+                    } else {
+                        holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+                    }
+                }
+                override fun onFailure(call: Call<Int>, t: Throwable) {
+                    holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+                }
+            })
+        } else {
+            updateMood(holder, userId, formattedDate)
+            updateTodo(holder, userId, formattedDate)
+        }
+
+        //updateMood(holder, userId, formattedDate)
+        //updateTodo(holder, userId, formattedDate)
 
         if (selectedPosition== -1 && todayPosition == position) {
             selectedPosition = todayPosition

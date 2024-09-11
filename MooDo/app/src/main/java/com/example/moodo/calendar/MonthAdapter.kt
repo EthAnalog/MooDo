@@ -15,7 +15,7 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
+class MonthAdapter(val userId: String, val userAge:String) : RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
     val center = Int.MAX_VALUE / 2
     private var calendar = Calendar.getInstance()
     val today = calendar.time
@@ -68,7 +68,7 @@ class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.Month
             }
         }
 
-        dayAdapter = DayAdapter(tempMonth, dayList, todayPosition, userId).apply {
+        dayAdapter = DayAdapter(tempMonth, dayList, todayPosition, userId, userAge).apply {
             clickItemDayListener = object : DayAdapter.ClickItemDayListener {
                 override fun clickItemDay(position: Int) {
                     // 클릭된 날짜 처리 및 이벤트 전달
