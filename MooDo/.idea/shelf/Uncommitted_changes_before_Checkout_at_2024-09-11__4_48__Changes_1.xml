@@ -1,0 +1,74 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1" date="1726040937892" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2024-09-11 오후 4:48 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/tmp/compileJava/previous-compilation-data.bin" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/tmp/compileJava/previous-compilation-data.bin" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/previous-compilation-data.bin" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/model/MoodoMode.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/model/MoodoMode.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MoodoMode.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/.gradle/8.8/executionHistory/executionHistory.lock" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/.gradle/8.8/executionHistory/executionHistory.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/executionHistory.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/model/MooDoTodo.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/model/MooDoTodo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MooDoTodo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/service/MoodoUserService.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/service/MoodoUserService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MoodoUserService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/repository/ModeRepository.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/repository/ModeRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/ModeRepository.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/buildOutputCleanup.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/controller/MoodoModeController.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/controller/MoodoModeController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MoodoModeController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/.gradle/8.8/fileHashes/fileHashes.lock" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/.gradle/8.8/fileHashes/fileHashes.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/fileHashes.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/controller/MoodoUserController.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/controller/MoodoUserController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MoodoUserController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/service/MoodoModeService.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/service/MoodoModeService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MoodoModeService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/service/MoodoTodoService.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/service/MoodoTodoService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MoodoTodoService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/controller/MoodoTodoController.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/controller/MoodoTodoController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/MoodoTodoController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/repository/TodoRepository.class" />
+    <option name="AFTER_PATH" value="../Moodo_Spring/build/classes/java/main/bitcfull/moodo_spring/repository/TodoRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-09-11_오후_4_48_[Changes]1/TodoRepository.class" />
+  </binary>
+</changelist>
