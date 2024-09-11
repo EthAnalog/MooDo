@@ -3,8 +3,18 @@ package bitcfull.moodo_spring.controller;
 import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.service.MoodoUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -78,10 +88,40 @@ public class MoodoUserController {
         }
     }
 
-    // 사용자 정보 가져오기
-    @GetMapping("/userInfo/{id}")
-    public MooDoUser getUserInfo(@PathVariable String id) {
-        System.out.println("사용자 정보 가져오기 " + id);
-        return userService.getUserInfo(id);
+    // 프로필 사진 업로드
+    @PostMapping("/uploadProfilePicture/{userId}")
+    public ResponseEntity<String> uploadProfilePicture(@PathVariable String userId, @RequestParam("file") MultipartFile file) {
+        try {
+            // 이미지 저장
+            String imagePath = userService.saveProfilePicture(userId, file);
+            return ResponseEntity.ok("프로필 사진 업로드 성공: " + imagePath);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("업로드 실패: " + e.getMessage());
+        }
     }
+
+    // 프로필 사진 파일을 제공하는 API
+    @GetMapping("/profilePicture/{userId}")
+    public ResponseEntity<Resource> getProfilePicture(@PathVariable String userId) throws IOException {
+        MooDoUser user = userService.findById(userId)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+
+        // 사용자 프로필 사진 경로 가져오기
+        String picturePath = user.getProfilePicturePath();
+        Path filePath = Paths.get(picturePath);
+
+        Resource resource = new UrlResource(filePath.toUri());
+
+        // 파일이 존재하지 않을 때 처리
+        if (!resource.exists()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        // 파일을 HTTP 응답으로 전송
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG) // 또는 PNG라면 MediaType.IMAGE_PNG로 변경
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + filePath.getFileName().toString() + "\"")
+                .body(resource);
+    }
+
 }
