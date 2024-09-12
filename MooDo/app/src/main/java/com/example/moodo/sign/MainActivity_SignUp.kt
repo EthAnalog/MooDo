@@ -107,7 +107,6 @@ class MainActivity_SignUp : AppCompatActivity() {
             }
         })
 
-
         // 비밀번호 확인 부분
         txtCheckPw.addTextChangedListener(object :TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -187,7 +186,7 @@ class MainActivity_SignUp : AppCompatActivity() {
         // 회원가입 버튼
         binding.btnSignUp.setOnClickListener {
             if (checkId == true && checkPw == true && checkPwSame == true && checkAge == true && binding.edtName.text!!.isNotEmpty()) {
-                val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString())
+                val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString(), null)
                 MooDoClient.retrofit.signUp(singUp).enqueue(object:retrofit2.Callback<MooDoUser>{
                     override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                         setResult(RESULT_OK, intent)

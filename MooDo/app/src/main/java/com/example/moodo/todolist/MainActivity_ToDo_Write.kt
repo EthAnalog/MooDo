@@ -268,7 +268,7 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
                     toDoCheck = true
                     Log.d("MooDoLog Write Success", edtTodo.text.toString())
                     Log.d("MooDoLog Write Success", startDate.toString())
-                    Log.d("MooDoLog Write Success", endDate.toString())
+                    Log.d("MooDoLog Write Success", toDoColor)
                     if (toDoColor!="none") {
                         // 일정 저장
                         intent.putExtra("startDay",startStr)
@@ -278,6 +278,14 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
 
                         setResult(RESULT_OK, intent)
                         finish()
+                    }
+                    else {
+                        AlertDialog.Builder(this)
+                            .setMessage("일정을 표기할 색상을 선택해주세요.")
+                            .setPositiveButton("확인", null)
+                            .show()
+
+                        toDoCheck = false
                     }
                 }
             }

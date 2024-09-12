@@ -9,52 +9,59 @@
     tools:context=".MainActivity_Statis">
     <!-- header -->
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:id="@+id/btnClose"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_back_gray"
-            app:srcCompat="@drawable/ic_back_gray" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end">
+            android:gravity="start">
 
             <ImageView
-                android:id="@+id/logo"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
-                android:background="@drawable/logo_img"
-                android:scaleType="centerCrop" />
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_back_gray" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/logo_img"
+            android:scaleType="center" />
     </LinearLayout>
 
-    <!-- 상단 정보 -->
     <LinearLayout
         android:id="@+id/top_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:orientation="vertical"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
@@ -62,12 +69,14 @@
                 android:fontFamily="@font/jalnan"
                 android:text="사용자이름"
                 android:textSize="30sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="님"
                 android:textSize="24sp" />
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,21 +88,22 @@
             android:id="@+id/tvMoodMax"
             android:layout_width="160dp"
             android:layout_height="140dp"
-            android:src="@drawable/ic_emotion_happy"
-            android:contentDescription="감정아이콘" />
+            android:contentDescription="감정아이콘"
+            android:src="@drawable/ic_emotion_happy" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/txt_emotion"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/binggrae"
-                android:textSize="18sp"
-                android:text="좋음입니다." />
+                android:text="좋음입니다."
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -116,18 +126,19 @@
                 android:layout_weight="3"
                 android:text="To do list 달성률"
                 android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/completeTodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0" />
+
             <TextView
                 android:id="@+id/allTodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="/0" />
         </LinearLayout>
-
     </LinearLayout>
     <!-- 날짜별 기록을 표시하는 RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView

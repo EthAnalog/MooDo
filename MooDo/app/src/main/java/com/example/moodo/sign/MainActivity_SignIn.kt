@@ -33,7 +33,7 @@ class MainActivity_SignIn : AppCompatActivity() {
             val id = binding.edtId.text.toString()
             val pw = binding.edtPw.text.toString()
 
-            val loginUser = MooDoUser(id, pw, null, null)
+            val loginUser = MooDoUser(id, pw, null, null, null)
             MooDoClient.retrofit.login(loginUser).enqueue(object:retrofit2.Callback<MooDoUser>{
                 override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                     if (response.isSuccessful) {
