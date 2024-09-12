@@ -78,6 +78,7 @@ public class MoodoTodoController {
             updatedTodo.setTdList(todo.getTdList());
             updatedTodo.setStartDate(todo.getStartDate());
             updatedTodo.setEndDate(todo.getEndDate());
+            updatedTodo.setColor(todo.getColor());
             return todoService.update(updatedTodo);  // 업데이트 후 저장
         } else {
             throw new RuntimeException("할 일을 찾을 수 없습니다.");
