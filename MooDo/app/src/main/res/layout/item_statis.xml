@@ -5,24 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/box_border"
-    android:layout_margin="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
     android:padding="10dp">
 
     <LinearLayout
         android:id="@+id/linearLayout9"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/saveDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/moodDescription"
             android:layout_width="0dp"
@@ -30,7 +36,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/binggrae"
             android:text="0000년 00월 00일"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,7 +44,7 @@
             android:layout_marginRight="5dp"
             android:fontFamily="@font/binggrae"
             android:text="기분"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/moodIcon"
@@ -54,7 +60,7 @@
             android:layout_marginRight="5dp"
             android:fontFamily="@font/binggrae"
             android:text="날씨"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/weatherIcon"
@@ -69,7 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/binggraetaom"
         android:text="일기"

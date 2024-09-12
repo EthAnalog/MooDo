@@ -6,7 +6,6 @@
 
     <application
         android:allowBackup="true"
-        android:name=".GlobalApplication"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +15,9 @@
         android:theme="@style/Theme.MooDo"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity_MyPage"
+            android:exported="false" />
         <activity
             android:name=".todolist.MainActivity_ToDo_Write"
             android:exported="false" />
