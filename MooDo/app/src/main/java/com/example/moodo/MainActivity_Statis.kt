@@ -230,15 +230,15 @@ class MainActivity_Statis : AppCompatActivity() {
             override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                 if (response.isSuccessful) {
                     user = response.body()
-                    binding.userName.text = user!!.name.toString()
-                    Log.d("MooDoLog UserInfo", "User: $user")
+                    Log.d("MooDoLog Response", "User: $user")
                 } else {
-                    Log.d("MooDoLog UserInfo", "Error: ${response.code()} - ${response.message()}")
+                    Log.d("MooDoLog Response", "Error: ${response.code()} - ${response.message()}")
                 }
+                binding.userName.text = user!!.name.toString()
             }
 
             override fun onFailure(call: Call<MooDoUser>, t: Throwable) {
-                Log.d("MooDoLog UserInfo", t.toString())
+                Log.d("MooDoLog Response", t.toString())
             }
         })
     }

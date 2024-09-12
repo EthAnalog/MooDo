@@ -8,78 +8,59 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".sign.MainActivity_SignIn">
-    <!-- header -->
+
     <LinearLayout
-        android:id="@+id/linearLayout6"
+        android:id="@+id/linearLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="65dp"
+            android:layout_height="53dp"
+            android:src="@drawable/ic_back_gray"
+            app:srcCompat="@drawable/ic_back_gray" />
+
+        <TextView
+            android:id="@+id/title01"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="start">
-
-            <ImageView
-                android:id="@+id/btnClose"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_back_gray" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/logo_img"
-            android:scaleType="center" />
+            android:fontFamily="@font/jalnan"
+            android:gravity="end"
+            android:text="Sign In"
+            android:textColor="@color/e_red"
+            android:textSize="36sp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/title01"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:fontFamily="@font/jalnan"
-        android:text="Sign In"
-        android:textColor="@color/e_red"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title01">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/kblz_bold"
             android:text="로그인 시"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -89,7 +70,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/kblz_bold"
             android:text="MooDo의 다양한 기능을 이용하실 수 있습니다."
             android:textSize="16sp" />
 
@@ -154,5 +134,15 @@
             android:textAllCaps="false"
             android:textColor="@color/e_red"
             android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/btnKakaoSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/round_layout"
+            android:backgroundTint="#FEE500"
+            android:src="@drawable/kakao_login_medium_wide" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,17 +46,16 @@ class MainActivity_SignUp : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(p0: Editable?) {
-                if (txtId.length() > 3) {
-                    val id = txtId.text.toString()
-                    MooDoClient.retrofit.checkId(id).enqueue(object:retrofit2.Callback<Boolean>{
+                val id = txtId.text.toString()
+                if (id.length > 3) {
+                    MooDoClient.retrofit.checkId(id).enqueue(object : retrofit2.Callback<Boolean> {
                         override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                             val idState = response.body()
                             if (idState == true) {
                                 binding.checkId.text = "사용 가능한 아이디입니다."
                                 binding.checkId.setTextColor(Color.rgb(69, 69, 69))
                                 checkId = true
-                            }
-                            else {
+                            } else {
                                 binding.checkId.text = "사용할 수 없는 아이디입니다."
                                 binding.checkId.setTextColor(Color.rgb(255, 82, 82))
                                 checkId = false
@@ -66,16 +65,15 @@ class MainActivity_SignUp : AppCompatActivity() {
                         override fun onFailure(call: Call<Boolean>, t: Throwable) {
                             Log.d("MooDoLog Id checkFail", t.toString())
                         }
-
                     })
-                }
-                else {
+                } else {
                     binding.checkId.text = "영문, 숫자 4~20자 이내로 입력하세요."
                     binding.checkId.setTextColor(Color.rgb(255, 82, 82))
                     checkId = false
                 }
             }
         })
+
 
         // 비밀번호 길이 및 비밀번호 확인 부분
         txtPw.addTextChangedListener(object : TextWatcher {
@@ -106,6 +104,7 @@ class MainActivity_SignUp : AppCompatActivity() {
                 }
             }
         })
+
 
         // 비밀번호 확인 부분
         txtCheckPw.addTextChangedListener(object :TextWatcher{
@@ -186,7 +185,7 @@ class MainActivity_SignUp : AppCompatActivity() {
         // 회원가입 버튼
         binding.btnSignUp.setOnClickListener {
             if (checkId == true && checkPw == true && checkPwSame == true && checkAge == true && binding.edtName.text!!.isNotEmpty()) {
-                val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString(), null)
+                val singUp = MooDoUser(txtId.text.toString(), txtPw.text.toString(), binding.edtName.text.toString(), txtAge.text.toString())
                 MooDoClient.retrofit.signUp(singUp).enqueue(object:retrofit2.Callback<MooDoUser>{
                     override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                         setResult(RESULT_OK, intent)

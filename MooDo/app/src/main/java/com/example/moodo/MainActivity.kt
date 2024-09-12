@@ -14,6 +14,7 @@ import com.example.moodo.db.MooDoUser
 import com.example.moodo.mode.MainActivity_MooDo
 import com.example.moodo.sign.MainActivity_SignIn
 import com.example.moodo.sign.MainActivity_SignUp
+import com.kakao.sdk.common.util.Utility
 import retrofit2.Call
 import retrofit2.Response
 
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        var keyHash = Utility.getKeyHash(this)
+        Log.i("Hash", "keyHash: $keyHash")
 
         // 로그인 버튼 처리
         binding.signInBtn.setOnClickListener {
@@ -48,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             val id = "testUser1"
             val pw = "newPassword1231"
 
-            val loginUser = MooDoUser(id, pw, null, null, null)
+            val loginUser = MooDoUser(id, pw, null, null)
             MooDoClient.retrofit.login(loginUser).enqueue(object:retrofit2.Callback<MooDoUser>{
                 override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                     if (response.isSuccessful) {

@@ -187,12 +187,11 @@ class MainActivity_ToDo : AppCompatActivity() {
                 val toDoColor = it.data?.getStringExtra("toDoColor").toString()
 
                 Log.d("MooDoLog update sD fm", startDay)
-                Log.d("MooDoLog ToDoColor", toDoColor)
 
                 // 사용자 정보가 로드되었는지 확인 후 저장
                 if (user != null) {
                     val idx = toDoAdapter.todoList[position].idx
-                    val insertList = MooDoToDo(idx, user!!, toDoStr, startDay, endDay, "N", null, toDoColor)
+                    val insertList = MooDoToDo(idx, user!!, toDoStr, startDay, endDay, null, null, toDoColor)
 
                     MooDoClient.retrofit.updateTodo(idx, insertList)
                         .enqueue(object : retrofit2.Callback<MooDoToDo> {
