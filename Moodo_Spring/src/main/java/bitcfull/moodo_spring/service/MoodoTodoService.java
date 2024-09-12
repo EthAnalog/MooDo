@@ -115,41 +115,17 @@ public class MoodoTodoService {
     }
 
     // 한 달 동안 기록된 계획 개수
-    public int getTodoCountForMonth(String userId, Date month) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-
-        cal.setTime(dateFormat.parse(dateFormat.format(month) + "-01"));
-        String startOfMonth = dateFormat.format(cal.getTime());
-
-        cal.add(Calendar.MONTH, 1);
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        cal.add(Calendar.DATE, -1);
-        String endOfMonth = dateFormat.format(cal.getTime());
-
-        // 날짜를 문자열로 포맷팅
-        String startOfDayDate = startOfMonth + " 00:00:00";
-        String endOfDayDate = endOfMonth + " 23:59:59";
+    public int getTodoCountForMonth(String userId, String startDay, String endDay) throws ParseException {
+        String startOfDayDate = startDay + " 00:00:00";
+        String endOfDayDate = endDay + " 23:59:59";
 
         return todoRepository.countByUserIdAndStartDateBetween(userId, startOfDayDate, endOfDayDate);
     }
 
     // 한 달 동안 완료된 계획(tdCheck가 'Y') 개수
-    public int getCompletedTodoCountForMonth(String userId, Date month) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-
-        cal.setTime(dateFormat.parse(dateFormat.format(month) + "-01"));
-        String startOfMonth = dateFormat.format(cal.getTime());
-
-        cal.add(Calendar.MONTH, 1);
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        cal.add(Calendar.DATE, -1);
-        String endOfMonth = dateFormat.format(cal.getTime());
-        
-        // 날짜를 문자열로 포맷팅
-        String startOfDayDate = startOfMonth + " 00:00:00";
-        String endOfDayDate = endOfMonth + " 23:59:59";
+    public int getCompletedTodoCountForMonth(String userId, String startDay, String endDay) throws ParseException {
+        String startOfDayDate = startDay + " 00:00:00";
+        String endOfDayDate = endDay + " 23:59:59";
 
         return todoRepository.countByUserIdAndStartDateBetweenAndTdCheck(userId, startOfDayDate, endOfDayDate, "Y");
     }
