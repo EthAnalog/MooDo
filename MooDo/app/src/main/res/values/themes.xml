@@ -6,33 +6,4 @@
     </style>
 
     <style name="Theme.MooDo" parent="Base.Theme.MooDo" />
-
-    <!--  Dialog 수정 -->
-    <style name="AppAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowTitleStyle">@style/AppAlertDialogTitle</item>
-        <item name="buttonBarNegativeButtonStyle">@style/AppAlertNegativeButtonStyle</item>
-        <item name="buttonBarPositiveButtonStyle">@style/AppAlertPositiveButtonStyle</item>
-        <item name="buttonBarNeutralButtonStyle">@style/AppOtherAlertButtonStyle</item>
-    </style>
-
-    <style name="AppAlertDialogTitle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-    </style>
-
-    <style name="AppAlertNegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:colorAccent">@color/gray</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="AppAlertPositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:colorAccent">@drawable/btn_border</item>
-        <item name="android:textColor">@color/e_red</item>
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="AppOtherAlertButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">@color/gray</item>
-        <item name="android:textSize">14sp</item>
-    </style>
 </resources>

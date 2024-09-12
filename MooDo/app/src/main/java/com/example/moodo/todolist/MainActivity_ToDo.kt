@@ -18,6 +18,7 @@ import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoToDo
 import com.example.moodo.adapter.ToDoAdapter
 import com.example.moodo.db.MooDoUser
+import com.example.moodo.mode.MainActivity_MooDo
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
@@ -50,8 +51,12 @@ class MainActivity_ToDo : AppCompatActivity() {
         val userId = intent.getStringExtra("userId")
         val selectDate = intent.getStringExtra("selectDate")
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val formattedDate = SimpleDateFormat("yyyy-MM-dd").parse(selectDate)
-            ?.let { dateFormat.format(it) }
+
+        val stats = intent.getStringExtra("stats")
+        var userAge = "0"
+        if (stats == "Search") {
+            userAge = intent.getStringExtra("userAge").toString()
+        }
 
         // 사용자 정보 가져오기
         loadUserInfo(userId!!)
@@ -119,7 +124,6 @@ class MainActivity_ToDo : AppCompatActivity() {
                 val endDay = it.data?.getStringExtra("endDay").toString()
                 val toDoStr = it.data?.getStringExtra("toDoStr").toString()
                 val toDoColor = it.data?.getStringExtra("toDoColor").toString()
-
 
                 Log.d("MooDoLog sD fm", startDay)
 
@@ -324,11 +328,19 @@ class MainActivity_ToDo : AppCompatActivity() {
 
         // 뒤로가기
         binding.btnClose.setOnClickListener {
-            val intent = Intent().apply {
-                putExtra("update", true)
+            if (stats == "MooDo") {
+                val intent = Intent().apply {
+                    putExtra("update", true)
+                }
+                setResult(RESULT_OK, intent)
+                finish()
             }
-            setResult(RESULT_OK, intent)
-            finish()
+            else {
+                val intent = Intent(this@MainActivity_ToDo, MainActivity_MooDo::class.java)
+                intent.putExtra("id", userId)
+                intent.putExtra("age", userAge)
+                startActivity(intent)
+            }
         }
     }
     // 전체 tdList

@@ -256,7 +256,7 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
                     toDoCheck = false
                 }
                 // 시작일이 오늘보다 이전일 때
-                else if (startDate.before(today)) {
+                else if (startDate.before(today) && stats == "insert") {
                     AlertDialog.Builder(this)
                         .setMessage("시작일이 오늘보다 이전입니다. 오늘 이후로 설정하세요.")
                         .setPositiveButton("확인", null)

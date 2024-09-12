@@ -45,14 +45,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="60dp"
         android:fontFamily="@font/jalnan"
-        android:text="Sign Up"
+        android:text="회원정보 수정"
         android:textColor="@color/e_red"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <!-- 이름 입력 -->
     <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +75,9 @@
             android:layout_height="wrap_content"
             android:hint="이름"
             android:inputType="textPersonName"
-            android:textColorLink="@color/e_red" />
+            android:textColorLink="@color/e_red"
+            android:backgroundTint="@color/gray"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- 아이디 입력 -->
@@ -90,6 +91,7 @@
         android:layout_marginRight="24dp"
         app:boxStrokeColor="@color/e_red"
         app:cursorColor="@color/e_red"
+        android:backgroundTint="@color/gray"
         app:hintTextColor="@color/e_red"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -100,8 +102,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="아이디"
+            android:imeOptions="actionNext"
             android:maxLength="20"
-            android:textColorLink="@color/e_red" />
+            android:textColorLink="@color/e_red"
+            android:enabled="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -125,7 +129,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="24dp"
-        android:hint="비밀번호"
+        android:hint="비밀번호 변경"
         app:passwordToggleEnabled="true"
         android:imeOptions="actionNext"
         app:boxStrokeColor="@color/e_red"
@@ -215,7 +219,7 @@
             android:id="@+id/edtAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="생년월일"
+            android:hint="생년월일 변경"
             android:inputType="date"
             android:textColorLink="@color/e_red" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -232,12 +236,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
+
     <android.widget.Button
         android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/round_layout"
         android:backgroundTint="@color/e_red"
