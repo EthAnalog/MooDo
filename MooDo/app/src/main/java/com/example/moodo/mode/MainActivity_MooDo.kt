@@ -29,6 +29,7 @@ import com.example.moodo.db.MooDoToDo
 import com.example.moodo.db.MooDoUser
 import com.example.moodo.todolist.MainActivity_ToDo
 import com.example.moodo.todolist.MainActivity_ToDo_Search
+import com.example.moodo.user.MainActivity_MyPage
 import com.google.android.material.navigation.NavigationView
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -244,6 +245,10 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
             }
             R.id.nav_mypage->{
                 // my page
+                val intent = Intent(this@MainActivity_MooDo, MainActivity_MyPage::class.java)
+
+                intent.putExtra("userId", userId)
+                startActivity(intent)
             }
             R.id.nav_logout -> {
                 // 로그아웃
