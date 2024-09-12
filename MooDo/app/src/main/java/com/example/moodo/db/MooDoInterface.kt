@@ -1,6 +1,8 @@
 package com.example.moodo.db
 
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -26,6 +28,10 @@ interface MooDoInterface {
     // 사용자 정보 가져오기
     @GET("api/user/userInfo/{id}")
     fun getUserInfo(@Path("id") id:String):Call<MooDoUser>
+
+    // 유저 사진 가져오기
+    @GET("api/user/userProfile/{id}")
+    fun getUserImg(@Path("id") id: String): Call<ResponseBody>
 
     // 회원 to do list 조회
     @GET("api/todo/list/{userId}/{date}")

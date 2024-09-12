@@ -1,6 +1,7 @@
 package com.example.moodo.mode
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -29,10 +30,14 @@ import com.example.moodo.db.MooDoUser
 import com.example.moodo.todolist.MainActivity_ToDo
 import com.example.moodo.todolist.MainActivity_ToDo_Search
 import com.google.android.material.navigation.NavigationView
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     lateinit var binding:ActivityMainMooDoBinding
@@ -294,18 +299,13 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
         val userName = headerView.findViewById<TextView>(R.id.userName)
         val userImg = headerView.findViewById<ImageView>(R.id.userImg)
         MooDoClient.retrofit.getUserInfo(userId).enqueue(object : retrofit2.Callback<MooDoUser> {
+            val imageUrl = "C:\\fullstack\\AndroidProject\\MooDo_Spring\\"
             override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                 if (response.isSuccessful) {
                     user = response.body()
                     userName.text = user!!.name.toString()
-
-                    Glide.with(this@MainActivity_MooDo)
-                        .load(user!!.profilePicture)
-                        .placeholder(R.drawable.ic_emotion_meh) // 로딩 중에 표시할 이미지
-                        .error(R.drawable.ic_emotion_sad) // 로드 실패 시 표시할 이미지
-                        .into(userImg)
-
                     Log.d("MooDoLog UserInfo", "User: $user")
+
                 } else {
                     Log.d("MooDoLog UserInfo", "Error: ${response.code()} - ${response.message()}")
                 }
@@ -314,6 +314,22 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
             override fun onFailure(call: Call<MooDoUser>, t: Throwable) {
                 Log.d("MooDoLog UserInfo", t.toString())
             }
+        })
+
+        MooDoClient.retrofit.getUserImg(userId).enqueue(object:Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    val inputStream = response.body()?.byteStream()
+                    val bitmap = BitmapFactory.decodeStream(inputStream)
+                    userImg.setImageBitmap(bitmap)
+                }
+                Log.d("MooDoLog Img", userId.toString())
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.d("MooDoLog Img", userId.toString())
+            }
+
         })
     }
 
