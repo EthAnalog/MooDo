@@ -38,6 +38,16 @@ public class MoodoUserService {
         return result;
     }
 
+    // 회원 비밀번호 체크
+    public Boolean checkPassword(String id, String password) {
+        Optional<MooDoUser> checkUser = userRepository.findById(id);
+        if (checkUser.isPresent()) {
+            MooDoUser user = checkUser.get();
+            return user.getPass().equals(password);
+        }
+        return false;
+    }
+
     // 사용자 목록 조회
     public List<MooDoUser> getAllUsers() {
         return userRepository.findAll();

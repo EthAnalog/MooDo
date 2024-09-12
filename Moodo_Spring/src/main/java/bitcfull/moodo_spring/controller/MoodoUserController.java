@@ -12,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -66,6 +68,20 @@ public class MoodoUserController {
     @GetMapping("/check-id/{id}")
     public boolean checkId(@PathVariable String id) {
         return userService.userIdCheck(id) == 0;
+    }
+
+    // 비밀번호 체크
+    @PostMapping("/check-pw/{id}")
+    public ResponseEntity<String> checkPw(@PathVariable String id, @RequestBody Map<String, String> passwordMap) {
+        String password = passwordMap.get("password");
+
+        boolean isPasswordCorrect = userService.checkPassword(id, password);
+
+        if (isPasswordCorrect) {
+            return ResponseEntity.ok("비밀번호가 올바릅니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("비밀번호가 다릅니다.");
+        }
     }
 
     // **사용자 목록 조회** 추가
