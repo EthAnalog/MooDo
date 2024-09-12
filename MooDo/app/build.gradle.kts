@@ -52,4 +52,11 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
+    // 사이드바
+    implementation ("com.google.android.material:material:1.9.0")
+    // DrawerLayout
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+
+    // 사진 출력
+    implementation("com.github.bumptech.glide:glide:4.12.0")
 }

@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 import java.util.Optional
 
 interface MooDoInterface {
@@ -65,6 +66,10 @@ interface MooDoInterface {
     // 한 달 동안 완료된 계획 개수 (tdCheck가 'Y')
     @GET("api/todo/completed/count/{userId}/{year}/{month}")
     fun getCompletedTodoCountForMonth(@Path("userId") userId: String, @Path("year") year:Int, @Path("month") month: Int): Call<Int>
+
+    // 검색해서 할 일 조회
+    @GET("api/todo/search/{userId}")
+    fun searchTodos(@Path("userId") userId: String, @Query("keyword") keyword: String): Call<List<MooDoToDo>>
 
     // mode
     // 전체 일기 list 및 가장 많은 기분 값

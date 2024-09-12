@@ -91,7 +91,6 @@ class MonthAdapter(val userId: String, val userAge:String) : RecyclerView.Adapte
                 dayList[i * 7 + k] = tempCalendar.time
 
                 val formattedDay = dayFormatter.format(tempCalendar.time)
-                Log.d("MooDoLog DayList", formattedDay)
 
                 // 현재 달과 비교
                 if (tempCalendar.get(Calendar.MONTH) == tempMonth) {
@@ -102,7 +101,6 @@ class MonthAdapter(val userId: String, val userAge:String) : RecyclerView.Adapte
                         MooDoClient.retrofit.getMdMode(userId, formattedDay).enqueue(object : retrofit2.Callback<Int> {
                             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                                 if (response.isSuccessful) {
-                                    Log.d("MooDoLog Emoji", response.body().toString())
                                     when (response.body()) {
                                         1 -> emojiList[i* 7 + k] = "birthday_angry"
                                         2 -> emojiList[i* 7 + k] = "birthday_sad"

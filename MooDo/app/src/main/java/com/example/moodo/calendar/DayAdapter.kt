@@ -82,10 +82,7 @@ class DayAdapter(val tempMonth:Int,
             holder.binding.itemDayTxt.alpha = 1.0f
         }
 
-        // Log.d("MooDoDate", formattedDate)
-
         val emoji = emojiList[position]
-        Log.d("MooDoLog Emoji", emoji)
         when(emoji) {
             "birthday_angry" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_angry)
             "birthday_sad" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_sad)
@@ -98,12 +95,15 @@ class DayAdapter(val tempMonth:Int,
             "meh" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_meh)
             "s_happy" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_s_happy)
             "happy" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_happy)
+            else -> holder.binding.itemMood.setImageResource(0)
         }
 
         val tdCnt = tdCntList[position]
-        Log.d("MooDoLog tdCnt", emoji)
         if (tdCnt > 0) {
             holder.binding.todoOval.setImageResource(R.drawable.td_has)
+        }
+        else {
+            holder.binding.todoOval.setImageResource(0)
         }
 
         if (selectedPosition== -1 && todayPosition == position) {
