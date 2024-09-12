@@ -14,6 +14,7 @@ import com.example.moodo.db.MooDoUser
 import com.example.moodo.mode.MainActivity_MooDo
 import com.example.moodo.sign.MainActivity_SignIn
 import com.example.moodo.sign.MainActivity_SignUp
+import com.kakao.sdk.common.util.Utility
 import retrofit2.Call
 import retrofit2.Response
 
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        var keyHash = Utility.getKeyHash(this)
+        Log.i("Hash", "keyHash: $keyHash")
 
         // 로그인 버튼 처리
         binding.signInBtn.setOnClickListener {
