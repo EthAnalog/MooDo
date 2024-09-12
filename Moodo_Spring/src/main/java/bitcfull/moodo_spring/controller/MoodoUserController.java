@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -171,6 +173,33 @@ public class MoodoUserController {
                 .body(resource);
     }
 
+    // 사진 비트맵으로 전송
+    @GetMapping("/userProfile/{id}")
+    public ResponseEntity<byte[]> getUserImg(@PathVariable String id) {
+        MooDoUser user = userService.getUserInfo(id);
+        String fileUrl = user.getProfilePicturePath();
+        Path filePath = Paths.get(fileUrl).normalize();
+        File file = filePath.toFile();
+
+        System.out.println("사진!!" + fileUrl);
+
+        System.out.println(file.getAbsolutePath());
+
+        try {
+            if (file.exists() && file.isFile()) {
+                byte[] imageBytes = Files.readAllBytes(filePath);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.IMAGE_JPEG); // 적절한 미디어 타입 설정
+
+                return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     // 회원 탈퇴
     @DeleteMapping("/deleteUser/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable String id) {
@@ -181,5 +210,7 @@ public class MoodoUserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 탈퇴 실패 : " + e.getMessage());
         }
     }
+
+
 
 }

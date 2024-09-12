@@ -53,7 +53,7 @@ public class MoodoUserService {
         return userRepository.findAll();
     }
 
-    // 파일 저장할 경로 설정 + 프로필 사진 업로드 및 변경(덮어쓰기)
+    // 파일 저장할 경로 설정
     private final String UPLOAD_DIR = "uploads/";
 
     public String saveProfilePicture(String userId, MultipartFile file) throws Exception {
