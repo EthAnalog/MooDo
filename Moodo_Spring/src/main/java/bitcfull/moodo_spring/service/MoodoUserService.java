@@ -69,4 +69,10 @@ public class MoodoUserService {
         return filePath.toString(); // 저장된 파일 경로 반환
     }
 
+    // 사용자 정보 가져오기
+    public MooDoUser getUserInfo(String id) {
+        return userRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("사용자 정보를 찾을 수 없습니다.")
+                );
+    }
 }

@@ -88,6 +88,13 @@ public class MoodoUserController {
         }
     }
 
+    // 사용자 정보 가져오기
+    @GetMapping("/userInfo/{id}")
+    public MooDoUser getUserInfo(@PathVariable String id) {
+        System.out.println("사용자 정보 가져오기 " + id);
+        return userService.getUserInfo(id);
+    }
+
     // 프로필 사진 업로드
     @PostMapping("/uploadProfilePicture/{userId}")
     public ResponseEntity<String> uploadProfilePicture(@PathVariable String userId, @RequestParam("file") MultipartFile file) {
