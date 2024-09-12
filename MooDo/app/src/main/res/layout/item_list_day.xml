@@ -23,8 +23,7 @@
         <ImageView
             android:id="@+id/todoOval"
             android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@drawable/td_none"/>
+            android:layout_height="10dp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,8 +31,7 @@
         android:gravity="center">
         <ImageView
             android:id="@+id/itemMood"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/no_mood"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
     </LinearLayout>
 </LinearLayout>

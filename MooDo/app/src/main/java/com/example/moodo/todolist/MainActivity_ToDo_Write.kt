@@ -256,7 +256,7 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
                     toDoCheck = false
                 }
                 // 시작일이 오늘보다 이전일 때
-                else if (startDate.before(today)) {
+                else if (startDate.before(today) && stats == "insert") {
                     AlertDialog.Builder(this)
                         .setMessage("시작일이 오늘보다 이전입니다. 오늘 이후로 설정하세요.")
                         .setPositiveButton("확인", null)
@@ -268,7 +268,7 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
                     toDoCheck = true
                     Log.d("MooDoLog Write Success", edtTodo.text.toString())
                     Log.d("MooDoLog Write Success", startDate.toString())
-                    Log.d("MooDoLog Write Success", endDate.toString())
+                    Log.d("MooDoLog Write Success", toDoColor)
                     if (toDoColor!="none") {
                         // 일정 저장
                         intent.putExtra("startDay",startStr)
@@ -278,6 +278,14 @@ class MainActivity_ToDo_Write : AppCompatActivity() {
 
                         setResult(RESULT_OK, intent)
                         finish()
+                    }
+                    else {
+                        AlertDialog.Builder(this)
+                            .setMessage("일정을 표기할 색상을 선택해주세요.")
+                            .setPositiveButton("확인", null)
+                            .show()
+
+                        toDoCheck = false
                     }
                 }
             }

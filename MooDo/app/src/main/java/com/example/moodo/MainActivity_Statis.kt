@@ -230,15 +230,15 @@ class MainActivity_Statis : AppCompatActivity() {
             override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                 if (response.isSuccessful) {
                     user = response.body()
-                    Log.d("MooDoLog Response", "User: $user")
+                    binding.userName.text = user!!.name.toString()
+                    Log.d("MooDoLog UserInfo", "User: $user")
                 } else {
-                    Log.d("MooDoLog Response", "Error: ${response.code()} - ${response.message()}")
+                    Log.d("MooDoLog UserInfo", "Error: ${response.code()} - ${response.message()}")
                 }
-                binding.userName.text = user!!.name.toString()
             }
 
             override fun onFailure(call: Call<MooDoUser>, t: Throwable) {
-                Log.d("MooDoLog Response", t.toString())
+                Log.d("MooDoLog UserInfo", t.toString())
             }
         })
     }
@@ -259,16 +259,16 @@ class MainActivity_Statis : AppCompatActivity() {
                 if (response.isSuccessful) {
                     when(response.body()) {
                         1-> {
-                            updateEmoji(R.drawable.ic_emotion_angry, "이번 달은 기분이 최악이었던 날이 가장 많았어요.", R.color.e_red, R.color.angry)
+                            updateEmoji(R.drawable.ic_emotion_angry, "이번 달은 최악의 기분을 느낀 날이 많았어요.", R.color.e_red, R.color.angry)
                         }
                         2-> {
-                            updateEmoji(R.drawable.ic_emotion_sad, "이번 달은 기분이 나빴던 날이 가장 많았어요.", R.color.e_blue, R.color.sad)
+                            updateEmoji(R.drawable.ic_emotion_sad, "이번 달은 기분이 나빴던 날이 많았어요.", R.color.e_blue, R.color.sad)
                         }
                         3-> {
-                            updateEmoji(R.drawable.ic_emotion_meh, "이번 달은 기분이 평온했던 날이 가장 많았어요", R.color.e_apricot, R.color.meh)
+                            updateEmoji(R.drawable.ic_emotion_meh, "이번 달은 평온한 기분으로 보내신 날이 가장 많았어요", R.color.e_apricot, R.color.meh)
                         }
                         4-> {
-                            updateEmoji(R.drawable.ic_emotion_s_happy, "이번 달은 기분이 좋았던 날이 가장 많았어요.", R.color.e_green, R.color.s_happy)
+                            updateEmoji(R.drawable.ic_emotion_s_happy, "이번 달은 기분 좋은 날이 가장 많았어요.", R.color.e_green, R.color.s_happy)
                         }
                         5-> {
                             updateEmoji(R.drawable.ic_emotion_happy, "이번 달은 기분이 최고였던 날이 가장 많았어요!", R.color.e_yellow, R.color.happy)

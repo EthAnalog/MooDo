@@ -3,6 +3,7 @@ package com.example.moodo.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moodo.R
 import com.example.moodo.databinding.ItemTodoListBinding
 import com.example.moodo.db.MooDoToDo
 import java.text.SimpleDateFormat
@@ -61,7 +62,7 @@ class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
         // 시간 포맷팅
         val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         // 출력 형식
-        val outputFormat = SimpleDateFormat("M월 d일 a h시 m분", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("M/d a hh:mm", Locale.getDefault())
 
         // startDate
         val startDate = inputFormat.parse(todoItem.startDate)
@@ -73,5 +74,19 @@ class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
 
         holder.binding.startToDo.text = formattedStartDate
         holder.binding.endToDo.text = formattedEndDate
+
+        // 색깔에 따른 box
+        when(todoItem.color) {
+            "red" -> holder.binding.tdListBox.setBackgroundResource(R.drawable.td_red_box)
+            "blue" -> holder.binding.tdListBox.setBackgroundResource(R.drawable.td_blue_box)
+            "orange" -> holder.binding.tdListBox.setBackgroundResource(R.drawable.td_orange_box)
+            "green" -> holder.binding.tdListBox.setBackgroundResource(R.drawable.td_green_box)
+            "yellow" -> holder.binding.tdListBox.setBackgroundResource(R.drawable.td_yellow_box)
+        }
+
+        when(todoItem.tdCheck) {
+            "N" -> holder.binding.tdChecked.setImageResource(R.drawable.td_non_check)
+            "Y" -> holder.binding.tdChecked.setImageResource(R.drawable.td_check)
+        }
     }
 }
