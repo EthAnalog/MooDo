@@ -46,8 +46,8 @@ class MainActivity_SignUp : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(p0: Editable?) {
-                if (txtId.length() > 3) {
-                    val id = txtId.text.toString()
+                val id = txtId.text.toString()
+                if (id.length > 3) {
                     MooDoClient.retrofit.checkId(id).enqueue(object:retrofit2.Callback<Boolean>{
                         override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                             val idState = response.body()
@@ -66,10 +66,8 @@ class MainActivity_SignUp : AppCompatActivity() {
                         override fun onFailure(call: Call<Boolean>, t: Throwable) {
                             Log.d("MooDoLog Id checkFail", t.toString())
                         }
-
                     })
-                }
-                else {
+                } else {
                     binding.checkId.text = "영문, 숫자 4~20자 이내로 입력하세요."
                     binding.checkId.setTextColor(Color.rgb(255, 82, 82))
                     checkId = false
