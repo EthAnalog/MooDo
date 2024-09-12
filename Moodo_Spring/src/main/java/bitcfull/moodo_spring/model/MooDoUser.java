@@ -23,4 +23,8 @@ public class MooDoUser {
 
     @Column(nullable = false, length = 10)
     private String age;
+
+    // 프로필 사진 경로
+    @Column(length = 255)
+    private String profilePicturePath;
 }
