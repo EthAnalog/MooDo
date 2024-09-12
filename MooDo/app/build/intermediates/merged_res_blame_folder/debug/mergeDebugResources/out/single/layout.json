@@ -1,11 +1,15 @@
 [
     {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-mergeDebugResources-33:\\layout\\activity_main_statis.xml",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\activity_main_statis.xml"
+    },
+    {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-mergeDebugResources-33:\\layout\\item_todo_list.xml",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\item_todo_list.xml"
     },
     {
-        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-mergeDebugResources-33:\\layout\\activity_main_statis.xml",
-        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\activity_main_statis.xml"
+        "merged": "com.example.moodo.app-mergeDebugResources-33:/layout/activity_main_my_page.xml",
+        "source": "com.example.moodo.app-main-36:/layout/activity_main_my_page.xml"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-mergeDebugResources-33:\\layout\\activity_main_to_do.xml",
@@ -18,10 +22,6 @@
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-mergeDebugResources-33:\\layout\\item_statis.xml",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\item_statis.xml"
-    },
-    {
-        "merged": "com.example.moodo.app-mergeDebugResources-33:/layout/activity_main_sign_in.xml",
-        "source": "com.example.moodo.app-main-36:/layout/activity_main_sign_in.xml"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-mergeDebugResources-33:\\layout\\activity_main_sign_up.xml",

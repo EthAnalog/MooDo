@@ -77,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="아이디"
+            android:imeOptions="actionNext"
             android:maxLength="20"
             android:textColorLink="@color/e_red" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -102,6 +103,9 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="40dp"
+        android:hint="비밀번호"
+        app:passwordToggleEnabled="true"
+        android:imeOptions="actionNext"
         app:boxStrokeColor="@color/e_red"
         app:hintTextColor="@color/e_red"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -110,9 +114,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtPw"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="비밀번호"
             android:maxLength="20"
             android:textColorLink="@color/e_red" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -139,6 +143,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="40dp"
         android:hint="비밀번호 확인"
+        app:passwordToggleEnabled="true"
         android:importantForAccessibility="yes"
         android:inputType="textPassword"
         app:boxStrokeColor="@color/e_red"

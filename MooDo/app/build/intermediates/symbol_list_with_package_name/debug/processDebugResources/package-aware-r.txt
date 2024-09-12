@@ -3916,6 +3916,7 @@ layout abc_tooltip
 layout activity_main
 layout activity_main_mode_write
 layout activity_main_moo_do
+layout activity_main_my_page
 layout activity_main_sign_in
 layout activity_main_sign_up
 layout activity_main_statis

@@ -12,12 +12,12 @@
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\td_none.png"
     },
     {
-        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\xml\\data_extraction_rules.xml"
-    },
-    {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\layout_activity_main_sign_up.xml.flat",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\activity_main_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\xml\\data_extraction_rules.xml"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_statistics.png.flat",
@@ -40,12 +40,12 @@
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\ic_emotion_happy.png"
     },
     {
-        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\layout_item_list_day.xml.flat",
-        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\item_list_day.xml"
-    },
-    {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\layout_item_list_day.xml.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\item_list_day.xml"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_logo.xml.flat",
@@ -62,10 +62,6 @@
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_none_select_day.xml.flat",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\none_select_day.xml"
-    },
-    {
-        "merged": "com.example.moodo.app-debug-34:/drawable_kakao_login_medium_wide.png.flat",
-        "source": "com.example.moodo.app-main-36:/drawable/kakao_login_medium_wide.png"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\mipmap-xhdpi_ic_launcher.webp.flat",
@@ -100,12 +96,12 @@
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\ic_weather_sun.png"
     },
     {
-        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_td_delete.png.flat",
-        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\td_delete.png"
-    },
-    {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\layout_item_calendar_tdlist.xml.flat",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\item_calendar_tdlist.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_td_delete.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\td_delete.png"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_ic_weather_snow.png.flat",
@@ -348,16 +344,16 @@
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\item_list_month.xml"
     },
     {
-        "merged": "com.example.moodo.app-debug-34:/layout_activity_main_sign_in.xml.flat",
-        "source": "com.example.moodo.app-main-36:/layout/activity_main_sign_in.xml"
-    },
-    {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\layout_activity_main_statis.xml.flat",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\activity_main_statis.xml"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_td_select_orange.png.flat",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\td_select_orange.png"
+    },
+    {
+        "merged": "com.example.moodo.app-debug-34:/layout_activity_main_my_page.xml.flat",
+        "source": "com.example.moodo.app-main-36:/layout/activity_main_my_page.xml"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\font_font.xml.flat",
@@ -386,6 +382,10 @@
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\layout_item_todo_list.xml.flat",
         "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\layout\\item_todo_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_kakao_login_medium_wide.png.flat",
+        "source": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-main-36:\\drawable\\kakao_login_medium_wide.png"
     },
     {
         "merged": "C:\\Users\\it\\.gradle\\daemon\\8.7\\com.example.moodo.app-debug-34:\\drawable_td_has.png.flat",

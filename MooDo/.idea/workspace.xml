@@ -25,6 +25,11 @@
           <theme>@style/Theme.MooDo</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_my_page.xml">
+        <config>
+          <theme>@style/Theme.MooDo</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_sign_in.xml">
         <config>
           <theme>@style/Theme.MooDo</theme>
@@ -32,6 +37,7 @@
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_sign_up.xml">
         <config>
+          <state>Portrait</state>
           <theme>@style/Theme.MooDo</theme>
         </config>
       </layout>
@@ -77,8 +83,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f4ce436-3085-429b-9607-00933abddc60" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodo/GlobalApplication.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/kakao_login_medium_wide.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_my_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/md5-checksums.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" />
@@ -124,6 +130,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/MooDo.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_9_1_aar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_ktx_1_9_1_aar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_experimental_1_4_0_aar.xml" beforeDir="false" />
@@ -964,6 +971,8 @@
       <change beforePath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/example/moodo/todolist/MainActivity_ToDo$onCreate$activityInsert$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/example/moodo/todolist/MainActivity_ToDo$onCreate$activityInsert$1$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/example/moodo/todolist/MainActivity_ToDo.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/example/moodo/todolist/MainActivity_ToDo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/example/moodo/todolist/MainActivity_ToDo_Write.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/kotlin-classes/debug/com/example/moodo/todolist/MainActivity_ToDo_Write.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/moodo/sign/MainActivity_SignUp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moodo/sign/MainActivity_SignUp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_sign_up.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" />
@@ -976,7 +985,6 @@
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moodo_Spring/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moodo_Spring/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moodo_Spring/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/controller/MoodoTodoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/controller/MoodoTodoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/controller/MoodoUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/controller/MoodoUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/model/MooDoUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/model/MooDoUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/repository/TodoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Moodo_Spring/src/main/java/bitcfull/moodo_spring/repository/TodoRepository.java" afterDir="false" />
@@ -1072,7 +1080,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "cy",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/it/Documents/MooDo_Team3/MooDo",
+    "last_opened_file_path": "C:/Users/it/Documents/MooDo_Team3/MooDo/app/src/main/res/layout",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   },
   "keyToStringList": {
@@ -1083,6 +1091,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\res\layout" />
       <recent name="C:\fullstack405\MooDo_Team3\MooDo\app\src\main\res\font" />
       <recent name="C:\fullstack405\MooDo_Team3\MooDo\app\src\main\res\drawable" />
     </key>
@@ -1165,6 +1174,72 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainActivity_SignUp" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
+      <module name="MooDo.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="specific_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="com.example.moodo.sign.MainActivity_SignUp" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="MooDo.app.main" />
       <option name="DEPLOY" value="true" />
@@ -1233,6 +1308,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.MainActivity_SignUp" />
         <item itemvalue="Android App.MainActivity_SignIn" />
       </list>
     </recent_temporary>
