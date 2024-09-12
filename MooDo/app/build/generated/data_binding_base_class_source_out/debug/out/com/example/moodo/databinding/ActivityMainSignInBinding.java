@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +29,9 @@ public final class ActivityMainSignInBinding implements ViewBinding {
   public final ImageView btnClose;
 
   @NonNull
+  public final ImageButton btnKakaoSignIn;
+
+  @NonNull
   public final Button btnSignIn;
 
   @NonNull
@@ -43,7 +47,7 @@ public final class ActivityMainSignInBinding implements ViewBinding {
   public final LinearLayout linearLayout;
 
   @NonNull
-  public final ImageView logo;
+  public final LinearLayout linearLayout4;
 
   @NonNull
   public final ConstraintLayout main;
@@ -64,19 +68,21 @@ public final class ActivityMainSignInBinding implements ViewBinding {
   public final TextView title01;
 
   private ActivityMainSignInBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView btnClose,
-      @NonNull Button btnSignIn, @NonNull Button btnSignUp, @NonNull TextInputEditText edtId,
-      @NonNull TextInputEditText edtPw, @NonNull LinearLayout linearLayout, @NonNull ImageView logo,
+      @NonNull ImageButton btnKakaoSignIn, @NonNull Button btnSignIn, @NonNull Button btnSignUp,
+      @NonNull TextInputEditText edtId, @NonNull TextInputEditText edtPw,
+      @NonNull LinearLayout linearLayout, @NonNull LinearLayout linearLayout4,
       @NonNull ConstraintLayout main, @NonNull TextInputLayout textInputLayout,
       @NonNull TextInputLayout textInputLayout2, @NonNull TextView textView,
       @NonNull TextView textView2, @NonNull TextView title01) {
     this.rootView = rootView;
     this.btnClose = btnClose;
+    this.btnKakaoSignIn = btnKakaoSignIn;
     this.btnSignIn = btnSignIn;
     this.btnSignUp = btnSignUp;
     this.edtId = edtId;
     this.edtPw = edtPw;
     this.linearLayout = linearLayout;
-    this.logo = logo;
+    this.linearLayout4 = linearLayout4;
     this.main = main;
     this.textInputLayout = textInputLayout;
     this.textInputLayout2 = textInputLayout2;
@@ -118,6 +124,12 @@ public final class ActivityMainSignInBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnKakaoSignIn;
+      ImageButton btnKakaoSignIn = ViewBindings.findChildViewById(rootView, id);
+      if (btnKakaoSignIn == null) {
+        break missingId;
+      }
+
       id = R.id.btnSignIn;
       Button btnSignIn = ViewBindings.findChildViewById(rootView, id);
       if (btnSignIn == null) {
@@ -148,9 +160,9 @@ public final class ActivityMainSignInBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.logo;
-      ImageView logo = ViewBindings.findChildViewById(rootView, id);
-      if (logo == null) {
+      id = R.id.linearLayout4;
+      LinearLayout linearLayout4 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout4 == null) {
         break missingId;
       }
 
@@ -186,9 +198,9 @@ public final class ActivityMainSignInBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainSignInBinding((ConstraintLayout) rootView, btnClose, btnSignIn,
-          btnSignUp, edtId, edtPw, linearLayout, logo, main, textInputLayout, textInputLayout2,
-          textView, textView2, title01);
+      return new ActivityMainSignInBinding((ConstraintLayout) rootView, btnClose, btnKakaoSignIn,
+          btnSignIn, btnSignUp, edtId, edtPw, linearLayout, linearLayout4, main, textInputLayout,
+          textInputLayout2, textView, textView2, title01);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

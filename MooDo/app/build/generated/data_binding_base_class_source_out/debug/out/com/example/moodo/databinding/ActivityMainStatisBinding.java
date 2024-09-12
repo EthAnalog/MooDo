@@ -32,7 +32,7 @@ public final class ActivityMainStatisBinding implements ViewBinding {
   public final TextView completeTodo;
 
   @NonNull
-  public final LinearLayout linearLayout4;
+  public final LinearLayout linearLayout3;
 
   @NonNull
   public final ImageView logo;
@@ -63,7 +63,7 @@ public final class ActivityMainStatisBinding implements ViewBinding {
 
   private ActivityMainStatisBinding(@NonNull ConstraintLayout rootView, @NonNull TextView allTodo,
       @NonNull ImageView btnClose, @NonNull TextView completeTodo,
-      @NonNull LinearLayout linearLayout4, @NonNull ImageView logo, @NonNull ConstraintLayout main,
+      @NonNull LinearLayout linearLayout3, @NonNull ImageView logo, @NonNull ConstraintLayout main,
       @NonNull LinearLayout moodColorLayout, @NonNull RecyclerView recyclerView,
       @NonNull TextView tdListTxt, @NonNull LinearLayout topInfo, @NonNull ImageView tvMoodMax,
       @NonNull TextView txtEmotion, @NonNull TextView userName) {
@@ -71,7 +71,7 @@ public final class ActivityMainStatisBinding implements ViewBinding {
     this.allTodo = allTodo;
     this.btnClose = btnClose;
     this.completeTodo = completeTodo;
-    this.linearLayout4 = linearLayout4;
+    this.linearLayout3 = linearLayout3;
     this.logo = logo;
     this.main = main;
     this.moodColorLayout = moodColorLayout;
@@ -128,9 +128,9 @@ public final class ActivityMainStatisBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.linearLayout4;
-      LinearLayout linearLayout4 = ViewBindings.findChildViewById(rootView, id);
-      if (linearLayout4 == null) {
+      id = R.id.linearLayout3;
+      LinearLayout linearLayout3 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout3 == null) {
         break missingId;
       }
 
@@ -185,7 +185,7 @@ public final class ActivityMainStatisBinding implements ViewBinding {
       }
 
       return new ActivityMainStatisBinding((ConstraintLayout) rootView, allTodo, btnClose,
-          completeTodo, linearLayout4, logo, main, moodColorLayout, recyclerView, tdListTxt,
+          completeTodo, linearLayout3, logo, main, moodColorLayout, recyclerView, tdListTxt,
           topInfo, tvMoodMax, txtEmotion, userName);
     }
     String missingId = rootView.getResources().getResourceName(id);

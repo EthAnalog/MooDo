@@ -61,6 +61,12 @@ public final class ActivityMainModeWriteBinding implements ViewBinding {
   public final TextView emotionTitle;
 
   @NonNull
+  public final LinearLayout linearLayout3;
+
+  @NonNull
+  public final LinearLayout linearLayout6;
+
+  @NonNull
   public final ImageView logo;
 
   @NonNull
@@ -83,7 +89,8 @@ public final class ActivityMainModeWriteBinding implements ViewBinding {
       @NonNull ImageButton btnMood3, @NonNull ImageButton btnMood4, @NonNull ImageButton btnMood5,
       @NonNull Button btnSave, @NonNull ImageButton btnWeather1, @NonNull ImageButton btnWeather2,
       @NonNull ImageButton btnWeather3, @NonNull ImageButton btnWeather4,
-      @NonNull TextView emotionTitle, @NonNull ImageView logo, @NonNull ConstraintLayout main,
+      @NonNull TextView emotionTitle, @NonNull LinearLayout linearLayout3,
+      @NonNull LinearLayout linearLayout6, @NonNull ImageView logo, @NonNull ConstraintLayout main,
       @NonNull TextView selectDay, @NonNull ImageView title, @NonNull LinearLayout wrap,
       @NonNull EditText writeDaily) {
     this.rootView = rootView;
@@ -99,6 +106,8 @@ public final class ActivityMainModeWriteBinding implements ViewBinding {
     this.btnWeather3 = btnWeather3;
     this.btnWeather4 = btnWeather4;
     this.emotionTitle = emotionTitle;
+    this.linearLayout3 = linearLayout3;
+    this.linearLayout6 = linearLayout6;
     this.logo = logo;
     this.main = main;
     this.selectDay = selectDay;
@@ -206,6 +215,18 @@ public final class ActivityMainModeWriteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.linearLayout3;
+      LinearLayout linearLayout3 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout3 == null) {
+        break missingId;
+      }
+
+      id = R.id.linearLayout6;
+      LinearLayout linearLayout6 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout6 == null) {
+        break missingId;
+      }
+
       id = R.id.logo;
       ImageView logo = ViewBindings.findChildViewById(rootView, id);
       if (logo == null) {
@@ -240,7 +261,8 @@ public final class ActivityMainModeWriteBinding implements ViewBinding {
 
       return new ActivityMainModeWriteBinding((ConstraintLayout) rootView, btnClose, btnMood1,
           btnMood2, btnMood3, btnMood4, btnMood5, btnSave, btnWeather1, btnWeather2, btnWeather3,
-          btnWeather4, emotionTitle, logo, main, selectDay, title, wrap, writeDaily);
+          btnWeather4, emotionTitle, linearLayout3, linearLayout6, logo, main, selectDay, title,
+          wrap, writeDaily);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

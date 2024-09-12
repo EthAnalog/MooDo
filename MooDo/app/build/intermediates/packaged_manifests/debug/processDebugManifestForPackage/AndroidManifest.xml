@@ -10,6 +10,21 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <queries>
+        <package android:name="com.kakao.talk" />
+        <package android:name="com.kakao.talk.alpha" />
+        <package android:name="com.kakao.talk.sandbox" />
+        <package android:name="com.kakao.onetalk" />
+
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
     <permission
         android:name="com.example.moodo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -17,6 +32,7 @@
     <uses-permission android:name="com.example.moodo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
+        android:name="com.example.moodo.GlobalApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -30,16 +46,6 @@
         android:testOnly="true"
         android:theme="@style/Theme.MooDo"
         android:usesCleartextTraffic="true" >
-        <activity
-            android:name="com.example.moodo.MainActivityHeader"
-            android:exported="false"
-            android:theme="@style/Theme.MooDo" />
-        <activity
-            android:name="com.example.moodo.DialogStyle"
-            android:exported="false" />
-        <activity
-            android:name="com.example.moodo.todolist.MainActivity_ToDo_Update"
-            android:exported="false" />
         <activity
             android:name="com.example.moodo.todolist.MainActivity_ToDo_Write"
             android:exported="false" />
@@ -56,9 +62,6 @@
             android:name="com.example.moodo.sign.MainActivity_SignIn"
             android:exported="false" />
         <activity
-            android:name="com.example.moodo.MainActivity_Calendar"
-            android:exported="false" />
-        <activity
             android:name="com.example.moodo.mode.MainActivity_MooDo"
             android:exported="false" />
         <activity
@@ -73,6 +76,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:theme="@style/TransparentCompat" />
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/TransparentCompat" />
+        <activity
+            android:name="com.kakao.sdk.auth.AppsHandlerActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/TransparentCompat" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -88,13 +104,6 @@
                 android:name="androidx.profileinstaller.ProfileInstallerInitializer"
                 android:value="androidx.startup" />
         </provider>
-
-        <uses-library
-            android:name="androidx.window.extensions"
-            android:required="false" />
-        <uses-library
-            android:name="androidx.window.sidecar"
-            android:required="false" />
 
         <receiver
             android:name="androidx.profileinstaller.ProfileInstallReceiver"

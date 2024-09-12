@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.moodo.app-mergeDebugResources-45:/values-v23/values-v23.xml",
+            "outputFile": "com.example.moodo.app-mergeDebugResources-32:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\8d58e259a4e501801cade6eadf25a40b\\transformed\\material-1.12.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\f940b623479780b9386fa91f263b8783\\transformed\\material-1.12.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,5,9,13,16,19,22,25,28,32",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -14,16 +14,16 @@
                         "endOffsets": "266,408,569,779,986,1193,1396,1598,1863,2136"
                     },
                     "to": {
-                        "startLines": "59,62,66,70,73,76,79,82,85,89",
+                        "startLines": "53,56,60,64,67,70,73,76,79,83",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3697,3913,4055,4216,4426,4633,4840,5043,5245,5510",
-                        "endLines": "61,65,69,72,75,78,81,84,88,92",
+                        "startOffsets": "3382,3598,3740,3901,4111,4318,4525,4728,4930,5195",
+                        "endLines": "55,59,63,66,69,72,75,78,82,86",
                         "endColumns": "10,10,10,10,10,10,10,10,10,10",
-                        "endOffsets": "3908,4050,4211,4421,4628,4835,5038,5240,5505,5778"
+                        "endOffsets": "3593,3735,3896,4106,4313,4520,4723,4925,5190,5463"
                     }
                 },
                 {
-                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\1d1d977fa1434591beec746247e21dfc\\transformed\\appcompat-1.7.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\d00202f3cfe7450f3a385b369ff1bcff\\transformed\\appcompat-1.7.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -34,7 +34,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\17fb577994e37ea8feeeb67519f3be1b\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\1ff906547f89bd960ec25be24a21dbb6\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -50,25 +50,6 @@
                         "endLines": "52",
                         "endColumns": "12",
                         "endOffsets": "3377"
-                    }
-                },
-                {
-                    "source": "C:\\fullstack405\\MooDo_Team3\\MooDo\\app\\src\\main\\res\\values-v23\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "64",
-                        "endLines": "7",
-                        "endColumns": "12",
-                        "endOffsets": "424"
-                    },
-                    "to": {
-                        "startLines": "53",
-                        "startColumns": "4",
-                        "startOffsets": "3382",
-                        "endLines": "58",
-                        "endColumns": "12",
-                        "endOffsets": "3692"
                     }
                 }
             ]

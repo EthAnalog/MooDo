@@ -54,13 +54,7 @@ public final class ActivityMainToDoBinding implements ViewBinding {
   public final LinearLayout linearLayout5;
 
   @NonNull
-  public final ImageView logo;
-
-  @NonNull
   public final ConstraintLayout main;
-
-  @NonNull
-  public final RecyclerView selectDay;
 
   @NonNull
   public final RecyclerView tdListRecycler;
@@ -70,8 +64,8 @@ public final class ActivityMainToDoBinding implements ViewBinding {
       @NonNull FloatingActionButton btnComplete, @NonNull FloatingActionButton btnDelete,
       @NonNull FloatingActionButton btnUpdate, @NonNull FloatingActionButton btnWrite,
       @NonNull Button completeList, @NonNull LinearLayout linearLayout2,
-      @NonNull LinearLayout linearLayout5, @NonNull ImageView logo, @NonNull ConstraintLayout main,
-      @NonNull RecyclerView selectDay, @NonNull RecyclerView tdListRecycler) {
+      @NonNull LinearLayout linearLayout5, @NonNull ConstraintLayout main,
+      @NonNull RecyclerView tdListRecycler) {
     this.rootView = rootView;
     this.activeList = activeList;
     this.allList = allList;
@@ -83,9 +77,7 @@ public final class ActivityMainToDoBinding implements ViewBinding {
     this.completeList = completeList;
     this.linearLayout2 = linearLayout2;
     this.linearLayout5 = linearLayout5;
-    this.logo = logo;
     this.main = main;
-    this.selectDay = selectDay;
     this.tdListRecycler = tdListRecycler;
   }
 
@@ -176,19 +168,7 @@ public final class ActivityMainToDoBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.logo;
-      ImageView logo = ViewBindings.findChildViewById(rootView, id);
-      if (logo == null) {
-        break missingId;
-      }
-
       ConstraintLayout main = (ConstraintLayout) rootView;
-
-      id = R.id.selectDay;
-      RecyclerView selectDay = ViewBindings.findChildViewById(rootView, id);
-      if (selectDay == null) {
-        break missingId;
-      }
 
       id = R.id.tdListRecycler;
       RecyclerView tdListRecycler = ViewBindings.findChildViewById(rootView, id);
@@ -198,7 +178,7 @@ public final class ActivityMainToDoBinding implements ViewBinding {
 
       return new ActivityMainToDoBinding((ConstraintLayout) rootView, activeList, allList, btnClose,
           btnComplete, btnDelete, btnUpdate, btnWrite, completeList, linearLayout2, linearLayout5,
-          logo, main, selectDay, tdListRecycler);
+          main, tdListRecycler);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

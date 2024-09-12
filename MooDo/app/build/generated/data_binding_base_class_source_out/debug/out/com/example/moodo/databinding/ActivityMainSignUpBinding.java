@@ -57,9 +57,6 @@ public final class ActivityMainSignUpBinding implements ViewBinding {
   public final TextInputEditText edtPwCheck;
 
   @NonNull
-  public final ImageView logo;
-
-  @NonNull
   public final ConstraintLayout main;
 
   @NonNull
@@ -85,10 +82,10 @@ public final class ActivityMainSignUpBinding implements ViewBinding {
       @NonNull TextView checkPw, @NonNull TextView checkPwSame, @NonNull TextInputEditText edtAge,
       @NonNull TextInputEditText edtId, @NonNull TextInputEditText edtName,
       @NonNull TextInputEditText edtPw, @NonNull TextInputEditText edtPwCheck,
-      @NonNull ImageView logo, @NonNull ConstraintLayout main,
-      @NonNull TextInputLayout textInputLayout1, @NonNull TextInputLayout textInputLayout2,
-      @NonNull TextInputLayout textInputLayout3, @NonNull TextInputLayout textInputLayout4,
-      @NonNull TextInputLayout textInputLayout5, @NonNull TextView title02) {
+      @NonNull ConstraintLayout main, @NonNull TextInputLayout textInputLayout1,
+      @NonNull TextInputLayout textInputLayout2, @NonNull TextInputLayout textInputLayout3,
+      @NonNull TextInputLayout textInputLayout4, @NonNull TextInputLayout textInputLayout5,
+      @NonNull TextView title02) {
     this.rootView = rootView;
     this.btnClose = btnClose;
     this.btnSignUp = btnSignUp;
@@ -101,7 +98,6 @@ public final class ActivityMainSignUpBinding implements ViewBinding {
     this.edtName = edtName;
     this.edtPw = edtPw;
     this.edtPwCheck = edtPwCheck;
-    this.logo = logo;
     this.main = main;
     this.textInputLayout1 = textInputLayout1;
     this.textInputLayout2 = textInputLayout2;
@@ -204,12 +200,6 @@ public final class ActivityMainSignUpBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.logo;
-      ImageView logo = ViewBindings.findChildViewById(rootView, id);
-      if (logo == null) {
-        break missingId;
-      }
-
       ConstraintLayout main = (ConstraintLayout) rootView;
 
       id = R.id.textInputLayout1;
@@ -249,9 +239,9 @@ public final class ActivityMainSignUpBinding implements ViewBinding {
       }
 
       return new ActivityMainSignUpBinding((ConstraintLayout) rootView, btnClose, btnSignUp,
-          checkAge, checkId, checkPw, checkPwSame, edtAge, edtId, edtName, edtPw, edtPwCheck, logo,
-          main, textInputLayout1, textInputLayout2, textInputLayout3, textInputLayout4,
-          textInputLayout5, title02);
+          checkAge, checkId, checkPw, checkPwSame, edtAge, edtId, edtName, edtPw, edtPwCheck, main,
+          textInputLayout1, textInputLayout2, textInputLayout3, textInputLayout4, textInputLayout5,
+          title02);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

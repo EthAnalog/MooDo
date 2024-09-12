@@ -67,7 +67,11 @@ public class MoodoTodoService {
         return todoRepository.save(updateTodo);
     }
 
-    // 특정 할 일 조회
+    // 사용자가 입력한 키워드로 할 일 조회
+    public List<MooDoTodo> searchTodos(String userId, String keyword){
+        return todoRepository.searchTodosByKeyword(userId, keyword);
+    }
+
     public Optional<MooDoTodo> findById(Long id) {
         return todoRepository.findById(id);
     }
@@ -111,18 +115,17 @@ public class MoodoTodoService {
     }
 
     // 한 달 동안 기록된 계획 개수
-    public int getTodoCountForMonth(String userId, String startDate, String endDate) throws ParseException {
-        String startOfDayDate = startDate + " 00:00:00";
-        String endOfDayDate = endDate + " 23:59:59";
+    public int getTodoCountForMonth(String userId, String startDay, String endDay) throws ParseException {
+        String startOfDayDate = startDay + " 00:00:00";
+        String endOfDayDate = endDay + " 23:59:59";
 
         return todoRepository.countByUserIdAndStartDateBetween(userId, startOfDayDate, endOfDayDate);
     }
 
     // 한 달 동안 완료된 계획(tdCheck가 'Y') 개수
-    public int getCompletedTodoCountForMonth(String userId, String startDate, String endDate) throws ParseException {
-        // 날짜를 문자열로 포맷팅
-        String startOfDayDate = startDate + " 00:00:00";
-        String endOfDayDate = endDate + " 23:59:59";
+    public int getCompletedTodoCountForMonth(String userId, String startDay, String endDay) throws ParseException {
+        String startOfDayDate = startDay + " 00:00:00";
+        String endOfDayDate = endDay + " 23:59:59";
 
         return todoRepository.countByUserIdAndStartDateBetweenAndTdCheck(userId, startOfDayDate, endOfDayDate, "Y");
     }

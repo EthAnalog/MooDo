@@ -9,209 +9,229 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:5:5-67
-11-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:5:22-64
+11-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:5:22-64
 12
-13    <permission
-13-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\1f3f37ae123ff2a7354a063e03538a8a\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-14        android:name="com.example.moodo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-14-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\1f3f37ae123ff2a7354a063e03538a8a\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-15        android:protectionLevel="signature" />
-15-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\1f3f37ae123ff2a7354a063e03538a8a\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
-16
-17    <uses-permission android:name="com.example.moodo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-17-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\1f3f37ae123ff2a7354a063e03538a8a\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-17-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\1f3f37ae123ff2a7354a063e03538a8a\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+13    <queries>
+13-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:7:5-20:15
+14        <package android:name="com.kakao.talk" />
+14-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:8:9-50
+14-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:8:18-47
+15        <package android:name="com.kakao.talk.alpha" />
+15-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:9:9-56
+15-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:9:18-53
+16        <package android:name="com.kakao.talk.sandbox" />
+16-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:10:9-58
+16-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:10:18-55
+17        <package android:name="com.kakao.onetalk" />
+17-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:11:9-53
+17-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:11:18-50
 18
-19    <application
-19-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:7:5-61:19
-20        android:allowBackup="true"
-20-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:8:9-35
-21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\1f3f37ae123ff2a7354a063e03538a8a\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-22        android:dataExtractionRules="@xml/data_extraction_rules"
-22-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:9:9-65
-23        android:debuggable="true"
-24        android:extractNativeLibs="false"
-25        android:fullBackupContent="@xml/backup_rules"
-25-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:10:9-54
-26        android:icon="@mipmap/ic_launcher"
-26-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:11:9-43
-27        android:label="@string/app_name"
-27-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:12:9-41
-28        android:roundIcon="@mipmap/ic_launcher_round"
-28-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:13:9-54
-29        android:supportsRtl="true"
-29-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:14:9-35
-30        android:testOnly="true"
-31        android:theme="@style/Theme.MooDo"
-31-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:15:9-43
-32        android:usesCleartextTraffic="true" >
-32-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:16:9-44
-33        <activity
-33-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:18:9-21:50
-34            android:name="com.example.moodo.MainActivityHeader"
-34-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:19:13-47
-35            android:exported="false"
-35-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:20:13-37
-36            android:theme="@style/Theme.MooDo" />
-36-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:21:13-47
-37        <activity
-37-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:22:9-24:40
-38            android:name="com.example.moodo.DialogStyle"
-38-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:23:13-40
-39            android:exported="false" />
-39-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:24:13-37
-40        <activity
-40-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:25:9-27:40
-41            android:name="com.example.moodo.todolist.MainActivity_ToDo_Update"
-41-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:26:13-62
-42            android:exported="false" />
-42-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:27:13-37
-43        <activity
-43-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:28:9-30:40
-44            android:name="com.example.moodo.todolist.MainActivity_ToDo_Write"
-44-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:29:13-61
-45            android:exported="false" />
-45-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:30:13-37
-46        <activity
-46-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:31:9-33:40
-47            android:name="com.example.moodo.MainActivity_Statis"
-47-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:32:13-48
-48            android:exported="false" />
-48-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:33:13-37
+19        <intent>
+19-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:13:9-19:18
+20            <action android:name="android.intent.action.VIEW" />
+20-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:14:13-65
+20-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:14:21-62
+21
+22            <category android:name="android.intent.category.BROWSABLE" />
+22-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:16:13-74
+22-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:16:23-71
+23
+24            <data android:scheme="https" />
+24-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:18:13-44
+24-->[com.kakao.sdk:v2-common:2.20.5] C:\Users\it\.gradle\caches\transforms-4\4e9e86a4f70650c7ac7b4b5f319aaa79\transformed\v2-common-2.20.5\AndroidManifest.xml:18:19-41
+25        </intent>
+26    </queries>
+27
+28    <permission
+28-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\4a0a0496eb9da8d20327d4ad817dc2e0\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+29        android:name="com.example.moodo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\4a0a0496eb9da8d20327d4ad817dc2e0\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\4a0a0496eb9da8d20327d4ad817dc2e0\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.example.moodo.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\4a0a0496eb9da8d20327d4ad817dc2e0\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\4a0a0496eb9da8d20327d4ad817dc2e0\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+33
+34    <application
+34-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:7:5-49:19
+35        android:name="com.example.moodo.GlobalApplication"
+35-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:9:9-42
+36        android:allowBackup="true"
+36-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:8:9-35
+37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+37-->[androidx.core:core:1.13.1] C:\Users\it\.gradle\caches\transforms-4\4a0a0496eb9da8d20327d4ad817dc2e0\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+38        android:dataExtractionRules="@xml/data_extraction_rules"
+38-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:10:9-65
+39        android:debuggable="true"
+40        android:extractNativeLibs="false"
+41        android:fullBackupContent="@xml/backup_rules"
+41-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:11:9-54
+42        android:icon="@mipmap/ic_launcher"
+42-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:12:9-43
+43        android:label="@string/app_name"
+43-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:13:9-41
+44        android:roundIcon="@mipmap/ic_launcher_round"
+44-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:14:9-54
+45        android:supportsRtl="true"
+45-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:15:9-35
+46        android:testOnly="true"
+47        android:theme="@style/Theme.MooDo"
+47-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:16:9-43
+48        android:usesCleartextTraffic="true" >
+48-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:17:9-44
 49        <activity
-49-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:34:9-36:40
-50            android:name="com.example.moodo.mode.MainActivity_ModeWrite"
-50-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:35:13-56
+49-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:19:9-21:40
+50            android:name="com.example.moodo.todolist.MainActivity_ToDo_Write"
+50-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:20:13-61
 51            android:exported="false" />
-51-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:36:13-37
+51-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:21:13-37
 52        <activity
-52-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:37:9-39:40
-53            android:name="com.example.moodo.todolist.MainActivity_ToDo"
-53-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:38:13-55
+52-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:22:9-24:40
+53            android:name="com.example.moodo.MainActivity_Statis"
+53-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:23:13-48
 54            android:exported="false" />
-54-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:39:13-37
+54-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:24:13-37
 55        <activity
-55-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:40:9-42:40
-56            android:name="com.example.moodo.sign.MainActivity_SignIn"
-56-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:41:13-53
+55-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:25:9-27:40
+56            android:name="com.example.moodo.mode.MainActivity_ModeWrite"
+56-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:26:13-56
 57            android:exported="false" />
-57-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:42:13-37
+57-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:27:13-37
 58        <activity
-58-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:43:9-45:40
-59            android:name="com.example.moodo.MainActivity_Calendar"
-59-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:44:13-50
+58-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:28:9-30:40
+59            android:name="com.example.moodo.todolist.MainActivity_ToDo"
+59-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:29:13-55
 60            android:exported="false" />
-60-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:45:13-37
+60-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:30:13-37
 61        <activity
-61-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:46:9-48:40
-62            android:name="com.example.moodo.mode.MainActivity_MooDo"
-62-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:47:13-52
+61-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:31:9-33:40
+62            android:name="com.example.moodo.sign.MainActivity_SignIn"
+62-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:32:13-53
 63            android:exported="false" />
-63-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:48:13-37
+63-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:33:13-37
 64        <activity
-64-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:49:9-51:40
-65            android:name="com.example.moodo.sign.MainActivity_SignUp"
-65-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:50:13-53
+64-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:34:9-36:40
+65            android:name="com.example.moodo.mode.MainActivity_MooDo"
+65-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:35:13-52
 66            android:exported="false" />
-66-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:51:13-37
+66-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:36:13-37
 67        <activity
-67-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:52:9-60:20
-68            android:name="com.example.moodo.MainActivity"
-68-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:53:13-41
-69            android:exported="true" >
-69-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:54:13-36
-70            <intent-filter>
-70-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:55:13-59:29
-71                <action android:name="android.intent.action.MAIN" />
-71-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:56:17-69
-71-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:56:25-66
-72
-73                <category android:name="android.intent.category.LAUNCHER" />
-73-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:58:17-77
-73-->C:\fullstack405\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:58:27-74
-74            </intent-filter>
-75        </activity>
-76
-77        <provider
-77-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\930fbfeb78f7b7488548355af632448c\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-78            android:name="androidx.startup.InitializationProvider"
-78-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\930fbfeb78f7b7488548355af632448c\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-79            android:authorities="com.example.moodo.androidx-startup"
-79-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\930fbfeb78f7b7488548355af632448c\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-80            android:exported="false" >
-80-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\930fbfeb78f7b7488548355af632448c\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-81            <meta-data
-81-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\930fbfeb78f7b7488548355af632448c\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-82                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-82-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\930fbfeb78f7b7488548355af632448c\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-83                android:value="androidx.startup" />
-83-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\930fbfeb78f7b7488548355af632448c\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-84            <meta-data
-84-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\it\.gradle\caches\transforms-4\ea12394e7a614bda7dc037d89d669c77\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-85                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-85-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\it\.gradle\caches\transforms-4\ea12394e7a614bda7dc037d89d669c77\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-86                android:value="androidx.startup" />
-86-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\it\.gradle\caches\transforms-4\ea12394e7a614bda7dc037d89d669c77\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
-87            <meta-data
-87-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-88                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-88-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-89                android:value="androidx.startup" />
-89-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-90        </provider>
-91
-92        <uses-library
-92-->[androidx.window:window:1.0.0] C:\Users\it\.gradle\caches\transforms-4\866162d35bf61581065abdcfd8355e60\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
-93            android:name="androidx.window.extensions"
-93-->[androidx.window:window:1.0.0] C:\Users\it\.gradle\caches\transforms-4\866162d35bf61581065abdcfd8355e60\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
-94            android:required="false" />
-94-->[androidx.window:window:1.0.0] C:\Users\it\.gradle\caches\transforms-4\866162d35bf61581065abdcfd8355e60\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
-95        <uses-library
-95-->[androidx.window:window:1.0.0] C:\Users\it\.gradle\caches\transforms-4\866162d35bf61581065abdcfd8355e60\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
-96            android:name="androidx.window.sidecar"
-96-->[androidx.window:window:1.0.0] C:\Users\it\.gradle\caches\transforms-4\866162d35bf61581065abdcfd8355e60\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
-97            android:required="false" />
-97-->[androidx.window:window:1.0.0] C:\Users\it\.gradle\caches\transforms-4\866162d35bf61581065abdcfd8355e60\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
-98
-99        <receiver
-99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-100            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-101            android:directBootAware="false"
-101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-102            android:enabled="true"
-102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-103            android:exported="true"
-103-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-104            android:permission="android.permission.DUMP" >
-104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-105            <intent-filter>
-105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-106                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-106-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-106-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-107            </intent-filter>
-108            <intent-filter>
-108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-109                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-110            </intent-filter>
-111            <intent-filter>
-111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-112                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-113            </intent-filter>
+67-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:37:9-39:40
+68            android:name="com.example.moodo.sign.MainActivity_SignUp"
+68-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:38:13-53
+69            android:exported="false" />
+69-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:39:13-37
+70        <activity
+70-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:40:9-48:20
+71            android:name="com.example.moodo.MainActivity"
+71-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:41:13-41
+72            android:exported="true" >
+72-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:42:13-36
+73            <intent-filter>
+73-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:43:13-47:29
+74                <action android:name="android.intent.action.MAIN" />
+74-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:44:17-69
+74-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:44:25-66
+75
+76                <category android:name="android.intent.category.LAUNCHER" />
+76-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:46:17-77
+76-->C:\Users\it\Documents\MooDo_Team3\MooDo\app\src\main\AndroidManifest.xml:46:27-74
+77            </intent-filter>
+78        </activity>
+79        <activity
+79-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:8:9-12:56
+80            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
+80-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:9:13-67
+81            android:configChanges="orientation|screenSize|keyboardHidden"
+81-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:10:13-74
+82            android:exported="false"
+82-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:11:13-37
+83            android:theme="@style/TransparentCompat" />
+83-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:12:13-53
+84        <activity
+84-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:13:9-16:56
+85            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+85-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:14:13-70
+86            android:launchMode="singleTask"
+86-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:15:13-44
+87            android:theme="@style/TransparentCompat" />
+87-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:16:13-53
+88        <activity
+88-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:17:9-20:56
+89            android:name="com.kakao.sdk.auth.AppsHandlerActivity"
+89-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:18:13-66
+90            android:launchMode="singleTask"
+90-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:19:13-44
+91            android:theme="@style/TransparentCompat" />
+91-->[com.kakao.sdk:v2-auth:2.20.5] C:\Users\it\.gradle\caches\transforms-4\8a7dac361fcd77e0c9a5774c6a5fa0a2\transformed\v2-auth-2.20.5\AndroidManifest.xml:20:13-53
+92
+93        <provider
+93-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\f1a28ab708dd837c76508698dee4ef10\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+94            android:name="androidx.startup.InitializationProvider"
+94-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\f1a28ab708dd837c76508698dee4ef10\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+95            android:authorities="com.example.moodo.androidx-startup"
+95-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\f1a28ab708dd837c76508698dee4ef10\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+96            android:exported="false" >
+96-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\f1a28ab708dd837c76508698dee4ef10\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+97            <meta-data
+97-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\f1a28ab708dd837c76508698dee4ef10\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+98                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+98-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\f1a28ab708dd837c76508698dee4ef10\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+99                android:value="androidx.startup" />
+99-->[androidx.emoji2:emoji2:1.3.0] C:\Users\it\.gradle\caches\transforms-4\f1a28ab708dd837c76508698dee4ef10\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+100            <meta-data
+100-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\it\.gradle\caches\transforms-4\d8842ed2a38c614183b460a54c0a4a7b\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+101                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+101-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\it\.gradle\caches\transforms-4\d8842ed2a38c614183b460a54c0a4a7b\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+102                android:value="androidx.startup" />
+102-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\it\.gradle\caches\transforms-4\d8842ed2a38c614183b460a54c0a4a7b\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+103            <meta-data
+103-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+104                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+105                android:value="androidx.startup" />
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+106        </provider>
+107
+108        <receiver
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+109            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+110            android:directBootAware="false"
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+111            android:enabled="true"
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+112            android:exported="true"
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+113            android:permission="android.permission.DUMP" >
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
 114            <intent-filter>
-114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-115                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\6b553435b61558af5926bd1df84f4b57\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+115                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
 116            </intent-filter>
-117        </receiver>
-118    </application>
-119
-120</manifest>
+117            <intent-filter>
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+118                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+119            </intent-filter>
+120            <intent-filter>
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+121                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+122            </intent-filter>
+123            <intent-filter>
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+124                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\it\.gradle\caches\transforms-4\3a4145682080d95d437f2eea78296d51\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+125            </intent-filter>
+126        </receiver>
+127    </application>
+128
+129</manifest>

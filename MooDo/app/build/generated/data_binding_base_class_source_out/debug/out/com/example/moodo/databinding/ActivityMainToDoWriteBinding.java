@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,6 +31,21 @@ public final class ActivityMainToDoWriteBinding implements ViewBinding {
   public final Button btnSave;
 
   @NonNull
+  public final ImageButton colorBlue;
+
+  @NonNull
+  public final ImageButton colorGreen;
+
+  @NonNull
+  public final ImageButton colorOrange;
+
+  @NonNull
+  public final ImageButton colorRed;
+
+  @NonNull
+  public final ImageButton colorYellow;
+
+  @NonNull
   public final EditText edtToDo;
 
   @NonNull
@@ -39,10 +55,13 @@ public final class ActivityMainToDoWriteBinding implements ViewBinding {
   public final TextView endTime;
 
   @NonNull
-  public final LinearLayout linearLayout8;
+  public final LinearLayout header;
 
   @NonNull
-  public final ImageView logo;
+  public final LinearLayout linearLayout10;
+
+  @NonNull
+  public final LinearLayout linearLayout8;
 
   @NonNull
   public final ConstraintLayout main;
@@ -54,29 +73,34 @@ public final class ActivityMainToDoWriteBinding implements ViewBinding {
   public final TextView startTime;
 
   @NonNull
-  public final TextView textView;
-
-  @NonNull
-  public final TextView title;
+  public final TextView textView3;
 
   private ActivityMainToDoWriteBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView btnClose, @NonNull Button btnSave, @NonNull EditText edtToDo,
-      @NonNull TextView endDay, @NonNull TextView endTime, @NonNull LinearLayout linearLayout8,
-      @NonNull ImageView logo, @NonNull ConstraintLayout main, @NonNull TextView startDay,
-      @NonNull TextView startTime, @NonNull TextView textView, @NonNull TextView title) {
+      @NonNull ImageView btnClose, @NonNull Button btnSave, @NonNull ImageButton colorBlue,
+      @NonNull ImageButton colorGreen, @NonNull ImageButton colorOrange,
+      @NonNull ImageButton colorRed, @NonNull ImageButton colorYellow, @NonNull EditText edtToDo,
+      @NonNull TextView endDay, @NonNull TextView endTime, @NonNull LinearLayout header,
+      @NonNull LinearLayout linearLayout10, @NonNull LinearLayout linearLayout8,
+      @NonNull ConstraintLayout main, @NonNull TextView startDay, @NonNull TextView startTime,
+      @NonNull TextView textView3) {
     this.rootView = rootView;
     this.btnClose = btnClose;
     this.btnSave = btnSave;
+    this.colorBlue = colorBlue;
+    this.colorGreen = colorGreen;
+    this.colorOrange = colorOrange;
+    this.colorRed = colorRed;
+    this.colorYellow = colorYellow;
     this.edtToDo = edtToDo;
     this.endDay = endDay;
     this.endTime = endTime;
+    this.header = header;
+    this.linearLayout10 = linearLayout10;
     this.linearLayout8 = linearLayout8;
-    this.logo = logo;
     this.main = main;
     this.startDay = startDay;
     this.startTime = startTime;
-    this.textView = textView;
-    this.title = title;
+    this.textView3 = textView3;
   }
 
   @Override
@@ -118,6 +142,36 @@ public final class ActivityMainToDoWriteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.colorBlue;
+      ImageButton colorBlue = ViewBindings.findChildViewById(rootView, id);
+      if (colorBlue == null) {
+        break missingId;
+      }
+
+      id = R.id.colorGreen;
+      ImageButton colorGreen = ViewBindings.findChildViewById(rootView, id);
+      if (colorGreen == null) {
+        break missingId;
+      }
+
+      id = R.id.colorOrange;
+      ImageButton colorOrange = ViewBindings.findChildViewById(rootView, id);
+      if (colorOrange == null) {
+        break missingId;
+      }
+
+      id = R.id.colorRed;
+      ImageButton colorRed = ViewBindings.findChildViewById(rootView, id);
+      if (colorRed == null) {
+        break missingId;
+      }
+
+      id = R.id.colorYellow;
+      ImageButton colorYellow = ViewBindings.findChildViewById(rootView, id);
+      if (colorYellow == null) {
+        break missingId;
+      }
+
       id = R.id.edtToDo;
       EditText edtToDo = ViewBindings.findChildViewById(rootView, id);
       if (edtToDo == null) {
@@ -136,15 +190,21 @@ public final class ActivityMainToDoWriteBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.linearLayout8;
-      LinearLayout linearLayout8 = ViewBindings.findChildViewById(rootView, id);
-      if (linearLayout8 == null) {
+      id = R.id.header;
+      LinearLayout header = ViewBindings.findChildViewById(rootView, id);
+      if (header == null) {
         break missingId;
       }
 
-      id = R.id.logo;
-      ImageView logo = ViewBindings.findChildViewById(rootView, id);
-      if (logo == null) {
+      id = R.id.linearLayout10;
+      LinearLayout linearLayout10 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout10 == null) {
+        break missingId;
+      }
+
+      id = R.id.linearLayout8;
+      LinearLayout linearLayout8 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout8 == null) {
         break missingId;
       }
 
@@ -162,21 +222,15 @@ public final class ActivityMainToDoWriteBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView;
-      TextView textView = ViewBindings.findChildViewById(rootView, id);
-      if (textView == null) {
-        break missingId;
-      }
-
-      id = R.id.title;
-      TextView title = ViewBindings.findChildViewById(rootView, id);
-      if (title == null) {
+      id = R.id.textView3;
+      TextView textView3 = ViewBindings.findChildViewById(rootView, id);
+      if (textView3 == null) {
         break missingId;
       }
 
       return new ActivityMainToDoWriteBinding((ConstraintLayout) rootView, btnClose, btnSave,
-          edtToDo, endDay, endTime, linearLayout8, logo, main, startDay, startTime, textView,
-          title);
+          colorBlue, colorGreen, colorOrange, colorRed, colorYellow, edtToDo, endDay, endTime,
+          header, linearLayout10, linearLayout8, main, startDay, startTime, textView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

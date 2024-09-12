@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.moodo.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,6 +23,9 @@ import java.lang.String;
 public final class ActivityMainMooDoBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
+
+  @NonNull
+  public final FloatingActionButton btnWrite;
 
   @NonNull
   public final RecyclerView calendarCustom;
@@ -42,9 +46,6 @@ public final class ActivityMainMooDoBinding implements ViewBinding {
   public final TextView saveDate;
 
   @NonNull
-  public final TextView selectTxt;
-
-  @NonNull
   public final ImageButton statisBtn;
 
   @NonNull
@@ -54,18 +55,18 @@ public final class ActivityMainMooDoBinding implements ViewBinding {
   public final LinearLayout userMooDo;
 
   private ActivityMainMooDoBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView calendarCustom, @NonNull LinearLayout linearLayout,
-      @NonNull ImageView logo, @NonNull ConstraintLayout main, @NonNull ImageButton moodWriteBtn,
-      @NonNull TextView saveDate, @NonNull TextView selectTxt, @NonNull ImageButton statisBtn,
+      @NonNull FloatingActionButton btnWrite, @NonNull RecyclerView calendarCustom,
+      @NonNull LinearLayout linearLayout, @NonNull ImageView logo, @NonNull ConstraintLayout main,
+      @NonNull ImageButton moodWriteBtn, @NonNull TextView saveDate, @NonNull ImageButton statisBtn,
       @NonNull RecyclerView todoListLayout, @NonNull LinearLayout userMooDo) {
     this.rootView = rootView;
+    this.btnWrite = btnWrite;
     this.calendarCustom = calendarCustom;
     this.linearLayout = linearLayout;
     this.logo = logo;
     this.main = main;
     this.moodWriteBtn = moodWriteBtn;
     this.saveDate = saveDate;
-    this.selectTxt = selectTxt;
     this.statisBtn = statisBtn;
     this.todoListLayout = todoListLayout;
     this.userMooDo = userMooDo;
@@ -98,6 +99,12 @@ public final class ActivityMainMooDoBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnWrite;
+      FloatingActionButton btnWrite = ViewBindings.findChildViewById(rootView, id);
+      if (btnWrite == null) {
+        break missingId;
+      }
+
       id = R.id.calendarCustom;
       RecyclerView calendarCustom = ViewBindings.findChildViewById(rootView, id);
       if (calendarCustom == null) {
@@ -130,12 +137,6 @@ public final class ActivityMainMooDoBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.selectTxt;
-      TextView selectTxt = ViewBindings.findChildViewById(rootView, id);
-      if (selectTxt == null) {
-        break missingId;
-      }
-
       id = R.id.statisBtn;
       ImageButton statisBtn = ViewBindings.findChildViewById(rootView, id);
       if (statisBtn == null) {
@@ -154,8 +155,8 @@ public final class ActivityMainMooDoBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainMooDoBinding((ConstraintLayout) rootView, calendarCustom, linearLayout,
-          logo, main, moodWriteBtn, saveDate, selectTxt, statisBtn, todoListLayout, userMooDo);
+      return new ActivityMainMooDoBinding((ConstraintLayout) rootView, btnWrite, calendarCustom,
+          linearLayout, logo, main, moodWriteBtn, saveDate, statisBtn, todoListLayout, userMooDo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

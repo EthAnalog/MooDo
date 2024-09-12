@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.moodo.app-mergeDebugResources-45:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
+            "outputFile": "com.example.moodo.app-mergeDebugResources-32:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\8d58e259a4e501801cade6eadf25a40b\\transformed\\material-1.12.0\\res\\values-w400dp-port-v13\\values-w400dp-port-v13.xml",
+                    "source": "C:\\Users\\it\\.gradle\\caches\\transforms-4\\f940b623479780b9386fa91f263b8783\\transformed\\material-1.12.0\\res\\values-w400dp-port-v13\\values-w400dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
