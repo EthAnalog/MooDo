@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -68,6 +69,20 @@ public class MoodoUserController {
         return userService.userIdCheck(id) == 0;
     }
 
+    // 비밀번호 체크
+    @PostMapping("/check-pw/{id}")
+    public ResponseEntity<String> checkPw(@PathVariable String id, @RequestBody Map<String, String> passwordMap) {
+        String password = passwordMap.get("password");
+
+        boolean isPasswordCorrect = userService.checkPassword(id, password);
+
+        if (isPasswordCorrect) {
+            return ResponseEntity.ok("비밀번호가 올바릅니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("비밀번호가 다릅니다.");
+        }
+    }
+
     // **사용자 목록 조회** 추가
     @GetMapping("/list")
     public List<MooDoUser> getAllUsers() {
@@ -95,6 +110,20 @@ public class MoodoUserController {
         return userService.getUserInfo(id);
     }
 
+    // 생일 변경
+    @PutMapping("/change-age/{id}")
+    public MooDoUser changeAge(@PathVariable String id, @RequestBody Map<String, String> ageMap) {
+        String newAge = ageMap.get("newAge");
+        Optional<MooDoUser> existingUser = userService.findById(id);
+        if (existingUser.isPresent()) {
+            MooDoUser user = existingUser.get();
+            user.setAge(newAge);
+            return userService.insert(user);
+        } else {
+            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
+        }
+    }
+
     // 프로필 사진 업로드
     @PostMapping("/uploadProfilePicture/{userId}")
     public ResponseEntity<String> uploadProfilePicture(@PathVariable String userId, @RequestParam("file") MultipartFile file) {
@@ -104,6 +133,17 @@ public class MoodoUserController {
             return ResponseEntity.ok("프로필 사진 업로드 성공: " + imagePath);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("업로드 실패: " + e.getMessage());
+        }
+    }
+
+    // 프로필 사진 삭제
+    @DeleteMapping("/deleteProfilePicture/{userId}")
+    public ResponseEntity<String> deleteProfilePicture(@PathVariable String userId) {
+        try {
+            String imagePath = userService.deleteProfilePicture(userId);
+            return ResponseEntity.ok("프로필 사진 삭제 성공 : " + imagePath);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("삭제 실패: " + e.getMessage());
         }
     }
 
@@ -129,6 +169,17 @@ public class MoodoUserController {
                 .contentType(MediaType.IMAGE_JPEG) // 또는 PNG라면 MediaType.IMAGE_PNG로 변경
                 .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + filePath.getFileName().toString() + "\"")
                 .body(resource);
+    }
+
+    // 회원 탈퇴
+    @DeleteMapping("/deleteUser/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable String id) {
+        try {
+            userService.deleteUser(id);
+            return ResponseEntity.ok("회원 탈퇴 성공");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 탈퇴 실패 : " + e.getMessage());
+        }
     }
 
 }
