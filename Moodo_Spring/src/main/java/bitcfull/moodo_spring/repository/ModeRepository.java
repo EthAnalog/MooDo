@@ -1,5 +1,6 @@
 package bitcfull.moodo_spring.repository;
 
+import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.model.MoodoMode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -36,4 +37,6 @@ public interface ModeRepository extends JpaRepository<MoodoMode, Long> {
             "GROUP BY m.mdMode ORDER BY COUNT(m.mdMode) DESC")
     List<Integer> findMostCommonMoodForMonth(String userId, String startDate, String endDate);
 
+    // 탈퇴 시 해당 유저 모든 기록 삭제
+    void deleteByUser(MooDoUser user);
 }

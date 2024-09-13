@@ -1,6 +1,8 @@
 package bitcfull.moodo_spring.service;
 
 import bitcfull.moodo_spring.model.MooDoUser;
+import bitcfull.moodo_spring.repository.ModeRepository;
+import bitcfull.moodo_spring.repository.TodoRepository;
 import bitcfull.moodo_spring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,10 @@ public class MoodoUserService {
 
     @Autowired
     private UserRepository userRepository;
+  @Autowired
+  private ModeRepository modeRepository;
+  @Autowired
+  private TodoRepository todoRepository;
 
     //    회원가입
     public MooDoUser insert(MooDoUser user) {
@@ -122,6 +128,10 @@ public class MoodoUserService {
     public void deleteUser(String id) {
         MooDoUser user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("사용자 정보를 찾을 수 없습니다."));
+
+        // 탈퇴 유저의 모든 감정, 일정 데이터 삭제
+        modeRepository.deleteByUser(user);
+        todoRepository.deleteByUser(user);
 
         // 프로필 사진 있을 경우 함께 삭제
         if (user.getProfilePicturePath() != null) {
