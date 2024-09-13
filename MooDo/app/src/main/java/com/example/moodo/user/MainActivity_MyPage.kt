@@ -18,6 +18,7 @@ import com.example.moodo.databinding.DialogUserEditPassBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoUser
 import com.example.moodo.mode.MainActivity_MooDo
+import com.example.moodo.mode.MainActivity_Mood_Calendar
 import com.kakao.sdk.user.model.User
 import retrofit2.Call
 import retrofit2.Response
@@ -69,6 +70,13 @@ class MainActivity_MyPage : AppCompatActivity() {
             val intent = Intent(this@MainActivity_MyPage, MainActivity_MooDo::class.java)
 
             intent.putExtra("id", userId)
+
+            startActivity(intent)
+        }
+        // 감정 기록 남기기
+        binding.btnMoodTracker.setOnClickListener {
+            val intent = Intent(this@MainActivity_MyPage, MainActivity_Mood_Calendar::class.java)
+            intent.putExtra("userId", userId)
 
             startActivity(intent)
         }

@@ -219,56 +219,11 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item:MenuItem):Boolean {
         when(item.itemId) {
             R.id.nav_mood_write -> {
-                // 감정 쓰기 클릭 이벤트
-                val selectDate = binding.saveDate.text.toString()
+                val intent = Intent(this@MainActivity_MooDo, MainActivity_Mood_Calendar::class.java)
 
-                val intent = Intent(this, MainActivity_ModeWrite::class.java)
+                intent.putExtra("userId", userId)
 
-                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-
-                try {
-                    val userSelected = dateFormat.parse(selectDate)!!
-                    val today = Date()
-
-                    if (userSelected.after(today)) {
-                        // 오늘보다 미래인 경우
-                        AlertDialog.Builder(binding.root.context)
-                            .setMessage("선택한 날짜가 오늘보다 이후입니다. 오늘까지의 일기만 작성할 수 있어요.")
-                            .setPositiveButton("확인", null)
-                            .show()
-                    }
-                    else {
-                        MooDoClient.retrofit.userMoodListCheck(userId, selectDate).enqueue(object:retrofit2.Callback<Boolean> {
-                            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
-                                if (response.isSuccessful) {
-                                    if (response.body() == true) {
-                                        intent.putExtra("userId", userId)
-                                        intent.putExtra("selectDate", selectDate)
-                                        val stats = "insert"
-                                        intent.putExtra("stats", stats)
-
-                                        // startActivity(intent)
-                                        activityMoodListUpdate.launch(intent)
-                                    }
-                                    else {
-                                        AlertDialog.Builder(binding.root.context)
-                                            .setMessage("이미 작성된 일기입니다.")
-                                            .setPositiveButton("확인", null)
-                                            .show()
-                                    }
-                                }
-                            }
-                            override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                                Log.d("MooDoLog modeF", t.toString())
-                            }
-
-                        })
-                    }
-                }
-                catch(e:Exception) {
-                    e.printStackTrace()
-                    Log.d("MooDoLog ModeMove Error", e.toString())
-                }
+                startActivity(intent)
             }
             R.id.nav_statis -> {
                 // 한 달 총평

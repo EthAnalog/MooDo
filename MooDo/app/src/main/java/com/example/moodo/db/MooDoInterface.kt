@@ -97,7 +97,7 @@ interface MooDoInterface {
 
     // 특정 날짜 일기 조회
     @GET("api/mood/list/{userId}/{date}")
-    fun userMoodList(@Path("userId") userId:String, @Path("date") date:String):Call<Optional<MooDoMode>>
+    fun getUserDayMood(@Path("userId") userId:String, @Path("date") date:String):Call<List<MooDoMode>>
 
     // 특정 날짜 기분값 조회
     @GET("api/mood/list/mdMode/{userId}/{date}")

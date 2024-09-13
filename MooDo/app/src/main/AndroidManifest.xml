@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".mode.MainActivity_Mood_Calendar"
+            android:exported="false" />
+        <activity
             android:name=".user.MainActivity_UserEdit"
             android:exported="false" />
         <activity
