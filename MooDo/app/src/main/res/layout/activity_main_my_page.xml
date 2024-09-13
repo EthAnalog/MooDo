@@ -8,241 +8,242 @@
     android:background="@color/white"
     tools:context=".user.MainActivity_MyPage">
 
-    <!-- header -->
+  <!-- header -->
+  <LinearLayout
+      android:id="@+id/linearLayout6"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:layout_marginBottom="8dp"
+      android:gravity="center"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toTopOf="@+id/title01"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="MissingConstraints">
+
     <LinearLayout
-        android:id="@+id/linearLayout6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        android:layout_weight="1"
+        android:gravity="start">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="start">
-
-            <ImageView
-                android:id="@+id/btnClose"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_back_gray" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/logo_img"
-            android:scaleType="center" />
+      <ImageView
+          android:id="@+id/btnClose"
+          android:layout_width="40dp"
+          android:layout_height="35dp"
+          android:src="@drawable/ic_back_gray" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/logo_img"
+        android:scaleType="center" />
+  </LinearLayout>
+
+  <TextView
+      android:id="@+id/title01"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="8dp"
+      android:layout_weight="1"
+      android:fontFamily="@font/jalnan"
+      android:text="My Page"
+      android:textColor="@color/e_red"
+      android:textSize="30sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+  <LinearLayout
+      android:id="@+id/linearLayout11"
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_marginTop="130dp"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <FrameLayout
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center">
+
+      <ImageView
+          android:id="@+id/userProfile"
+          android:layout_width="170dp"
+          android:layout_height="170dp"
+          android:layout_gravity="center"
+          android:src="@drawable/profile" />
+
+      <ImageView
+          android:id="@+id/userProfileEdit"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="end"
+          android:layout_marginTop="130dp"
+          android:layout_marginEnd="5dp"
+          android:src="@drawable/profile_edit" />
+    </FrameLayout>
+
 
     <TextView
-        android:id="@+id/title01"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:fontFamily="@font/jalnan"
-        android:text="My Page"
-        android:textColor="@color/e_red"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout11"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title01">
-
-        <FrameLayout
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/userProfile"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:layout_gravity="center"
-                android:src="@drawable/profile" />
-
-            <ImageView
-                android:id="@+id/userProfileEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="130dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/profile_edit" />
-        </FrameLayout>
-
-
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/jalnan"
-            android:text="사용자 이름"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btnDeleteImg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:backgroundTint="@color/e_apricot"
-            android:text="저장된 이미지 삭제"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userName" />
-
-    </LinearLayout>
-
-    <LinearLayout
+        android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/jalnan"
+        android:text="사용자 이름"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnDeleteImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/e_apricot"
+        android:text="저장된 이미지 삭제"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userName" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:background="@color/white"
         android:orientation="vertical"
         android:padding="20dp"
         android:paddingStart="40dp"
         android:paddingEnd="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintTop_toBottomOf="@+id/btnDeleteImg">
 
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_edit" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="3"
-                android:text="회원정보변경"
-                android:fontFamily="@font/jalnan"
-                android:textColor="@color/blue"
-                android:textSize="16sp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/round_layout"
-                android:src="@drawable/arrow_edit" />
-        </LinearLayout>
-
-        <View
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:alpha="0.5"
-            android:background="@color/lightgray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_edit" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_logout" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="3"
-                android:text="로그아웃"
-                android:fontFamily="@font/jalnan"
-                android:textColor="@color/e_apricot"
-                android:textSize="16sp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/round_layout"
-                android:src="@drawable/arrow_edit" />
-        </LinearLayout>
-
-        <View
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:alpha="0.5"
-            android:background="@color/lightgray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginStart="20dp"
+            android:layout_weight="3"
+            android:fontFamily="@font/jalnan"
+            android:text="회원정보변경"
+            android:textColor="@color/blue"
+            android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_person_remove" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/round_layout"
+            android:src="@drawable/arrow_edit" />
+      </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="3"
-                android:textColor="@color/e_red"
-                android:text="회원탈퇴"
-                android:fontFamily="@font/jalnan"
-                android:textSize="16sp" />
+      <View
+          android:layout_width="wrap_content"
+          android:layout_height="1dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="20dp"
+          android:alpha="0.5"
+          android:background="@color/lightgray" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/round_layout"
-                android:src="@drawable/arrow_edit" />
-        </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_logout" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="3"
+            android:fontFamily="@font/jalnan"
+            android:text="로그아웃"
+            android:textColor="@color/e_apricot"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/round_layout"
+            android:src="@drawable/arrow_edit" />
+      </LinearLayout>
+
+      <View
+          android:layout_width="wrap_content"
+          android:layout_height="1dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="20dp"
+          android:alpha="0.5"
+          android:background="@color/lightgray" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_person_remove" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_weight="3"
+            android:fontFamily="@font/jalnan"
+            android:text="회원탈퇴"
+            android:textColor="@color/e_red"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/round_layout"
+            android:src="@drawable/arrow_edit" />
+      </LinearLayout>
 
     </LinearLayout>
+
+  </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
