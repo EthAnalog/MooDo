@@ -1,6 +1,7 @@
 package bitcfull.moodo_spring.repository;
 
 import bitcfull.moodo_spring.model.MooDoTodo;
+import bitcfull.moodo_spring.model.MooDoUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -48,4 +49,7 @@ public interface TodoRepository extends JpaRepository<MooDoTodo, Long> {
 
     @Query("SELECT t FROM MooDoTodo t WHERE t.user.id = :userId AND t.tdList LIKE %:keyword%")
     List<MooDoTodo> searchTodosByKeyword(@Param("userId") String userId, @Param("keyword") String keyword);
+
+    // 유저별 일정 전체 삭제
+    void deleteByUser(MooDoUser user);
 }

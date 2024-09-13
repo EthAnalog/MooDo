@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context=".MainActivity_MyPage">
+    tools:context=".user.MainActivity_MyPage">
 
     <!-- header -->
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/linearLayout6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -21,34 +21,55 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/btnClose"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:src="@drawable/ic_back_gray" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="My Page"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+            android:layout_weight="1"
+            android:gravity="start">
+
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_back_gray" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/logo_img"
+            android:scaleType="center" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/title01"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/jalnan"
+        android:text="My Page"
+        android:textColor="@color/e_red"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
     <LinearLayout
         android:id="@+id/linearLayout11"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/title01">
 
         <FrameLayout
             android:layout_width="180dp"
@@ -77,9 +98,9 @@
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/jalnan"
-            android:layout_marginTop="20dp"
             android:text="사용자 이름"
             android:textAlignment="center"
             android:textSize="20sp" />
@@ -94,7 +115,7 @@
             android:text="저장된 이미지 삭제"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/userName" />
 
     </LinearLayout>
 
@@ -130,6 +151,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_weight="3"
                 android:text="회원정보변경"
+                android:fontFamily="@font/jalnan"
                 android:textColor="@color/blue"
                 android:textSize="16sp" />
 
@@ -168,6 +190,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_weight="3"
                 android:text="로그아웃"
+                android:fontFamily="@font/jalnan"
                 android:textColor="@color/e_apricot"
                 android:textSize="16sp" />
 
@@ -207,6 +230,7 @@
                 android:layout_weight="3"
                 android:textColor="@color/e_red"
                 android:text="회원탈퇴"
+                android:fontFamily="@font/jalnan"
                 android:textSize="16sp" />
 
             <ImageButton

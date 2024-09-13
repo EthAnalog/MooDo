@@ -7,82 +7,91 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".todolist.MainActivity_ToDo">
+    <!-- header -->
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:id="@+id/btnClose"
-            android:layout_width="65dp"
-            android:layout_height="53dp"
-            android:src="@drawable/ic_back_gray"
-            app:srcCompat="@drawable/ic_back_gray" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:gravity="end">
+            android:layout_weight="1"
+            android:gravity="start">
+
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:src="@drawable/logo_img"
-                android:scaleType="centerCrop"/>
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_back_gray" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/logo_img"
+            android:scaleType="center" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:gravity="end"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <Button
             android:id="@+id/allList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FF0000"
+            android:fontFamily="@font/gmarketsans_bold"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:fontFamily="@font/gmarketsans_bold"
-            android:textSize="15sp"
             android:text="All"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/completeList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FF0000"
+            android:fontFamily="@font/gmarketsans_bold"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:fontFamily="@font/gmarketsans_bold"
-            android:textSize="15sp"
             android:text="Complete"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/activeList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FF0000"
+            android:fontFamily="@font/gmarketsans_bold"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:fontFamily="@font/gmarketsans_bold"
-            android:textSize="15sp"
             android:text="Active"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

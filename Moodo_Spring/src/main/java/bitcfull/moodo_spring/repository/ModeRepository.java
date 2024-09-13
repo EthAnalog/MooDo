@@ -1,5 +1,6 @@
 package bitcfull.moodo_spring.repository;
 
+import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.model.MoodoMode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -35,5 +36,8 @@ public interface ModeRepository extends JpaRepository<MoodoMode, Long> {
     @Query("SELECT m.mdMode FROM MoodoMode m WHERE m.user.id = :userId AND m.createdDate >= :startDate AND m.createdDate <= :endDate " +
             "GROUP BY m.mdMode ORDER BY COUNT(m.mdMode) DESC")
     List<Integer> findMostCommonMoodForMonth(String userId, String startDate, String endDate);
+
+    // 유저별 감정기록 삭제
+    void deleteByUser(MooDoUser user);
 
 }

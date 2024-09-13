@@ -8,36 +8,41 @@
     android:background="@color/white"
     tools:context=".todolist.MainActivity_ToDo_Write">
 
+    <!-- header -->
     <LinearLayout
-        android:id="@+id/header"
+        android:id="@+id/linearLayout6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/btnClose"
-            android:layout_width="65dp"
-            android:layout_height="53dp"
-            android:src="@drawable/ic_back_gray"
-            app:srcCompat="@drawable/ic_back_gray" />
-
-        <TextView
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/jalnan"
-            android:gravity="end"
-            android:text="ToDo List"
-            android:textColor="@color/e_red"
-            android:textSize="28sp" />
+            android:gravity="start">
+
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_back_gray" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/logo_img"
+            android:scaleType="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,12 +55,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="일정을 입력해주세요"
             android:fontFamily="@font/kblz_bold"
+            android:text="일정을 입력해주세요"
             android:textSize="18sp" />
         <!-- 시작일 start -->
         <LinearLayout
@@ -69,9 +75,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/kblz_bold"
                 android:gravity="start"
                 android:text="시작일"
-                android:fontFamily="@font/kblz_bold"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -85,9 +91,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/box_border"
+                    android:fontFamily="@font/kblz_bold"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:fontFamily="@font/kblz_bold"
                     android:text="0000/00/00" />
 
                 <TextView
@@ -95,9 +101,9 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/box_border"
+                    android:fontFamily="@font/kblz_bold"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:fontFamily="@font/kblz_bold"
                     android:text="00:00" />
             </LinearLayout>
         </LinearLayout>
@@ -113,9 +119,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/kblz_bold"
                 android:gravity="start"
                 android:text="종료일"
-                android:fontFamily="@font/kblz_bold"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -129,9 +135,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/box_border"
+                    android:fontFamily="@font/kblz_bold"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:fontFamily="@font/kblz_bold"
                     android:text="0000/00/00" />
 
                 <TextView
@@ -139,9 +145,9 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/box_border"
+                    android:fontFamily="@font/kblz_bold"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:fontFamily="@font/kblz_bold"
                     android:text="23:59" />
             </LinearLayout>
         </LinearLayout>
@@ -152,9 +158,9 @@
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/box_border"
+            android:fontFamily="@font/kblz_bold"
             android:hint="일정 (최대 200자)"
             android:maxLength="200"
-            android:fontFamily="@font/kblz_bold"
             android:padding="10dp" />
 
         <TextView
@@ -162,66 +168,77 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
-            android:text="일정을 표기할 색상을 선택하세요."
             android:fontFamily="@font/kblz_bold"
+            android:text="일정을 표기할 색상을 선택하세요."
             android:textSize="18sp" />
+
         <LinearLayout
             android:id="@+id/linearLayout10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/box_border"
-            android:padding="10dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center">
+
                 <ImageButton
                     android:id="@+id/colorRed"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/td_select_red" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center">
+
                 <ImageButton
                     android:id="@+id/colorBlue"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/td_select_blue" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center">
+
                 <ImageButton
                     android:id="@+id/colorOrange"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/td_select_orange" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center">
+
                 <ImageButton
                     android:id="@+id/colorGreen"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/td_select_green" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center">
+
                 <ImageButton
                     android:id="@+id/colorYellow"
                     android:layout_width="50dp"
