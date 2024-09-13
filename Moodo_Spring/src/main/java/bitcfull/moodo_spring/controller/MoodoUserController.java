@@ -2,6 +2,8 @@ package bitcfull.moodo_spring.controller;
 
 import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.service.MoodoUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -25,6 +27,7 @@ import java.util.Optional;
 @RequestMapping("/api/user")
 public class MoodoUserController {
 
+    private static final Logger log = LoggerFactory.getLogger(MoodoUserController.class);
     @Autowired
     private MoodoUserService userService;
 
@@ -96,9 +99,15 @@ public class MoodoUserController {
     }
 
     // 사용자 정보 수정 (생일 + 비밀번호)
-    @PutMapping("/changeUser/{id}/{pass}/{age}")
-    public void changeUser(@PathVariable String id, @PathVariable String pass, @PathVariable String age) {
-        userService.update(id, pass, age);
+    @PutMapping("/changeUser/{id}")
+    public ResponseEntity<Void> changeUser(@PathVariable String id, @RequestParam String pass, @RequestParam String age) {
+        try {
+            userService.update(id, pass, age);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            log.error("error", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     // 비밀번호 변경

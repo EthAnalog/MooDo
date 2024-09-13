@@ -160,22 +160,27 @@ class MainActivity_UserEdit : AppCompatActivity() {
                 val pass = txtPw.text.toString()
                 val age = txtAge.text.toString()
 
+                val intent = Intent()
                 intent.putExtra("pass", pass)
                 intent.putExtra("age", age)
 
-                setResult(RESULT_OK, intent)
-                finish()
+                MooDoClient.retrofit.changeUser(userId, pass, age).enqueue(object :retrofit2.Callback<Void>{
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        if(response.isSuccessful) {
+                            Log.d("MooDoLog Userch", "chUser: $user")
+                            setResult(RESULT_OK, intent)
+                            finish()
+                        } else {
+                            Log.d("MooDoLog Userch", "Error: ${response.code()}-${response.message()}")
+                        }
+                    }
 
-//                MooDoClient.retrofit.changeUser(userId, pass, age).enqueue(object:retrofit2.Callback<MooDoUser>{
-//                    override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
-//                        Log.d("MooDoLog UserCh", response.body().toString())
-//                        setResult(RESULT_OK, intent)
-//                        finish()
-//                    }
-//                    override fun onFailure(call: Call<MooDoUser>, t: Throwable) {
-//                        Log.d("MooDoLog UserCh fail", t.toString())
-//                    }
-//                })
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Log.d("MooDoLog UserCh fail", t.toString())
+                    }
+
+                })
+
             } else {
                 AlertDialog.Builder(this)
                     .setMessage("회원정보 수정을 위해 양식에 맞춰 입력해주세요.")

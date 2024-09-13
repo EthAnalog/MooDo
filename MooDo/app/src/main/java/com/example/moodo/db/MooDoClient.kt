@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object MooDoClient {
 
     val retrofit:MooDoInterface = Retrofit.Builder()
-        .baseUrl("http://10.100.105.204:8899/")
+        .baseUrl("http://10.100.105.240:8899/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(MooDoInterface::class.java)

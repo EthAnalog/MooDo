@@ -39,8 +39,8 @@ interface MooDoInterface {
     fun checkPw(@Path("id") id:String, @Path("pass") pass:String):Call<Boolean>
 
     // 사용자 정보 수정 (비밀번호 + 생일)
-    @PUT("api/user/changeUser/{id}/{pass}/{age}")
-    fun changeUser(@Path("id") id:String, @Path("pass") pass:String, @Path("age") age:String): Call<Void>
+    @PUT("api/user/changeUser/{id}")
+    fun changeUser(@Path("id") id:String, @Query("pass") pass:String, @Query("age") age:String): Call<Void>
 
     // 회원 탈퇴
     @DELETE("api/user/deleteUser/{id}")
