@@ -35,7 +35,6 @@ class MainActivity_ToDo_Search : AppCompatActivity() {
         }
 
         val userId = intent.getStringExtra("userId").toString()
-        val userAge = intent.getStringExtra("userAge").toString()
 
         val searchTxt = binding.searchTxt
 
@@ -91,7 +90,6 @@ class MainActivity_ToDo_Search : AppCompatActivity() {
 
                 val intent = Intent(this@MainActivity_ToDo_Search, MainActivity_ToDo::class.java)
                 intent.putExtra("userId", userId)
-                intent.putExtra("userAge", userAge)
                 intent.putExtra("selectDate", selectDate)
 
                 val stats = "Search"

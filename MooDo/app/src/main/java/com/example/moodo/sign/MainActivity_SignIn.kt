@@ -41,10 +41,8 @@ class MainActivity_SignIn : AppCompatActivity() {
                     if (response.isSuccessful) {
                         // main Page 이동
                         Log.d("MooDoLog UserInfo", response.body().toString())
-                        val age = response.body()!!.age
                         val intent = Intent(this@MainActivity_SignIn, MainActivity_MooDo::class.java)
                         intent.putExtra("id", id)
-                        intent.putExtra("age", age)
                         startActivity(intent)
                     }
                     // 로그인 실패

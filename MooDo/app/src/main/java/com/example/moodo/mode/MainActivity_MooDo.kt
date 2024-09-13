@@ -29,6 +29,7 @@ import com.example.moodo.db.MooDoToDo
 import com.example.moodo.db.MooDoUser
 import com.example.moodo.todolist.MainActivity_ToDo
 import com.example.moodo.todolist.MainActivity_ToDo_Search
+import com.example.moodo.todolist.MainActivity_ToDo_Write
 import com.example.moodo.user.MainActivity_MyPage
 import com.google.android.material.navigation.NavigationView
 import okhttp3.ResponseBody
@@ -71,11 +72,8 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         // 사용자 id
         userId = intent.getStringExtra("id").toString()
-        val userAge = intent.getStringExtra("age").toString()
 
         loadUserInfo(userId)
-
-        Log.d("MooDoLog UserInfo", userAge)
 
         // 선택한 날짜 저장할 TextView 변수
         val saveDate = binding.saveDate
@@ -87,7 +85,7 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         // custom calendar 연결
         val monthListManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        monthAdapter = MonthAdapter(userId, userAge).apply {
+        monthAdapter = MonthAdapter(userId).apply {
             // 날짜 선택
             onDaySelectedListener = object :MonthAdapter.OnDaySelectedListener{
                 override fun onDaySelected(date: String) {
@@ -139,6 +137,7 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
                 }
             }
         }
+
         // to do list 클릭 이벤트
         todoAdapter.onItemClickLister = object :CalendarToDoAdapter.OnItemClickLister {
             override fun onItemClick(pos: Int) {
@@ -155,25 +154,64 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
             }
 
         }
-        // btnWrite 버튼 이벤트
+
+        // 작성 intent 처리
+        val activityInsert = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val startDay = it.data?.getStringExtra("startDay").toString()
+                val endDay = it.data?.getStringExtra("endDay").toString()
+                val toDoStr = it.data?.getStringExtra("toDoStr").toString()
+                val toDoColor = it.data?.getStringExtra("toDoColor").toString()
+
+                Log.d("MooDoLog sD fm", startDay)
+
+                // 사용자 정보가 로드되었는지 확인 후 저장
+                if (user != null) {
+                    val insertList = MooDoToDo(0, user!!, toDoStr, startDay, endDay, null, null, toDoColor)
+                    MooDoClient.retrofit.addTodo(insertList, userId).enqueue(object : retrofit2.Callback<MooDoToDo> {
+                        override fun onResponse(call: Call<MooDoToDo>, response: Response<MooDoToDo>) {
+                            if (response.isSuccessful) {
+                                Log.d("MooDoLog ToDoSuccess", response.body().toString())
+                                val date = saveDate.text.toString()
+                                refreshTodoList(date)
+                                monthAdapter.notifyDataSetChanged()
+                            } else {
+                                Log.d("MooDoLog ToDo Error", "Error: ${response.code()} - ${response.message()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<MooDoToDo>, t: Throwable) {
+                            Log.d("MooDoLog Response ToDoFail", t.toString())
+                        }
+                    })
+                } else {
+                    Log.d("MooDoLog Error", "User is null, unable to save ToDo")
+                }
+            }
+        }
+        // btnWrite 버튼 이벤트 -> 바로 작성 페이지 이동 (현재 날짜)
         binding.btnWrite.setOnClickListener {
-            val intent = Intent(this, MainActivity_ToDo::class.java)
-            val selectDate = saveDate.text.toString()
+            val intent = Intent(this, MainActivity_ToDo_Write::class.java)
+            // 현재 날짜와 시간을 가져오기
+            val calendar = Calendar.getInstance()
+            // 날짜 포맷 정의
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            // 현재 날짜를 문자열로 변환
+            val selectDate = dateFormat.format(calendar.time)
 
-            intent.putExtra("userId", userId)
-            intent.putExtra("selectDate", selectDate)
-            val stats = "MooDo"
+            val stats = "insert"
             intent.putExtra("stats", stats)
+            intent.putExtra("selectDate", selectDate)
+            intent.putExtra("userId", userId)
 
-            // startActivity(intent)
-            activityToDoListUpdate.launch(intent)
+            // activityToDoListUpdate.launch(intent)
+            activityInsert.launch(intent)
         }
 
         // 검색 기능
         binding.searchBtn.setOnClickListener {
             val intent = Intent(this@MainActivity_MooDo, MainActivity_ToDo_Search::class.java)
             intent.putExtra("userId", userId)
-            intent.putExtra("userAge", userAge)
 
             startActivity(intent)
         }
@@ -241,7 +279,9 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
                 intent.putExtra("userId", userId)
                 intent.putExtra("selectDate", selectDate)
 
-                activityStatisMood.launch(intent)
+                startActivity(intent)
+
+                // activityStatisMood.launch(intent)
             }
             R.id.nav_mypage->{
                 // my page

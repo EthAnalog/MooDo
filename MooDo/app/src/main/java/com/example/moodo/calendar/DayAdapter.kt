@@ -22,9 +22,9 @@ import java.util.Optional
 class DayAdapter(val tempMonth:Int,
                  val dayList:MutableList<Date>,
                  val todayPosition:Int,
-                 val emojiList:MutableList<String>,
-                 val tdCntList:MutableList<Int>,
-                 val userId:String)
+                 val userId:String,
+                 val dayTdItem:MutableList<Int>,
+                 val dayMdItem:MutableList<String>)
     :RecyclerView.Adapter<DayAdapter.DayHolder>() {
     val row = 5
 
@@ -82,28 +82,28 @@ class DayAdapter(val tempMonth:Int,
             holder.binding.itemDayTxt.alpha = 1.0f
         }
 
-        val emoji = emojiList[position]
-        when(emoji) {
-            "birthday_angry" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_angry)
-            "birthday_sad" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_sad)
-            "birthday_meh" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_meh)
-            "birthday_s_happy" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_s_happy)
-            "birthday_happy" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_happy)
-            "birthday_none" -> holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
-            "angry" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_angry)
-            "sad" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_sad)
-            "meh" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_meh)
-            "s_happy" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_s_happy)
-            "happy" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_happy)
-            else -> holder.binding.itemMood.setImageResource(0)
+        val todayTd = dayTdItem[position]
+        val todayMd = dayMdItem[position]
+
+        when(todayTd) {
+            0 -> holder.binding.todoOval.setImageResource(0)
+            else -> holder.binding.todoOval.setImageResource(R.drawable.td_has)
         }
 
-        val tdCnt = tdCntList[position]
-        if (tdCnt > 0) {
-            holder.binding.todoOval.setImageResource(R.drawable.td_has)
-        }
-        else {
-            holder.binding.todoOval.setImageResource(0)
+        when(todayMd) {
+            "b_1" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_angry)
+            "b_2" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_sad)
+            "b_3" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_meh)
+            "b_4" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_s_happy)
+            "b_5" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_happy)
+            "b_0" -> holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+            "b_" -> holder.binding.itemMood.setImageResource(R.drawable.user_birthday_non_emoji)
+            "1" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_angry)
+            "2" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_sad)
+            "3" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_meh)
+            "4" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_s_happy)
+            "5" -> holder.binding.itemMood.setImageResource(R.drawable.ic_emotion_happy)
+            else -> holder.binding.itemMood.setImageResource(0)
         }
 
         if (selectedPosition== -1 && todayPosition == position) {

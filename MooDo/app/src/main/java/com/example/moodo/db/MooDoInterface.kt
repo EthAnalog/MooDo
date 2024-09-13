@@ -1,5 +1,6 @@
 package com.example.moodo.db
 
+import com.example.moodo.calendar.MoodoCalendar
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
@@ -32,6 +33,18 @@ interface MooDoInterface {
     // 유저 사진 가져오기
     @GET("api/user/userProfile/{id}")
     fun getUserImg(@Path("id") id: String): Call<ResponseBody>
+
+    // 비밀번호 확인
+    @POST("api/user/check-pw/{id}/{pass}")
+    fun checkPw(@Path("id") id:String, @Path("pass") pass:String):Call<Boolean>
+
+    // 사용자 정보 수정 (비밀번호 + 생일)
+    @PUT("api/user/changeUser/{id}/{pass}/{age}")
+    fun changeUser(@Path("id") id:String, @Path("pass") pass:String, @Path("age") age:String): Call<Void>
+
+    // 회원 탈퇴
+    @DELETE("api/user/deleteUser/{id}")
+    fun deleteUser(@Path("id") id:String):Call<Response<String>>
 
     // 회원 to do list 조회
     @GET("api/todo/list/{userId}/{date}")
@@ -113,5 +126,9 @@ interface MooDoInterface {
     // 일기 삭제
     @DELETE("api/mood/delete/{id}")
     fun delete(@Path("id") id:Long):Call<Void>
+
+    // 달력 일정 및 감정 조회
+    @GET("api/calendar/count/day/{userId}/{date}")
+    fun getDay(@Path("userId") userId: String, @Path("date") date:String):Call<MoodoCalendar>
 
 }

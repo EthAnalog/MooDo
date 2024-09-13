@@ -53,10 +53,6 @@ class MainActivity_ToDo : AppCompatActivity() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
         val stats = intent.getStringExtra("stats")
-        var userAge = "0"
-        if (stats == "Search") {
-            userAge = intent.getStringExtra("userAge").toString()
-        }
 
         // 사용자 정보 가져오기
         loadUserInfo(userId!!)
@@ -338,7 +334,6 @@ class MainActivity_ToDo : AppCompatActivity() {
             else {
                 val intent = Intent(this@MainActivity_ToDo, MainActivity_MooDo::class.java)
                 intent.putExtra("id", userId)
-                intent.putExtra("age", userAge)
                 startActivity(intent)
             }
         }

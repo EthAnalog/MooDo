@@ -2,6 +2,7 @@ package bitcfull.moodo_spring.service;
 
 import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,9 +54,22 @@ public class MoodoUserService {
         return userRepository.findAll();
     }
 
+    // 이미지 저장 폴더 없으면 새로 생성
+    @PostConstruct
+    public void init() {
+        try {
+            Path uploadPath = Paths.get(UPLOAD_DIR);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+                System.out.println("Uploads directory created at: " + uploadPath.toAbsolutePath());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create uploads directory", e);
+        }
+    }
+
     // 파일 저장할 경로 설정 + 프로필 사진 업로드 및 변경(덮어쓰기)
     private final String UPLOAD_DIR = "uploads/";
-
     public String saveProfilePicture(String userId, MultipartFile file) throws Exception {
         MooDoUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
@@ -139,4 +153,8 @@ public class MoodoUserService {
     }
 
 
+    // 회원 정보 수정
+    public void update(String id, String pass, String age) {
+        userRepository.update(id, pass, age);
+    }
 }

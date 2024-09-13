@@ -16,7 +16,7 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class MonthAdapter(val userId: String, val userAge:String) : RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
+class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
     val center = Int.MAX_VALUE / 2
     private var calendar = Calendar.getInstance()
     val today = calendar.time
@@ -51,26 +51,22 @@ class MonthAdapter(val userId: String, val userAge:String) : RecyclerView.Adapte
 
         // 5주 * 7일 날짜 리스트 생성
         val dayList: MutableList<Date> = MutableList(5 * 7) { Date() }
+        val dayTdItem: MutableList<Int> = MutableList(5*7) {0}
+        val dayMdItem: MutableList<String> = MutableList(5*7) {String()}
+
         val tempCalendar = calendar.clone() as Calendar // 임시 캘린더로 날짜 계산
         tempCalendar.add(Calendar.DAY_OF_MONTH, -(tempCalendar.get(Calendar.DAY_OF_WEEK) - 1)) // 첫 주의 일요일로 이동
 
         var todayPosition = -1 // 현재 날짜의 위치를 저장할 변수
 
-        val birthDayFormat = SimpleDateFormat("MM-dd", Locale.getDefault())
         val dayFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val userBirthday = birthDayFormat.format(SimpleDateFormat("yyyy/MM/dd").parse(userAge)) // 생일을 MM-dd 형식으로 변환
-
-        // 이모지 저장할 리스트
-        val emojiList : MutableList<String> = MutableList(5*7){"none"}
-        // 할일 카운트
-        val tdCntList : MutableList<Int> = MutableList(5*7){0}
 
         // api 요청 추적용 카운트
         var apiCnt = 0
         val totalRequest = 5* 7
         fun checkAllDataLoaded(){
             if (apiCnt == totalRequest) {
-                dayAdapter = DayAdapter(tempMonth, dayList, todayPosition, emojiList, tdCntList, userId).apply {
+                dayAdapter = DayAdapter(tempMonth, dayList, todayPosition, userId, dayTdItem, dayMdItem).apply {
                     clickItemDayListener = object : DayAdapter.ClickItemDayListener {
                         override fun clickItemDay(position: Int) {
                             // 클릭된 날짜 처리 및 이벤트 전달
@@ -94,87 +90,37 @@ class MonthAdapter(val userId: String, val userAge:String) : RecyclerView.Adapte
 
                 // 현재 달과 비교
                 if (tempCalendar.get(Calendar.MONTH) == tempMonth) {
-                    // 사용자 생일 표기 위해 formatted
-                    val formattedBirth = birthDayFormat.format(tempCalendar.time)
-
-                    if (userBirthday == formattedBirth) {
-                        MooDoClient.retrofit.getMdMode(userId, formattedDay).enqueue(object : retrofit2.Callback<Int> {
-                            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                                if (response.isSuccessful) {
-                                    when (response.body()) {
-                                        1 -> emojiList[i* 7 + k] = "birthday_angry"
-                                        2 -> emojiList[i* 7 + k] = "birthday_sad"
-                                        3 -> emojiList[i* 7 + k] = "birthday_meh"
-                                        4 -> emojiList[i* 7 + k] = "birthday_s_happy"
-                                        5 -> emojiList[i* 7 + k] = "birthday_happy"
-                                    }
-                                    apiCnt++
-                                    checkAllDataLoaded()
-                                }
-                                else {
-                                    emojiList[i* 7 + k] = "birthday_none"
-                                    apiCnt++
-                                    checkAllDataLoaded()
-                                }
+                    MooDoClient.retrofit.getDay(userId, formattedDay).enqueue(object:retrofit2.Callback<MoodoCalendar>{
+                        override fun onResponse(call: Call<MoodoCalendar>, response: Response<MoodoCalendar>) {
+                            val responseBody = response.body()
+                            Log.d("MooDoLog TDResponse", responseBody.toString())
+                            if (responseBody != null) {
+                                dayTdItem[i* 7 + k] = responseBody.todayTd
+                                dayMdItem[i* 7 + k] = responseBody.todayMd
                             }
-                            override fun onFailure(call: Call<Int>, t: Throwable) {
-                                emojiList[i* 7 + k] = "birthday_none"
-                                apiCnt++
-                                checkAllDataLoaded()
+                            else {
+                                dayTdItem[i* 7 + k] = 0
+                                dayMdItem[i* 7 + k] = "0"
                             }
-                        })
-                    }
-                    else {
-                        MooDoClient.retrofit.getMdMode(userId, formattedDay).enqueue(object : retrofit2.Callback<Int> {
-                            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                                if (response.isSuccessful) {
-                                    when (response.body()) {
-                                        1 -> emojiList[i* 7 + k] = "angry"
-                                        2 -> emojiList[i* 7 + k] = "sad"
-                                        3 -> emojiList[i* 7 + k] = "meh"
-                                        4 -> emojiList[i* 7 + k] = "s_happy"
-                                        5 -> emojiList[i* 7 + k] = "happy"
-                                    }
-                                    apiCnt++
-                                    checkAllDataLoaded()
-                                } else {
-                                    emojiList[i* 7 + k] = "none"
-                                    apiCnt++
-                                    checkAllDataLoaded()
-                                }
-                            }
-                            override fun onFailure(call: Call<Int>, t: Throwable) {
-                                emojiList[i* 7 + k] = "none"
-                                apiCnt++
-                                checkAllDataLoaded()
-                            }
-                        })
-                    }
-                    MooDoClient.retrofit.getTodoCountForDay(userId, formattedDay).enqueue(object : retrofit2.Callback<Int> {
-                        override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                            if (response.isSuccessful) {
-                                when (response.body()) {
-                                    0 -> tdCntList[i*7+k] = 0
-                                    else -> tdCntList[i*7+k] = response.body()!!.toInt()
-                                }
-                                apiCnt++
-                                checkAllDataLoaded()
-                            } else {
-                                tdCntList[i*7+k] = 0
-                                apiCnt++
-                                checkAllDataLoaded()
-                            }
-                        }
-                        override fun onFailure(call: Call<Int>, t: Throwable) {
-                            tdCntList[i*7+k] = 0
                             apiCnt++
                             checkAllDataLoaded()
                         }
+
+                        override fun onFailure(call: Call<MoodoCalendar>, t: Throwable) {
+                            Log.d("MooDoLog TDResponse Error", t.toString())
+
+                            dayTdItem[i* 7 + k] = 0
+                            dayMdItem[i* 7 + k] = "0"
+
+                            apiCnt++
+                            checkAllDataLoaded()
+                        }
+
                     })
-                } else {
-                    // 현재 월이 아닌 경우 api 호출 생략
-                    emojiList[i * 7 + k] = "none"
-                    tdCntList[i * 7 + k] = 0
+                }
+                else {
+                    dayTdItem[i* 7 + k] = 0
+                    dayMdItem[i* 7 + k] = "0"
                     apiCnt++
                     checkAllDataLoaded()
                 }

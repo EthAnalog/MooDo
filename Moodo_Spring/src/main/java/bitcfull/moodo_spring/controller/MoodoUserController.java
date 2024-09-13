@@ -71,16 +71,21 @@ public class MoodoUserController {
     }
 
     // 비밀번호 체크
-    @PostMapping("/check-pw/{id}")
-    public ResponseEntity<String> checkPw(@PathVariable String id, @RequestBody Map<String, String> passwordMap) {
-        String password = passwordMap.get("password");
+    @PostMapping("/check-pw/{id}/{pass}")
+    public Boolean checkPw(@PathVariable String id, @PathVariable String pass) {
+        Optional<MooDoUser> existingUser = userService.findById(id);
 
-        boolean isPasswordCorrect = userService.checkPassword(id, password);
-
-        if (isPasswordCorrect) {
-            return ResponseEntity.ok("비밀번호가 올바릅니다.");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("비밀번호가 다릅니다.");
+        if (existingUser.isPresent()) {
+            MooDoUser user = existingUser.get();
+            if (user.getPass().equals(pass)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
         }
     }
 
@@ -88,6 +93,12 @@ public class MoodoUserController {
     @GetMapping("/list")
     public List<MooDoUser> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    // 사용자 정보 수정 (생일 + 비밀번호)
+    @PutMapping("/changeUser/{id}/{pass}/{age}")
+    public void changeUser(@PathVariable String id, @PathVariable String pass, @PathVariable String age) {
+        userService.update(id, pass, age);
     }
 
     // 비밀번호 변경
@@ -103,14 +114,6 @@ public class MoodoUserController {
             throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
         }
     }
-
-    // 사용자 정보 가져오기
-    @GetMapping("/userInfo/{id}")
-    public MooDoUser getUserInfo(@PathVariable String id) {
-        System.out.println("사용자 정보 가져오기 " + id);
-        return userService.getUserInfo(id);
-    }
-
     // 생일 변경
     @PutMapping("/change-age/{id}")
     public MooDoUser changeAge(@PathVariable String id, @RequestBody Map<String, String> ageMap) {
@@ -123,6 +126,13 @@ public class MoodoUserController {
         } else {
             throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
         }
+    }
+
+    // 사용자 정보 가져오기
+    @GetMapping("/userInfo/{id}")
+    public MooDoUser getUserInfo(@PathVariable String id) {
+        System.out.println("사용자 정보 가져오기 " + id);
+        return userService.getUserInfo(id);
     }
 
     // 프로필 사진 업로드

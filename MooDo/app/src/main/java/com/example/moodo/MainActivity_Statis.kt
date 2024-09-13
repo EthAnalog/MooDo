@@ -19,6 +19,7 @@ import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoMode
 import com.example.moodo.db.MooDoUser
 import com.example.moodo.mode.MainActivity_ModeWrite
+import com.example.moodo.mode.MainActivity_MooDo
 import retrofit2.Call
 import retrofit2.Response
 import java.util.Optional
@@ -216,11 +217,15 @@ class MainActivity_Statis : AppCompatActivity() {
 
         // 뒤로 가기
         binding.btnClose.setOnClickListener {
-            val intent = Intent().apply {
-                putExtra("update", true)
-            }
-            setResult(RESULT_OK, intent)
-            finish()
+            val intent = Intent(this@MainActivity_Statis, MainActivity_MooDo::class.java)
+            intent.putExtra("id", userId)
+
+            startActivity(intent)
+//            val intent = Intent().apply {
+//                putExtra("update", true)
+//            }
+//            setResult(RESULT_OK, intent)
+//            finish()
         }
     }
 

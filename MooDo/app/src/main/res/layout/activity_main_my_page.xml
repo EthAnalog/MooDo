@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:background="@color/e_red"
     tools:context=".user.MainActivity_MyPage">
-
     <!-- header -->
     <LinearLayout
-        android:id="@+id/linearLayout6"
+        android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -33,216 +32,229 @@
                 android:layout_height="35dp"
                 android:src="@drawable/ic_back_gray" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/logo_img"
-            android:scaleType="center" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/title01"
+    <LinearLayout
+        android:id="@+id/profileContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:fontFamily="@font/jalnan"
-        android:text="My Page"
-        android:textColor="@color/e_red"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout11"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title01">
+        app:layout_constraintTop_toBottomOf="@+id/header">
 
-        <FrameLayout
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center">
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/kblz_bold"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:text="User Name"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kblz_bold"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="기분과 일정,"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kblz_bold"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="오늘은 어떤 하루가 기다릴까요?"/>
+            </LinearLayout>
             <ImageView
                 android:id="@+id/userProfile"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
                 android:layout_gravity="center"
-                android:src="@drawable/profile" />
-
-            <ImageView
-                android:id="@+id/userProfileEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="130dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/profile_edit" />
-        </FrameLayout>
-
-
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/jalnan"
-            android:text="사용자 이름"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btnDeleteImg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:backgroundTint="@color/e_apricot"
-            android:text="저장된 이미지 삭제"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userName" />
-
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/circle_image"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_profile_image" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         android:background="@color/white"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileContainer">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_edit" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="3"
-                android:text="회원정보변경"
-                android:fontFamily="@font/jalnan"
-                android:textColor="@color/blue"
-                android:textSize="16sp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/round_layout"
-                android:src="@drawable/arrow_edit" />
-        </LinearLayout>
-
-        <View
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:alpha="0.5"
-            android:background="@color/lightgray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_logout" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="3"
-                android:text="로그아웃"
-                android:fontFamily="@font/jalnan"
-                android:textColor="@color/e_apricot"
-                android:textSize="16sp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/round_layout"
-                android:src="@drawable/arrow_edit" />
-        </LinearLayout>
-
+            android:fontFamily="@font/kblz_bold"
+            android:text="프로필"
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:alpha="0.5"
-            android:background="@color/lightgray" />
-
-        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/e_red" />
+        <Button
+            android:id="@+id/btnImgUpdate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_person_remove" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="3"
-                android:textColor="@color/e_red"
-                android:text="회원탈퇴"
-                android:fontFamily="@font/jalnan"
-                android:textSize="16sp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/round_layout"
-                android:src="@drawable/arrow_edit" />
-        </LinearLayout>
-
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="프로필 수정"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#CECECE" />
+        <Button
+            android:id="@+id/btnImgDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="프로필 삭제"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/kblz_bold"
+            android:text="MooDo"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/e_red" />
+        <Button
+            android:id="@+id/btnMoodStats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="이 달의 기록"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#CECECE" />
+        <Button
+            android:id="@+id/btnMoodTracker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="감정 기록 남기기"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#CECECE" />
+        <Button
+            android:id="@+id/btnCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="MooDo Calendar"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/kblz_bold"
+            android:text="회원"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/e_red" />
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="회원정보 변경"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#CECECE" />
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="로그아웃"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#CECECE" />
+        <Button
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FF0000"
+            android:fontFamily="@font/kblz_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="회원 탈퇴"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
