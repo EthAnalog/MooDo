@@ -220,12 +220,12 @@ public class MoodoUserController {
 
     // 회원 탈퇴
     @DeleteMapping("/deleteUser/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable String id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         try {
             userService.deleteUser(id);
-            return ResponseEntity.ok("회원 탈퇴 성공");
+            return ResponseEntity.noContent().build();
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 탈퇴 실패 : " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 

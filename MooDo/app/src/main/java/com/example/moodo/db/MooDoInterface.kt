@@ -44,7 +44,7 @@ interface MooDoInterface {
 
     // 회원 탈퇴
     @DELETE("api/user/deleteUser/{id}")
-    fun deleteUser(@Path("id") id:String):Call<Response<String>>
+    fun deleteUser(@Path("id") id:String):Call<Void>
 
     // 회원 to do list 조회
     @GET("api/todo/list/{userId}/{date}")

@@ -160,6 +160,48 @@ class MainActivity_MyPage : AppCompatActivity() {
             setResult(RESULT_CANCELED, null)
             finish()
         }
+
+        //탈퇴 버튼
+        binding.btnDeleteAccount.setOnClickListener {
+            AlertDialog.Builder(this).apply {
+                setTitle("회원 탈퇴")
+                setMessage("탈퇴 시 모든 데이터가 삭제됩니다. 탈퇴 하시겠습니까?")
+                setPositiveButton("확인") {_,_ ->
+                    MooDoClient.retrofit.deleteUser(userId).enqueue(object : retrofit2.Callback<Void>{
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                            if(response.isSuccessful){
+                                Log.d("MooDoLog DeleteUser", "deleted User : $user")
+                                AlertDialog.Builder(this@MainActivity_MyPage)
+                                    .setMessage("탈퇴가 완료되었습니다.")
+                                    .setPositiveButton("확인"){_,_ ->
+                                        val intent = Intent(this@MainActivity_MyPage, MainActivity::class.java)
+                                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                    .show()
+                            } else {
+                                Log.d("MoodoLog DeleteUser", "Error:${response.code()}-${response.message()}")
+                                AlertDialog.Builder(this@MainActivity_MyPage)
+                                    .setMessage("회원 탈퇴에 실패했습니다.")
+                                    .setPositiveButton("확인", null)
+                                    .show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+                            Log.d("MooDoLog Delete fail", t.toString())
+                            AlertDialog.Builder(this@MainActivity_MyPage)
+                                .setMessage("오류 발생으로 탈퇴에 실패했습니다. 다시 시도해주세요")
+                                .setPositiveButton("확인", null)
+                                .show()
+                        }
+                    })
+                }
+                setNegativeButton("취소", null)
+                show()
+            }
+        }
     }
 
     private fun loadUserInfo(userId: String) {
