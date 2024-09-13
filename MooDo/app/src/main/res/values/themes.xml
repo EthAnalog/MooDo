@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.MooDo" parent="Base.Theme.MooDo" />
+    <style name="Theme.MooDo" parent="Base.Theme.MooDo">
+        <item name="colorPrimary">@color/e_red</item>
+    </style>
 </resources>
