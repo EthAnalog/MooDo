@@ -253,8 +253,10 @@ class MainActivity_Statis : AppCompatActivity() {
         binding.txtEmotion.text = mood
 
         val textColor = ContextCompat.getColor(this, colorRes)
-        binding.txtEmotion.setTextColor(textColor)
+        // binding.txtEmotion.setTextColor(textColor)
+        //binding.userName.setTextColor(textColor)
 
+        binding.topInfo.setBackgroundColor(textColor)
         binding.moodColorLayout.backgroundTintList = ContextCompat.getColorStateList(this, backColorRes)
     }
     private fun moodNumByMonth(userId: String, year:Int, month:Int) {
@@ -270,13 +272,13 @@ class MainActivity_Statis : AppCompatActivity() {
                             updateEmoji(R.drawable.ic_emotion_sad, "이번 달은 기분이 나빴던 날이 많았어요.", R.color.e_blue, R.color.sad)
                         }
                         3-> {
-                            updateEmoji(R.drawable.ic_emotion_meh, "이번 달은 평온한 기분으로 보내신 날이 가장 많았어요", R.color.e_apricot, R.color.meh)
+                            updateEmoji(R.drawable.ic_emotion_meh, "이번 달은 기분이 평온했어요.", R.color.e_apricot, R.color.meh)
                         }
                         4-> {
                             updateEmoji(R.drawable.ic_emotion_s_happy, "이번 달은 기분 좋은 날이 가장 많았어요.", R.color.e_green, R.color.s_happy)
                         }
                         5-> {
-                            updateEmoji(R.drawable.ic_emotion_happy, "이번 달은 기분이 최고였던 날이 가장 많았어요!", R.color.e_yellow, R.color.happy)
+                            updateEmoji(R.drawable.ic_emotion_happy, "이번 달은 기분이 최고였어요!", R.color.e_yellow, R.color.happy)
                         }
                         else-> {
                             updateEmoji(R.drawable.no_mood, "이번 달은 기분이 기록되지 않았어요.", R.color.black, R.color.white)

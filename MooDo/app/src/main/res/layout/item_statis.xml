@@ -8,59 +8,43 @@
     android:layout_marginTop="10dp"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
-    android:padding="10dp">
+>
 
     <LinearLayout
-        android:id="@+id/linearLayout9"
+        android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <TextView
             android:id="@+id/saveDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:visibility="gone" />
-
         <TextView
             android:id="@+id/moodDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/binggrae"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/kblz_bold"
             android:text="0000년 00월 00일"
             android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:fontFamily="@font/binggrae"
-            android:text="기분"
-            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/moodIcon"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_emotion_s_happy" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:fontFamily="@font/binggrae"
-            android:text="날씨"
-            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/weatherIcon"
@@ -74,13 +58,18 @@
         android:id="@+id/oneLineDiary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/binggraetaom"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/box_border"
+        android:fontFamily="@font/kblz_bold"
+        android:minHeight="60dp"
+        android:padding="10dp"
         android:text="일기"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
     tools:context=".MainActivity_Statis">
     <!-- header -->
     <LinearLayout
-        android:id="@+id/linearLayout7"
+        android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -48,48 +48,53 @@
         android:id="@+id/top_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="5dp"
+        android:paddingTop="24dp"
         android:gravity="center"
         android:orientation="vertical"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
-
+        app:layout_constraintTop_toBottomOf="@+id/header">
+        <!-- 최다 감정 아이콘 -->
+        <ImageView
+            android:id="@+id/tvMoodMax"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="감정아이콘"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_emotion_happy" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/jalnan"
+                android:textColor="@color/white"
                 android:text="사용자이름"
                 android:textSize="30sp" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/kblz_bold"
                 android:text="님"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/kblz_bold"
             android:text="이번 한달은 어떠셨나요?"
+            android:textColor="@color/white"
             android:textSize="20sp" />
-
-        <!-- 최다 감정 아이콘 -->
-        <ImageView
-            android:id="@+id/tvMoodMax"
-            android:layout_width="160dp"
-            android:layout_height="140dp"
-            android:contentDescription="감정아이콘"
-            android:src="@drawable/ic_emotion_happy" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -101,43 +106,52 @@
                 android:id="@+id/txt_emotion"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/binggrae"
+                android:fontFamily="@font/kblz_bold"
                 android:text="좋음입니다."
-                android:textSize="18sp" />
+                android:textColor="@color/white"
+                android:textSize="19sp" />
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/moodColorLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="24dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/round_layout"
-            android:backgroundTint="@color/lightyellow"
+            android:backgroundTint="@color/happy"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:padding="20dp">
             <!-- 투두 리스트 달성률 -->
             <TextView
                 android:id="@+id/tdListTxt"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:layout_weight="3"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/kblz_bold"
                 android:text="To do list 달성률"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/completeTodo"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:fontFamily="@font/kblz_bold"
+                android:text="0"
+                android:textSize="16sp"/>
 
             <TextView
                 android:id="@+id/allTodo"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="/0" />
+                android:fontFamily="@font/kblz_bold"
+                android:text="/0"
+                android:textSize="16sp"/>
         </LinearLayout>
     </LinearLayout>
     <!-- 날짜별 기록을 표시하는 RecyclerView -->

@@ -85,8 +85,8 @@ class ToDoAdapter() :RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
         }
 
         when(todoItem.tdCheck) {
-            "N" -> holder.binding.tdChecked.setImageResource(R.drawable.td_non_check)
-            "Y" -> holder.binding.tdChecked.setImageResource(R.drawable.td_check)
+            "N" -> holder.binding.tdChecked.setImageResource(R.drawable.td_list_non_check)
+            "Y" -> holder.binding.tdChecked.setImageResource(R.drawable.td_list_check_black)
         }
     }
 }
