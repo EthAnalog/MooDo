@@ -26,7 +26,7 @@ public interface TodoRepository extends JpaRepository<MooDoTodo, Long> {
             @Param("check") String check);
 
     // 캘린더 표시, 하루 단위 to do list 개수 반환
-    @Query("SELECT COUNT(t) FROM MooDoTodo t WHERE t.user.id = :userId AND t.startDate <= :endDate AND t.endDate >= :startDate")
+    @Query("SELECT COUNT(t) FROM MooDoTodo t WHERE t.tdCheck = 'N' AND t.user.id = :userId AND t.startDate <= :endDate AND t.endDate >= :startDate")
     int countByUserIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
             @Param("userId") String userId,
             @Param("startDate") String startDate,
