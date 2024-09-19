@@ -99,28 +99,26 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
                     Log.d("MooDoLog Id", userId)
                     Log.d("MooDoLog day", date)
 
-                    MooDoClient.retrofit.getHoliday(date).enqueue(object:retrofit2.Callback<List<MooDoHoliday>>{
+                    MooDoClient.retrofit.getHoliday(date).enqueue(object:retrofit2.Callback<List<MooDoHoliday>> {
                         override fun onResponse(
                             call: Call<List<MooDoHoliday>>,
                             response: Response<List<MooDoHoliday>>
                         ) {
                             if (response.isSuccessful) {
-                                val holidayList = response.body() ?: mutableListOf()
-                                Log.d("MooDoLog holiday", holidayList.toString())
-
-                                holidayAdapter.holiday.clear()
-                                holidayAdapter.holiday.addAll(holidayList)
+                                val hdList = response.body() ?: mutableListOf()
+                                holidayAdapter.holidayList.clear()
+                                holidayAdapter.holidayList.addAll(hdList)
                                 holidayAdapter.notifyDataSetChanged()
                             }
                             else {
-                                Log.d("MooDoLog holiday", "Response is not successful: ${response.code()}")
+                                Log.d("MooDoLog holiday", response.code().toString())
                             }
-                            Log.d("MooDoLog holiday", response.body().toString())
                         }
 
                         override fun onFailure(call: Call<List<MooDoHoliday>>, t: Throwable) {
-                            Log.d("MooDoLog getHoli Fail", t.toString())
+                            Log.d("MooDoLog holiday", t.toString())
                         }
+
                     })
 
                     MooDoClient.retrofit.getTodoListN(userId, date).enqueue(object :retrofit2.Callback<List<MooDoToDo>>{

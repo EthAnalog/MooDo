@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moodo.adapter.MoodAdapter
 import com.example.moodo.adapter.ToDoAdapter
@@ -22,11 +25,13 @@ import com.example.moodo.mode.MainActivity_ModeWrite
 import com.example.moodo.mode.MainActivity_MooDo
 import retrofit2.Call
 import retrofit2.Response
+import java.util.Calendar
 import java.util.Optional
 
 class MainActivity_Statis : AppCompatActivity() {
     // 사용자 정보 저장
     var user:MooDoUser? = null
+    lateinit var moodAdapter: MoodAdapter
 
     lateinit var binding:ActivityMainStatisBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +43,18 @@ class MainActivity_Statis : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        fun btnVisible(year: Int, month:Int) {
+            val calendar = Calendar.getInstance()
+            val currentYear = calendar.get(Calendar.YEAR) // 현재 년도 가져오기
+            val currentMonth = calendar.get(Calendar.MONTH) + 1
+
+            if (currentYear.equals(year) && currentMonth.equals(month)) {
+                binding.btnNext.isInvisible = true
+            }
+            else {
+                binding.btnNext.isVisible = true
+            }
         }
 
         val userId = intent.getStringExtra("userId")
@@ -56,71 +73,43 @@ class MainActivity_Statis : AppCompatActivity() {
             month = dateParts[1].toInt() // 월 추출
         }
 
-        // 가장 많은 감정 가져오기
-        moodNumByMonth(userId, year, month)
+        btnVisible(year, month)
+
+        binding.btnNext.setOnClickListener {
+            if (month.equals(12)) {
+                month = 1
+                year += 1
+            }
+            else {
+                month += 1
+            }
+            btnVisible(year, month)
+            getMoodList(userId, year, month)
+            moodNumByMonth(userId, year, month)
+            getMonthTdCnt(userId, year, month)
+        }
+        binding.btnBefore.setOnClickListener {
+            if (month.equals(1)) {
+                month = 12
+                year -= 1
+            }
+            else {
+                month -= 1
+            }
+            btnVisible(year, month)
+            getMoodList(userId, year, month)
+            moodNumByMonth(userId, year, month)
+            getMonthTdCnt(userId, year, month)
+        }
 
         // adapter
-        val moodAdapter = MoodAdapter()
+        moodAdapter = MoodAdapter()
         binding.recyclerView.adapter = moodAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // 한달 동안 기록 가져오기
-        MooDoClient.retrofit.getUserMoodListByMonth(userId, year, month).enqueue(object:retrofit2.Callback<List<MooDoMode>>{
-            override fun onResponse(
-                call: Call<List<MooDoMode>>,
-                response: Response<List<MooDoMode>>
-            ) {
-                if (response.isSuccessful) {
-                    val modeList = response.body() ?: mutableListOf()
-                    moodAdapter.moodList.addAll(modeList)
-                    moodAdapter.notifyDataSetChanged()
-                } else {
-                    Log.d("MooDoLog statis", "Response is not successful: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<List<MooDoMode>>, t: Throwable) {
-                Log.d("MooDoLog Statis Fail", t.toString())
-            }
-
-        })
-
-        // 달성률 표시
-        var allTodo = "0"
-        var completeTodo = "0"
-        MooDoClient.retrofit.getTodoCountForMonth(userId, year, month).enqueue(object:retrofit2.Callback<Int>{
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful){
-                    Log.d("MooDoLog todoCnt", response.body().toString())
-                    allTodo = response.body().toString()
-                    binding.allTodo.text = "/${allTodo}"
-                }
-                else {
-                    Log.d("MooDoLog todoCnt", "Response is not successful: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                Log.d("MooDoLog todoCnt Fail", t.toString())
-            }
-        })
-        MooDoClient.retrofit.getCompletedTodoCountForMonth(userId, year, month).enqueue(object : retrofit2.Callback<Int> {
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.isSuccessful){
-                    Log.d("MooDoLog todoCnt", response.body().toString())
-                    completeTodo = response.body().toString()
-                    binding.completeTodo.text = completeTodo
-                }
-                else {
-                    Log.d("MooDoLog todoCnt", "Response is not successful: ${response.code()}")
-                }
-            }
-
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                Log.d("MooDoLog todoCnt Fail", t.toString())
-            }
-        })
-
+        getMoodList(userId, year, month)
+        moodNumByMonth(userId, year, month)
+        getMonthTdCnt(userId, year, month)
 
         var position = 0
         // 수정 intent 처리
@@ -221,11 +210,6 @@ class MainActivity_Statis : AppCompatActivity() {
             intent.putExtra("id", userId)
 
             startActivity(intent)
-//            val intent = Intent().apply {
-//                putExtra("update", true)
-//            }
-//            setResult(RESULT_OK, intent)
-//            finish()
         }
     }
 
@@ -247,6 +231,70 @@ class MainActivity_Statis : AppCompatActivity() {
             }
         })
     }
+
+    // 한달 간 기록
+    private fun getMoodList(userId:String, year: Int, month: Int) {
+        MooDoClient.retrofit.getUserMoodListByMonth(userId, year, month).enqueue(object:retrofit2.Callback<List<MooDoMode>>{
+            override fun onResponse(
+                call: Call<List<MooDoMode>>,
+                response: Response<List<MooDoMode>>
+            ) {
+                if (response.isSuccessful) {
+                    val modeList = response.body() ?: mutableListOf()
+                    moodAdapter.moodList.clear()
+                    moodAdapter.moodList.addAll(modeList)
+                    moodAdapter.notifyDataSetChanged()
+                } else {
+                    Log.d("MooDoLog statis", "Response is not successful: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<MooDoMode>>, t: Throwable) {
+                Log.d("MooDoLog Statis Fail", t.toString())
+            }
+
+        })
+
+    }
+
+    // 달성률
+    private fun getMonthTdCnt(userId: String, year: Int, month: Int) {
+        var allTodo = "0"
+        var completeTodo = "0"
+        MooDoClient.retrofit.getTodoCountForMonth(userId, year, month).enqueue(object:retrofit2.Callback<Int>{
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful){
+                    Log.d("MooDoLog todoCnt", response.body().toString())
+                    allTodo = response.body().toString()
+                    binding.allTodo.text = "/${allTodo}"
+                }
+                else {
+                    Log.d("MooDoLog todoCnt", "Response is not successful: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Log.d("MooDoLog todoCnt Fail", t.toString())
+            }
+        })
+        MooDoClient.retrofit.getCompletedTodoCountForMonth(userId, year, month).enqueue(object : retrofit2.Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful){
+                    Log.d("MooDoLog todoCnt", response.body().toString())
+                    completeTodo = response.body().toString()
+                    binding.completeTodo.text = completeTodo
+                }
+                else {
+                    Log.d("MooDoLog todoCnt", "Response is not successful: ${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Log.d("MooDoLog todoCnt Fail", t.toString())
+            }
+        })
+    }
+
     // 색상, 이모지 설정
     private fun updateEmoji(emojiImg: Int, mood:String, colorRes:Int, backColorRes:Int) {
         binding.tvMoodMax.setImageResource(emojiImg)
@@ -264,22 +312,22 @@ class MainActivity_Statis : AppCompatActivity() {
                 if (response.isSuccessful) {
                     when(response.body()) {
                         1-> {
-                            updateEmoji(R.drawable.ic_emotion_angry, "이번 달은 최악의 기분을 느낀 날이 많았어요.", R.color.e_red, R.color.angry)
+                            updateEmoji(R.drawable.ic_emotion_angry, "${month}월달은 최악의 기분을 느낀 날이 많았어요.", R.color.e_red, R.color.angry)
                         }
                         2-> {
-                            updateEmoji(R.drawable.ic_emotion_sad, "이번 달은 기분이 나빴던 날이 많았어요.", R.color.e_blue, R.color.sad)
+                            updateEmoji(R.drawable.ic_emotion_sad, "${month}월달은 기분이 나빴던 날이 많았어요.", R.color.e_blue, R.color.sad)
                         }
                         3-> {
-                            updateEmoji(R.drawable.ic_emotion_meh, "이번 달은 기분이 평온했어요.", R.color.e_apricot, R.color.meh)
+                            updateEmoji(R.drawable.ic_emotion_meh, "${month}월달은 기분이 평온했어요.", R.color.e_apricot, R.color.meh)
                         }
                         4-> {
-                            updateEmoji(R.drawable.ic_emotion_s_happy, "이번 달은 기분 좋은 날이 가장 많았어요.", R.color.e_green, R.color.s_happy)
+                            updateEmoji(R.drawable.ic_emotion_s_happy, "${month}월달은 기분 좋은 날이 가장 많았어요.", R.color.e_green, R.color.s_happy)
                         }
                         5-> {
-                            updateEmoji(R.drawable.ic_emotion_happy, "이번 달은 기분이 최고였어요!", R.color.e_yellow, R.color.happy)
+                            updateEmoji(R.drawable.ic_emotion_happy, "${month}월달은 기분이 최고였어요!", R.color.e_yellow, R.color.happy)
                         }
                         else-> {
-                            updateEmoji(R.drawable.no_mood, "이번 달은 기분이 기록되지 않았어요.", R.color.green, R.color.green)
+                            updateEmoji(R.drawable.no_mood, "${month}월달은 기분이 기록되지 않았어요.", R.color.noStats, R.color.noStats2)
                         }
                     }
                 }else {

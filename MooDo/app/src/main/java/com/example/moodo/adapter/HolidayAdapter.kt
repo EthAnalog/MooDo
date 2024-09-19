@@ -7,7 +7,7 @@ import com.example.moodo.databinding.ItemHolidayBinding
 import com.example.moodo.db.MooDoHoliday
 
 class HolidayAdapter():RecyclerView.Adapter<HolidayAdapter.Holder>() {
-    var holiday = mutableListOf<MooDoHoliday>()
+    var holidayList = mutableListOf<MooDoHoliday>()
     class Holder(val binding:ItemHolidayBinding) :RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -15,11 +15,11 @@ class HolidayAdapter():RecyclerView.Adapter<HolidayAdapter.Holder>() {
     }
 
     override fun getItemCount(): Int {
-        return holiday.size
+        return holidayList.size
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.binding.itemHolidayName.text = holiday[position].dateName
+        holder.binding.itemHolidayName.text = holidayList[position].dateName
     }
 
 }

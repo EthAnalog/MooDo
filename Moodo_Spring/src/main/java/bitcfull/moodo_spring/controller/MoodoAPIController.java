@@ -17,7 +17,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/holiday")
 public class MoodoAPIController {
-//    https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo?serviceKey=YHk%2FDq2AvdrTidj5jSCst2wFU1dgbcYNzbVQBDpf70d%2FNUvG1nz7R9Jq61UI3Byugm6Zc9NDBTa5IhbUhqJTnA%3D%3D&solYear=2015&solMonth=09
     @Autowired
     MoodoAPIService apiService;
 
@@ -58,12 +57,16 @@ public class MoodoAPIController {
                     Item.setIsHoliday(holiday.getIsHoliday());
                     Item.setDateName(holiday.getDateName());
 
-                    System.out.println("\n" + Item.getDateName());
                     holidayItem.add(Item);
                 }
             }
         }
-        System.out.println(holidayItem);
+        if (holidayItem.isEmpty()) {
+            System.out.println("No holidays found for the date: " + date);
+            return new ArrayList<>(); // 빈 리스트 반환
+        } else {
+            System.out.println("\n" + holidayItem.get(0).getDateName()); // 첫 번째 아이템 출력
+        }
         return holidayItem;
     }
 }
