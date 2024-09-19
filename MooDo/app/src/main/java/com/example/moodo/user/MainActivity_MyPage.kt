@@ -12,10 +12,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.moodo.MainActivity
 import com.example.moodo.MainActivity_Statis
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.FileProvider
 import com.example.moodo.R
 import com.example.moodo.databinding.ActivityMainMyPageBinding
 import com.example.moodo.databinding.DialogUserEditPassBinding
@@ -36,8 +41,9 @@ import java.util.Calendar
 import java.util.Locale
 
 class MainActivity_MyPage : AppCompatActivity() {
-    lateinit var binding: ActivityMainMyPageBinding
-    var user:MooDoUser?=null
+    private lateinit var binding: ActivityMainMyPageBinding
+    private var user:MooDoUser?=null
+    private var currentPhotoPath: String = ""
 
     // 프로필 사진 변경 여부
     var profileUpdate = false
@@ -64,7 +70,7 @@ class MainActivity_MyPage : AppCompatActivity() {
         }
     }
 
-    private var currentPhotoPath: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -282,24 +288,50 @@ class MainActivity_MyPage : AppCompatActivity() {
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> pickImage.launch("image/*") // 갤러리
-                    1 -> dispatchTakePictureIntent() // 카메라
+//                    1 -> dispatchTakePictureIntent() // 카메라
+                    1 -> checkCameraPermission() // 카메라
                 }
             }
             .show()
     }
 
+    private fun checkCameraPermission() {
+        val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (permissions.any {ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED }) {
+            ActivityCompat.requestPermissions(this, permissions, CAMERA_REQUEST_CODE)
+        } else {
+            dispatchTakePictureIntent()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == CAMERA_REQUEST_CODE) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                dispatchTakePictureIntent()
+            } else {
+                Toast.makeText(this, "카메라 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     // 프로필 사진 촬영 인텐트
     private fun dispatchTakePictureIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
+//            takePictureIntent.resolveActivity(packageManager)?.also {
                 val photoFile = createImageFile()
                 photoFile?.let {
                     currentPhotoPath = it.absolutePath
-                    val photoURI = Uri.fromFile(it)
+//                    val photoURI = Uri.fromFile(it)
+                    val photoURI = FileProvider.getUriForFile(this, "${packageName}.fileprovider", it)
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                     takePicture.launch(photoURI)
                 }
-            }
+//            }
         }
     }
 
@@ -383,5 +415,9 @@ class MainActivity_MyPage : AppCompatActivity() {
             }
         }
         return null
+    }
+
+    companion object {
+        private const val CAMERA_REQUEST_CODE = 100
     }
 }
