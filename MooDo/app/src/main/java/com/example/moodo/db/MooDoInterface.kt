@@ -141,7 +141,7 @@ interface MooDoInterface {
     @GET("api/calendar/count/day/{userId}/{date}")
     fun getDay(@Path("userId") userId: String, @Path("date") date:String):Call<MoodoCalendar>
 
-    // 연휴 들고오기
-    @GET("api/holiday/getHoliday/{date}")
+    // 공휴일 정보
+    @GET("api/calendar/getHoliday/{date}")
     fun getHoliday(@Path("date") date:String):Call<List<MooDoHoliday>>
 }
