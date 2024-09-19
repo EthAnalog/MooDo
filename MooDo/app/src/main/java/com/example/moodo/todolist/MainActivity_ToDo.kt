@@ -13,17 +13,16 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moodo.R
+import com.example.moodo.adapter.ToDoAdapter
 import com.example.moodo.databinding.ActivityMainToDoBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoToDo
-import com.example.moodo.adapter.ToDoAdapter
 import com.example.moodo.db.MooDoUser
 import com.example.moodo.mode.MainActivity_MooDo
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 
 class MainActivity_ToDo : AppCompatActivity() {
@@ -50,6 +49,7 @@ class MainActivity_ToDo : AppCompatActivity() {
 
         val userId = intent.getStringExtra("userId")
         val selectDate = intent.getStringExtra("selectDate")
+
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
         val stats = intent.getStringExtra("stats")
@@ -61,14 +61,50 @@ class MainActivity_ToDo : AppCompatActivity() {
         toDoAdapter = ToDoAdapter()
         binding.tdListRecycler.adapter = toDoAdapter
         binding.tdListRecycler.layoutManager = LinearLayoutManager(this)
-        allTodoList(userId, selectDate!!)
 
+        val tdDateText = binding.tdDateText
+        tdDateText.text = "${selectDate}"
+
+        allTodoList(userId, selectDate!!)
 
         // 버튼 글자 색
         val defaultTextColor = resources.getColor(R.color.black, null)
         val selectedTextColor = resources.getColor(R.color.gray, null)
         // tdList 가 all 인지, complete 인지 active 인지 저장
         var tdListStats = "All"
+
+        binding.btnBefore.setOnClickListener {
+            val formatter = dateFormat.parse(tdDateText.text as String)
+
+            val calendar = Calendar.getInstance()
+            calendar.time = formatter
+            calendar.add(Calendar.DAY_OF_MONTH, -1) // 하루 빼기
+
+            tdDateText.text = dateFormat.format(calendar.time)
+            allTodoList(userId, tdDateText.text.toString())
+            btnVisible()
+            binding.allList.setTextColor(selectedTextColor)
+            binding.activeList.setTextColor(defaultTextColor)
+            binding.completeList.setTextColor(defaultTextColor)
+            tdListStats = "All"
+        }
+
+        binding.btnNext.setOnClickListener {
+            val formatter = dateFormat.parse(tdDateText.text as String)
+
+            val calendar = Calendar.getInstance()
+            calendar.time = formatter
+            calendar.add(Calendar.DAY_OF_MONTH, +1)
+
+            tdDateText.text = dateFormat.format(calendar.time)
+            allTodoList(userId, tdDateText.text.toString())
+            btnVisible()
+            binding.allList.setTextColor(selectedTextColor)
+            binding.activeList.setTextColor(defaultTextColor)
+            binding.completeList.setTextColor(defaultTextColor)
+            tdListStats = "All"
+        }
+
 
         // all, complete, active 에 따른 리스트 출력
         binding.allList.setOnClickListener {
