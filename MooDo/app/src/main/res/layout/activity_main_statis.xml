@@ -87,15 +87,6 @@
                 android:textColor="@color/white"
                 android:textSize="24sp" />
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/kblz_bold"
-            android:text="이번 한달은 어떠셨나요?"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -154,6 +145,7 @@
                 android:textSize="16sp"/>
         </LinearLayout>
     </LinearLayout>
+
     <!-- 날짜별 기록을 표시하는 RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

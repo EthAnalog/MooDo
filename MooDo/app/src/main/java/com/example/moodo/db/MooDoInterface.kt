@@ -1,9 +1,7 @@
 package com.example.moodo.db
 
-import com.example.moodo.calendar.MoodoCalendar
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -131,4 +129,7 @@ interface MooDoInterface {
     @GET("api/calendar/count/day/{userId}/{date}")
     fun getDay(@Path("userId") userId: String, @Path("date") date:String):Call<MoodoCalendar>
 
+    // 연휴 들고오기
+    @GET("api/holiday/getHoliday/{date}")
+    fun getHoliday(@Path("date") date:String):Call<List<MooDoHoliday>>
 }

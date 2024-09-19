@@ -185,7 +185,7 @@ class MainActivity_Statis : AppCompatActivity() {
             }
 
             // 롱 클릭
-            override fun onItemLongClcik(pos: Int) {
+            override fun onItemLongClick(pos: Int) {
                 position = pos
                 AlertDialog.Builder(binding.root.context).run {
                     setMessage("해당 기록을 삭제하시겠습니까?")
@@ -253,8 +253,6 @@ class MainActivity_Statis : AppCompatActivity() {
         binding.txtEmotion.text = mood
 
         val textColor = ContextCompat.getColor(this, colorRes)
-        // binding.txtEmotion.setTextColor(textColor)
-        //binding.userName.setTextColor(textColor)
 
         binding.topInfo.setBackgroundColor(textColor)
         binding.moodColorLayout.backgroundTintList = ContextCompat.getColorStateList(this, backColorRes)
@@ -281,7 +279,7 @@ class MainActivity_Statis : AppCompatActivity() {
                             updateEmoji(R.drawable.ic_emotion_happy, "이번 달은 기분이 최고였어요!", R.color.e_yellow, R.color.happy)
                         }
                         else-> {
-                            updateEmoji(R.drawable.no_mood, "이번 달은 기분이 기록되지 않았어요.", R.color.black, R.color.white)
+                            updateEmoji(R.drawable.no_mood, "이번 달은 기분이 기록되지 않았어요.", R.color.green, R.color.green)
                         }
                     }
                 }else {

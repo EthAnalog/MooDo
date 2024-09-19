@@ -1,20 +1,24 @@
 package bitcfull.moodo_spring.controller;
 
+import bitcfull.moodo_spring.dto.Holiday;
 import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.model.MoodoCalendar;
 import bitcfull.moodo_spring.model.MoodoMode;
+import bitcfull.moodo_spring.service.MoodoAPIService;
 import bitcfull.moodo_spring.service.MoodoModeService;
 import bitcfull.moodo_spring.service.MoodoTodoService;
 import bitcfull.moodo_spring.service.MoodoUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/calendar")
@@ -28,25 +32,64 @@ public class MoodoCalendarController {
     @Autowired
     private MoodoUserService userService;
 
+    @Autowired
+    private MoodoAPIService apiService;
+
+    @Value("${Moodo_Spring.service.key}")
+    private String apiKey;
+
+    @Value("${Moodo_Spring.service.url}")
+    private String apiUrl;
+
     @GetMapping("/count/day/{userId}/{date}")
-    public MoodoCalendar getDay(@PathVariable String userId, @PathVariable String date) throws ParseException {
+    public MoodoCalendar getDay(@PathVariable String userId, @PathVariable String date) throws Exception {
 
         MoodoCalendar today = new MoodoCalendar();
 
         MooDoUser user = userService.getUserInfo(userId);
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/MM/dd");
+
         SimpleDateFormat inputFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+        Date inputDate = inputFormat2.parse(date);
 
         // 출력 형식 지정 (MM-dd)
         SimpleDateFormat outputFormat = new SimpleDateFormat("MM-dd");
 
+        SimpleDateFormat outputYear = new SimpleDateFormat("yyyy");
+        SimpleDateFormat outputMonth = new SimpleDateFormat("MM");
+
+        String opt1 = "?serviceKey=";
+        String opt2 = "&solYear=";
+        String opt3 = "&solMonth=";
+
+        String year = outputYear.format(inputDate);
+        String month = outputMonth.format(inputDate);
+
+        String url = apiUrl + opt1 + apiKey + opt2 + year + opt3 + month;
+
+        List<Holiday> holidayList = apiService.getItemList(url);
+
+        String holiDay = "";
+        String isHoliday = "N";
+
+        if (holidayList != null) {
+            for (Holiday holiday : holidayList) {
+                if (date.equals(holiday.getLocdate())) {
+                    holiDay = holiday.getLocdate();
+                    isHoliday = holiday.getIsHoliday();
+                }
+                System.out.println("\n" + date + ":" + isHoliday + "\n");
+            }
+        }
+
         Date userDate = inputFormat.parse(user.getAge());
-        Date inputDate = inputFormat2.parse(date);
         String userAge = outputFormat.format(userDate);
         String inputDay = outputFormat.format(inputDate);
 
-
         int todayTd = todoService.getTodoCountForDay(userId, date);
+        if (holiDay.equals(date)) {
+            todayTd = 1;
+        }
 
         Optional<MoodoMode> mood = moodoModeService.findByUserAndDate(userId, date);
         String todayMd;
@@ -69,6 +112,7 @@ public class MoodoCalendarController {
         }
         today.setTodayTd(todayTd);
         today.setTodayMd(todayMd);
+        today.setIsHoliday(isHoliday);
 
         return today;
     }

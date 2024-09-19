@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moodo.R
-import com.example.moodo.calendar.DayAdapter.DayHolder
 import com.example.moodo.databinding.ItemListMonthBinding
 import com.example.moodo.db.MooDoClient
+import com.example.moodo.db.MoodoCalendar
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
@@ -53,6 +52,9 @@ class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.Month
         val dayList: MutableList<Date> = MutableList(5 * 7) { Date() }
         val dayTdItem: MutableList<Int> = MutableList(5*7) {0}
         val dayMdItem: MutableList<String> = MutableList(5*7) {String()}
+        val dayIsHoliday: MutableList<String> = MutableList(5*7){String()}
+
+        val dayCalendar:MutableList<MoodoCalendar> = MutableList(5*7){MoodoCalendar(0, "0", "N")}
 
         val tempCalendar = calendar.clone() as Calendar // 임시 캘린더로 날짜 계산
         tempCalendar.add(Calendar.DAY_OF_MONTH, -(tempCalendar.get(Calendar.DAY_OF_WEEK) - 1)) // 첫 주의 일요일로 이동
@@ -66,7 +68,7 @@ class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.Month
         val totalRequest = 5* 7
         fun checkAllDataLoaded(){
             if (apiCnt == totalRequest) {
-                dayAdapter = DayAdapter(tempMonth, dayList, todayPosition, userId, dayTdItem, dayMdItem).apply {
+                dayAdapter = DayAdapter(tempMonth, dayList, todayPosition, userId, dayCalendar).apply {
                     clickItemDayListener = object : DayAdapter.ClickItemDayListener {
                         override fun clickItemDay(position: Int) {
                             // 클릭된 날짜 처리 및 이벤트 전달
@@ -93,14 +95,19 @@ class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.Month
                     MooDoClient.retrofit.getDay(userId, formattedDay).enqueue(object:retrofit2.Callback<MoodoCalendar>{
                         override fun onResponse(call: Call<MoodoCalendar>, response: Response<MoodoCalendar>) {
                             val responseBody = response.body()
-                            Log.d("MooDoLog TDResponse", responseBody.toString())
                             if (responseBody != null) {
-                                dayTdItem[i* 7 + k] = responseBody.todayTd
-                                dayMdItem[i* 7 + k] = responseBody.todayMd
+                                dayCalendar[i * 7 + k] = responseBody
+
+//                                dayTdItem[i* 7 + k] = responseBody.todayTd
+//                                dayMdItem[i* 7 + k] = responseBody.todayMd
+//                                dayIsHoliday[i * 7 + k] = responseBody.isHoliday
                             }
                             else {
-                                dayTdItem[i* 7 + k] = 0
-                                dayMdItem[i* 7 + k] = "0"
+                                dayCalendar[i * 7 + k] = MoodoCalendar(0, "0", "N")
+
+//                                dayTdItem[i* 7 + k] = 0
+//                                dayMdItem[i* 7 + k] = "0"
+//                                dayIsHoliday[i * 7 + k] = "N"
                             }
                             apiCnt++
                             checkAllDataLoaded()
@@ -109,8 +116,11 @@ class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.Month
                         override fun onFailure(call: Call<MoodoCalendar>, t: Throwable) {
                             Log.d("MooDoLog TDResponse Error", t.toString())
 
-                            dayTdItem[i* 7 + k] = 0
-                            dayMdItem[i* 7 + k] = "0"
+                            dayCalendar[i * 7 + k] = MoodoCalendar(0, "0", "N")
+
+//                            dayTdItem[i* 7 + k] = 0
+//                            dayMdItem[i* 7 + k] = "0"
+//                            dayIsHoliday[i * 7 + k] = "N"
 
                             apiCnt++
                             checkAllDataLoaded()
@@ -119,8 +129,9 @@ class MonthAdapter(val userId: String) : RecyclerView.Adapter<MonthAdapter.Month
                     })
                 }
                 else {
-                    dayTdItem[i* 7 + k] = 0
-                    dayMdItem[i* 7 + k] = "0"
+//                    dayTdItem[i* 7 + k] = 0
+//                    dayMdItem[i* 7 + k] = "0"
+                    dayCalendar[i * 7 + k] = MoodoCalendar(0, "0", "N")
                     apiCnt++
                     checkAllDataLoaded()
                 }

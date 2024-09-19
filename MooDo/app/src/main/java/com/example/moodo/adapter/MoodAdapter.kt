@@ -2,7 +2,6 @@ package com.example.moodo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moodo.R
 import com.example.moodo.databinding.ItemStatisBinding
@@ -15,7 +14,7 @@ class MoodAdapter() : RecyclerView.Adapter<MoodAdapter.MoodViewHolder>() {
 
     interface OnItemClickLister {
         fun onItemClick(pos:Int)
-        fun onItemLongClcik(pos:Int)
+        fun onItemLongClick(pos:Int)
     }
     var onItemClickLister:OnItemClickLister? = null
     inner class MoodViewHolder(val binding:ItemStatisBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -24,7 +23,7 @@ class MoodAdapter() : RecyclerView.Adapter<MoodAdapter.MoodViewHolder>() {
                 onItemClickLister?.onItemClick(adapterPosition)
             }
             itemView.setOnLongClickListener {
-                onItemClickLister?.onItemLongClcik(adapterPosition)
+                onItemClickLister?.onItemLongClick(adapterPosition)
                 true
             }
         }

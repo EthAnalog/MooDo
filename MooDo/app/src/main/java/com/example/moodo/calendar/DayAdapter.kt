@@ -12,6 +12,7 @@ import com.example.moodo.databinding.ItemListDayBinding
 import com.example.moodo.db.MooDoClient
 import com.example.moodo.db.MooDoMode
 import com.example.moodo.db.MooDoUser
+import com.example.moodo.db.MoodoCalendar
 import retrofit2.Call
 import retrofit2.Response
 import java.text.SimpleDateFormat
@@ -23,8 +24,7 @@ class DayAdapter(val tempMonth:Int,
                  val dayList:MutableList<Date>,
                  val todayPosition:Int,
                  val userId:String,
-                 val dayTdItem:MutableList<Int>,
-                 val dayMdItem:MutableList<String>)
+                 val dayCalendar:MutableList<MoodoCalendar>)
     :RecyclerView.Adapter<DayAdapter.DayHolder>() {
     val row = 5
 
@@ -66,8 +66,8 @@ class DayAdapter(val tempMonth:Int,
 
         holder.binding.itemDayTxt.text = currentDay.date.toString()
 
-        // 요일 색상 설정(R.color > Color.~로 변경)
-        val textColor = when(position%7) {
+        // 요일 색상 설정
+        val textColor = when(position % 7) {
             0 -> Color.RED
             6 -> Color.BLUE
             else -> Color.BLACK
@@ -75,21 +75,25 @@ class DayAdapter(val tempMonth:Int,
         holder.binding.itemDayTxt.setTextColor(textColor)
 
         // 현재 월이 아닌 날짜 투명하게
-        if (tempMonth != currentDay.month) {
-            holder.binding.itemDayTxt.alpha = 0.4f
-        }
-        else {
-            holder.binding.itemDayTxt.alpha = 1.0f
-        }
+        holder.binding.itemDayTxt.alpha = if (tempMonth != currentDay.month) 0.4f else 1.0f
 
-        val todayTd = dayTdItem[position]
-        val todayMd = dayMdItem[position]
+        val todayTd = dayCalendar[position].todayTd
+        val todayMd = dayCalendar[position].todayMd
+        val todayHoliday = dayCalendar[position].isHoliday
+
+        // 공휴일 처리
+        if (todayHoliday == "Y") {
+            holder.binding.itemDayTxt.setTextColor(Color.RED)
+        } else {
+            holder.binding.itemDayTxt.setTextColor(Color.BLACK)
+        }
 
         when(todayTd) {
             0 -> holder.binding.todoOval.setImageResource(0)
             else -> holder.binding.todoOval.setImageResource(R.drawable.td_has)
         }
 
+        // 감정 아이콘 설정
         when(todayMd) {
             "b_1" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_angry)
             "b_2" -> holder.binding.itemMood.setImageResource(R.drawable.ic_birthday_sad)
@@ -106,7 +110,8 @@ class DayAdapter(val tempMonth:Int,
             else -> holder.binding.itemMood.setImageResource(0)
         }
 
-        if (selectedPosition== -1 && todayPosition == position) {
+        // 오늘 날짜와 선택된 날짜 처리
+        if (selectedPosition == -1 && todayPosition == position) {
             selectedPosition = todayPosition
             clickItemDayListener?.clickItemDay(selectedPosition)
         }
@@ -114,10 +119,9 @@ class DayAdapter(val tempMonth:Int,
         // 선택된 항목 배경색 설정
         if (selectedPosition == position) {
             holder.binding.itemDayTxt.setBackgroundResource(R.drawable.select_day)
-            holder.binding.itemDayTxt.setTextColor(Color.WHITE)
         } else {
             holder.binding.itemDayTxt.setBackgroundResource(R.drawable.none_select_day)
-            holder.binding.itemDayTxt.setTextColor(Color.BLACK)
         }
     }
+
 }

@@ -22,9 +22,11 @@ import com.example.moodo.MainActivity
 import com.example.moodo.MainActivity_Statis
 import com.example.moodo.R
 import com.example.moodo.adapter.CalendarToDoAdapter
+import com.example.moodo.adapter.HolidayAdapter
 import com.example.moodo.calendar.MonthAdapter
 import com.example.moodo.databinding.ActivityMainMooDoBinding
 import com.example.moodo.db.MooDoClient
+import com.example.moodo.db.MooDoHoliday
 import com.example.moodo.db.MooDoToDo
 import com.example.moodo.db.MooDoUser
 import com.example.moodo.todolist.MainActivity_ToDo
@@ -83,6 +85,11 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
         binding.todoListLayout.adapter = todoAdapter
         binding.todoListLayout.layoutManager = LinearLayoutManager(this)
 
+        // holidayAdapter
+        val holidayAdapter = HolidayAdapter()
+        binding.holidayLayout.adapter = holidayAdapter
+        binding.holidayLayout.layoutManager = LinearLayoutManager(this)
+
         // custom calendar 연결
         val monthListManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         monthAdapter = MonthAdapter(userId).apply {
@@ -91,6 +98,30 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
                 override fun onDaySelected(date: String) {
                     Log.d("MooDoLog Id", userId)
                     Log.d("MooDoLog day", date)
+
+                    MooDoClient.retrofit.getHoliday(date).enqueue(object:retrofit2.Callback<List<MooDoHoliday>>{
+                        override fun onResponse(
+                            call: Call<List<MooDoHoliday>>,
+                            response: Response<List<MooDoHoliday>>
+                        ) {
+                            if (response.isSuccessful) {
+                                val holidayList = response.body() ?: mutableListOf()
+                                Log.d("MooDoLog holiday", holidayList.toString())
+
+                                holidayAdapter.holiday.clear()
+                                holidayAdapter.holiday.addAll(holidayList)
+                                holidayAdapter.notifyDataSetChanged()
+                            }
+                            else {
+                                Log.d("MooDoLog holiday", "Response is not successful: ${response.code()}")
+                            }
+                            Log.d("MooDoLog holiday", response.body().toString())
+                        }
+
+                        override fun onFailure(call: Call<List<MooDoHoliday>>, t: Throwable) {
+                            Log.d("MooDoLog getHoli Fail", t.toString())
+                        }
+                    })
 
                     MooDoClient.retrofit.getTodoListN(userId, date).enqueue(object :retrofit2.Callback<List<MooDoToDo>>{
                         override fun onResponse(

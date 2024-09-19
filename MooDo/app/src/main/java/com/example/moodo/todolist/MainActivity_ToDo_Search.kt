@@ -50,7 +50,7 @@ class MainActivity_ToDo_Search : AppCompatActivity() {
         }
 
         binding.searchBtn.setOnClickListener {
-            if (searchTxt.text.isEmpty()){
+            if (searchTxt.text?.isEmpty() == true){
                 searchTxt.hint = "검색어를 입력해주세요."
             }
             else {
@@ -62,6 +62,9 @@ class MainActivity_ToDo_Search : AppCompatActivity() {
                         response: Response<List<MooDoToDo>>
                     ) {
                         if (response.isSuccessful) {
+                            if (response.body() == null) {
+                                searchTxt.hint = "검색 결과가 없습니다."
+                            }
                             val todoList = response.body() ?: mutableListOf()
                             Log.d("MooDoLog Search", todoList.toString())
                             toDoAdapter.todoList.clear()
@@ -76,6 +79,8 @@ class MainActivity_ToDo_Search : AppCompatActivity() {
                     }
                 })
             }
+
+            searchTxt.setText(null)
         }
 
         // 일정 선택 시 To Do 로 이동

@@ -82,6 +82,11 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/holidayLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/todoListLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
