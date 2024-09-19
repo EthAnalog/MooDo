@@ -273,7 +273,8 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
                 val intent = Intent(this@MainActivity_MooDo, MainActivity_MyPage::class.java)
 
                 intent.putExtra("userId", userId)
-                startActivity(intent)
+                // startActivity(intent)
+                activityProfileUpdate.launch(intent)
             }
             R.id.nav_logout -> {
                 // 로그아웃
@@ -361,6 +362,16 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
             }
 
         })
+    }
+
+    // 프로필 사진
+    val activityProfileUpdate = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
+        if (result.resultCode == RESULT_OK) {
+            val update = result.data?.getBooleanExtra("update", false) ?: false
+            if (update) {
+                loadUserInfo(userId)
+            }
+        }
     }
 
     // mood intent

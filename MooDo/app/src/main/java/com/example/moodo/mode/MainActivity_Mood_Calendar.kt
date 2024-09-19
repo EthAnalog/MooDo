@@ -272,7 +272,8 @@ class MainActivity_Mood_Calendar : AppCompatActivity(), NavigationView.OnNavigat
                 val intent = Intent(this@MainActivity_Mood_Calendar, MainActivity_MyPage::class.java)
 
                 intent.putExtra("userId", userId)
-                startActivity(intent)
+                // startActivity(intent)
+                activityProfileUpdate.launch(intent)
             }
 
             // 로그아웃
@@ -362,5 +363,15 @@ class MainActivity_Mood_Calendar : AppCompatActivity(), NavigationView.OnNavigat
             }
 
         })
+    }
+
+    // 프로필 사진
+    val activityProfileUpdate = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
+        if (result.resultCode == RESULT_OK) {
+            val update = result.data?.getBooleanExtra("update", false) ?: false
+            if (update) {
+                loadUserInfo(userId)
+            }
+        }
     }
 }

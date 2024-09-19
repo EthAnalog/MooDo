@@ -38,6 +38,10 @@ import java.util.Locale
 class MainActivity_MyPage : AppCompatActivity() {
     lateinit var binding: ActivityMainMyPageBinding
     var user:MooDoUser?=null
+
+    // 프로필 사진 변경 여부
+    var profileUpdate = false
+
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
             val file = File(getPathFromUri(uri) ?: return@let)
@@ -87,10 +91,12 @@ class MainActivity_MyPage : AppCompatActivity() {
         // 사진 수정
         binding.btnImgUpdate.setOnClickListener {
             chooseImage()
+            profileUpdate = true
         }
         // 사진 삭제
         binding.btnImgDelete.setOnClickListener {
             deleteProfilePicture(userId)
+            profileUpdate = true
         }
 
         // menu - moodo
@@ -195,8 +201,16 @@ class MainActivity_MyPage : AppCompatActivity() {
         }
         // 뒤로 가기
         binding.btnClose.setOnClickListener {
-            setResult(RESULT_CANCELED, null)
-            finish()
+            if (profileUpdate) {
+                val update = true
+                intent.putExtra("update", update)
+                setResult(RESULT_OK, intent)
+                finish()
+            }
+            else {
+                setResult(RESULT_CANCELED, null)
+                finish()
+            }
         }
 
         //탈퇴 버튼
