@@ -1,6 +1,6 @@
 package bitcfull.moodo_spring.controller;
 
-import bitcfull.moodo_spring.dto.Holiday;
+import bitcfull.moodo_spring.model.MoodoHoliday;
 import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.model.MoodoCalendar;
 import bitcfull.moodo_spring.model.MoodoMode;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -67,13 +68,13 @@ public class MoodoCalendarController {
 
         String url = apiUrl + opt1 + apiKey + opt2 + year + opt3 + month;
 
-        List<Holiday> holidayList = apiService.getItemList(url);
+        List<MoodoHoliday> holidayList = apiService.getItemList(url);
 
         String holiDay = "";
         String isHoliday = "N";
 
         if (holidayList != null) {
-            for (Holiday holiday : holidayList) {
+            for (MoodoHoliday holiday : holidayList) {
                 if (date.equals(holiday.getLocdate())) {
                     holiDay = holiday.getLocdate();
                     isHoliday = holiday.getIsHoliday();
@@ -115,5 +116,34 @@ public class MoodoCalendarController {
         today.setIsHoliday(isHoliday);
 
         return today;
+    }
+
+    // 공휴일 정보
+    @GetMapping("/getHoliday/{date}")
+    public List<MoodoHoliday> getHolidays(@PathVariable String date) throws Exception {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date inputDate = inputFormat.parse(date);
+
+        SimpleDateFormat outputYear = new SimpleDateFormat("yyyy");
+        SimpleDateFormat outputMonth = new SimpleDateFormat("MM");
+
+        String year = outputYear.format(inputDate);
+        String month = outputMonth.format(inputDate);
+
+        String opt1 = "?serviceKey=";
+        String opt2 = "&solYear=";
+        String opt3 = "&solMonth=";
+
+        String url = apiUrl + opt1 + apiKey + opt2 + year + opt3 + month;
+
+        List<MoodoHoliday> holidayList = apiService.getItemList(url);
+        List<MoodoHoliday> holiday = new ArrayList<>();
+
+        for (MoodoHoliday item : holidayList) {
+            if (date.equals(item.getLocdate())) {
+                holiday.add(item);
+            }
+        }
+        return holiday;
     }
 }

@@ -1,6 +1,6 @@
-package bitcfull.moodo_spring.dto;
+package bitcfull.moodo_spring.model;
 
-public class Holiday {
+public class MoodoHoliday {
     private String dateName;
     private String isHoliday;
     private String locdate;

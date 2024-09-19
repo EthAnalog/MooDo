@@ -2,7 +2,7 @@ package bitcfull.moodo_spring.service;
 
 import bitcfull.moodo_spring.dto.DataItemDTO;
 import bitcfull.moodo_spring.dto.DataResponseDTO;
-import bitcfull.moodo_spring.dto.Holiday;
+import bitcfull.moodo_spring.model.MoodoHoliday;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 public class MoodoAPIService {
-    public List<Holiday> getItemList(String url) throws Exception {
+    public List<MoodoHoliday> getItemList(String url) throws Exception {
         List<DataItemDTO> itemList;
 
         URL server = null;
@@ -43,7 +43,7 @@ public class MoodoAPIService {
                 urlConn.disconnect();
             }
         }
-        List<Holiday> holidayList = new ArrayList<>();
+        List<MoodoHoliday> holidayList = new ArrayList<>();
 
         if (itemList == null) {
             throw new IllegalStateException("itemList is null");
@@ -58,7 +58,7 @@ public class MoodoAPIService {
                 String isHoliday = item.getIsHoliday();
                 String holidayName = item.getDateName();
 
-                Holiday holidayItem = new Holiday();
+                MoodoHoliday holidayItem = new MoodoHoliday();
                 holidayItem.setLocdate(locdate);
                 holidayItem.setIsHoliday(isHoliday);
                 holidayItem.setDateName(holidayName);
