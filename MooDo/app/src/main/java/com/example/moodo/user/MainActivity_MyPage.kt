@@ -81,6 +81,7 @@ class MainActivity_MyPage : AppCompatActivity() {
         val selectDate = dateFormat.format(calendar.time)
 
         loadUserInfo(userId!!)
+        loadProfilePicture(userId)
 
         // profile
         // 사진 수정
