@@ -1,12 +1,15 @@
 package com.example.moodo.db
 
+import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.Optional
@@ -27,6 +30,15 @@ interface MooDoInterface {
     // 사용자 정보 가져오기
     @GET("api/user/userInfo/{id}")
     fun getUserInfo(@Path("id") id:String):Call<MooDoUser>
+
+    // 프로필 사진 업로드+수정
+    @Multipart
+    @POST("api/user/uploadProfilePicture/{userId}")
+    fun uploadProfilePicture(@Path("userId") userId: String, @Part file: MultipartBody.Part):Call<ResponseBody>
+
+    // 프로필 사진 삭제
+    @DELETE("api/user/deleteProfilePicture/{userId}")
+    fun deleteProfilePicture(@Path("userId") userId: String):Call<ResponseBody>
 
     // 유저 사진 가져오기
     @GET("api/user/userProfile/{id}")
