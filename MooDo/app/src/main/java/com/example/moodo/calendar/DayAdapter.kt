@@ -39,14 +39,25 @@ class DayAdapter(val tempMonth:Int,
     inner class DayHolder(val binding: ItemListDayBinding) :RecyclerView.ViewHolder(binding.root) {
         init {
             binding.itemDayLayout.setOnClickListener {
-                val previousPosition = selectedPosition
-                selectedPosition = adapterPosition
+                // 현재 월인지 확인
+                if (tempMonth == dayList[adapterPosition].month) {
+                    val previousPosition = selectedPosition
+                    selectedPosition = adapterPosition
 
-                // 이전 선택 항목과 현재 선택 항목을 업데이트
-                notifyItemChanged(previousPosition)
-                notifyItemChanged(selectedPosition)
+                    // 이전 선택 항목과 현재 선택 항목을 업데이트
+                    notifyItemChanged(previousPosition)
+                    notifyItemChanged(selectedPosition)
 
-                clickItemDayListener?.clickItemDay(selectedPosition)
+                    clickItemDayListener?.clickItemDay(selectedPosition)
+                }
+//                val previousPosition = selectedPosition
+//                selectedPosition = adapterPosition
+//
+//                // 이전 선택 항목과 현재 선택 항목을 업데이트
+//                notifyItemChanged(previousPosition)
+//                notifyItemChanged(selectedPosition)
+//
+//                clickItemDayListener?.clickItemDay(selectedPosition)
             }
         }
     }
