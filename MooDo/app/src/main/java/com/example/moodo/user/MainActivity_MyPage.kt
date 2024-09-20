@@ -45,9 +45,6 @@ class MainActivity_MyPage : AppCompatActivity() {
     private var user:MooDoUser?=null
     private var currentPhotoPath: String = ""
 
-    // 프로필 사진 변경 여부
-    var profileUpdate = false
-
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
             val file = File(getPathFromUri(uri) ?: return@let)
@@ -97,12 +94,10 @@ class MainActivity_MyPage : AppCompatActivity() {
         // 사진 수정
         binding.btnImgUpdate.setOnClickListener {
             chooseImage()
-            profileUpdate = true
         }
         // 사진 삭제
         binding.btnImgDelete.setOnClickListener {
             deleteProfilePicture(userId)
-            profileUpdate = true
         }
 
         // menu - moodo
@@ -207,16 +202,10 @@ class MainActivity_MyPage : AppCompatActivity() {
         }
         // 뒤로 가기
         binding.btnClose.setOnClickListener {
-            if (profileUpdate) {
-                val update = true
-                intent.putExtra("update", update)
-                setResult(RESULT_OK, intent)
-                finish()
-            }
-            else {
-                setResult(RESULT_CANCELED, null)
-                finish()
-            }
+            val update = true
+            intent.putExtra("update", update)
+            setResult(RESULT_OK, intent)
+            finish()
         }
 
         //탈퇴 버튼

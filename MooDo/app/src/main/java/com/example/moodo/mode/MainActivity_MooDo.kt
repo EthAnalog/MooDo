@@ -330,7 +330,6 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
         val userName = headerView.findViewById<TextView>(R.id.userName)
         val userImg = headerView.findViewById<ImageView>(R.id.userImg)
         MooDoClient.retrofit.getUserInfo(userId).enqueue(object : retrofit2.Callback<MooDoUser> {
-            val imageUrl = "C:\\fullstack\\AndroidProject\\MooDo_Spring\\"
             override fun onResponse(call: Call<MooDoUser>, response: Response<MooDoUser>) {
                 if (response.isSuccessful) {
                     user = response.body()
@@ -350,15 +349,24 @@ class MainActivity_MooDo : AppCompatActivity(), NavigationView.OnNavigationItemS
         MooDoClient.retrofit.getUserImg(userId).enqueue(object:Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
-                    val inputStream = response.body()?.byteStream()
-                    val bitmap = BitmapFactory.decodeStream(inputStream)
-                    userImg.setImageBitmap(bitmap)
+                    if (response.body() != null) {
+                        val inputStream = response.body()?.byteStream()
+                        val bitmap = BitmapFactory.decodeStream(inputStream)
+                        userImg.setImageBitmap(bitmap)
+                    }
+                    else {
+                        userImg.setImageResource(R.drawable.default_profile_image)
+                    }
                 }
-                Log.d("MooDoLog Img", userId.toString())
+                else {
+                    userImg.setImageResource(R.drawable.default_profile_image)
+                }
+                Log.d("MooDoLog Img", response.body().toString())
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Log.d("MooDoLog Img", userId.toString())
+                Log.d("MooDoLog ImgFail", t.toString())
+                userImg.setImageResource(R.drawable.default_profile_image)
             }
 
         })

@@ -48,7 +48,7 @@ class MainActivity_ToDo : AppCompatActivity() {
         }
 
         val userId = intent.getStringExtra("userId")
-        val selectDate = intent.getStringExtra("selectDate")
+        var selectDate = intent.getStringExtra("selectDate")
 
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
@@ -81,7 +81,9 @@ class MainActivity_ToDo : AppCompatActivity() {
             calendar.add(Calendar.DAY_OF_MONTH, -1) // 하루 빼기
 
             tdDateText.text = dateFormat.format(calendar.time)
-            allTodoList(userId, tdDateText.text.toString())
+            selectDate = dateFormat.format(calendar.time).toString()
+
+            allTodoList(userId, selectDate!!)
             btnVisible()
             binding.allList.setTextColor(selectedTextColor)
             binding.activeList.setTextColor(defaultTextColor)
@@ -97,7 +99,9 @@ class MainActivity_ToDo : AppCompatActivity() {
             calendar.add(Calendar.DAY_OF_MONTH, +1)
 
             tdDateText.text = dateFormat.format(calendar.time)
-            allTodoList(userId, tdDateText.text.toString())
+            selectDate = dateFormat.format(calendar.time).toString()
+
+            allTodoList(userId, selectDate!!)
             btnVisible()
             binding.allList.setTextColor(selectedTextColor)
             binding.activeList.setTextColor(defaultTextColor)
@@ -111,7 +115,7 @@ class MainActivity_ToDo : AppCompatActivity() {
             binding.allList.setTextColor(selectedTextColor)
             binding.activeList.setTextColor(defaultTextColor)
             binding.completeList.setTextColor(defaultTextColor)
-            allTodoList(userId, selectDate)
+            allTodoList(userId, selectDate!!)
             btnVisible()
             tdListStats = "All"
         }
@@ -119,7 +123,7 @@ class MainActivity_ToDo : AppCompatActivity() {
             binding.allList.setTextColor(defaultTextColor)
             binding.activeList.setTextColor(selectedTextColor)
             binding.completeList.setTextColor(defaultTextColor)
-            activeTodoList(userId, selectDate)
+            activeTodoList(userId, selectDate!!)
             btnVisible()
             tdListStats = "Active"
         }
@@ -127,7 +131,7 @@ class MainActivity_ToDo : AppCompatActivity() {
             binding.allList.setTextColor(defaultTextColor)
             binding.activeList.setTextColor(defaultTextColor)
             binding.completeList.setTextColor(selectedTextColor)
-            completeTodoList(userId, selectDate)
+            completeTodoList(userId, selectDate!!)
             btnVisible()
             tdListStats = "Complete"
         }
@@ -168,13 +172,13 @@ class MainActivity_ToDo : AppCompatActivity() {
                                 Log.d("MooDoLog ToDoSuccess", response.body().toString())
 
                                 if (tdListStats == "All") {
-                                    allTodoList(userId, selectDate)
+                                    allTodoList(userId, selectDate!!)
                                 }
                                 else if(tdListStats == "Active") {
-                                    activeTodoList(userId, selectDate)
+                                    activeTodoList(userId, selectDate!!)
                                 }
                                 else {
-                                    completeTodoList(userId, selectDate)
+                                    completeTodoList(userId, selectDate!!)
                                 }
                             } else {
                                 Log.d("MooDoLog ToDo Error", "Error: ${response.code()} - ${response.message()}")
@@ -318,10 +322,10 @@ class MainActivity_ToDo : AppCompatActivity() {
                             if (response.isSuccessful) {
                                 Log.d("MooDoLog y", response.body().toString())
                                 if (tdListStats == "All") {
-                                    allTodoList(userId, selectDate)
+                                    allTodoList(userId, selectDate!!)
                                 }
                                 else if(tdListStats == "Active") {
-                                    activeTodoList(userId, selectDate)
+                                    activeTodoList(userId, selectDate!!)
                                 }
                             }
                         }

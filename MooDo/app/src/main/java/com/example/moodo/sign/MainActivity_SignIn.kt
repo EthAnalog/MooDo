@@ -65,7 +65,6 @@ class MainActivity_SignIn : AppCompatActivity() {
             KakaoLogin(this)
         }
 
-
         // 회원가입 버튼
         binding.btnSignUp.setOnClickListener {
             val intent = Intent(this@MainActivity_SignIn, MainActivity_SignUp::class.java)

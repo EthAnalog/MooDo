@@ -351,15 +351,24 @@ class MainActivity_Mood_Calendar : AppCompatActivity(), NavigationView.OnNavigat
         MooDoClient.retrofit.getUserImg(userId).enqueue(object: Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
-                    val inputStream = response.body()?.byteStream()
-                    val bitmap = BitmapFactory.decodeStream(inputStream)
-                    userImg.setImageBitmap(bitmap)
+                    if (response.body() != null) {
+                        val inputStream = response.body()?.byteStream()
+                        val bitmap = BitmapFactory.decodeStream(inputStream)
+                        userImg.setImageBitmap(bitmap)
+                    }
+                    else {
+                        userImg.setImageResource(R.drawable.default_profile_image)
+                    }
                 }
-                Log.d("MooDoLog Img", userId.toString())
+                else {
+                    userImg.setImageResource(R.drawable.default_profile_image)
+                }
+                Log.d("MooDoLog Img", response.body().toString())
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Log.d("MooDoLog Img", userId.toString())
+                Log.d("MooDoLog ImgFail", t.toString())
+                userImg.setImageResource(R.drawable.default_profile_image)
             }
 
         })
