@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="dkgray">#333333</color>
+    <color name="lightgray">#D9D9D9</color>
+    <color name="gray">#8A8A8A</color>
+    <color name="sky_gray">#BABABA</color>
+    <color name="green">#AEDABF</color>
+    <color name="red">#FB5F5F</color>
+    <color name="lightred">#FFECEC</color>
+    <color name="lightyellow">#FFF4D5</color>
+    <color name="blue">#18a8f1</color>
+
+    <!--    이모지 색상 -->
+    <color name="e_yellow">#FFD25F</color>
+    <color name="e_red">#FF8D74</color>
+    <color name="e_blue">#75C8F1</color>
+    <color name="e_green">#AAD871</color>
+    <color name="e_apricot">#FFBD6D</color>
+
+    <color name="angry">#EFB3A6</color>
+    <color name="sad">#C1DBE8</color>
+    <color name="meh">#F3DCC0</color>
+    <color name="s_happy">#DAEAC6</color>
+    <color name="happy">#FEE6A2</color>
+
+    <!-- 이번 달 기록 없을 때 -->
+    <color name="noStats">#6DE494</color>
+    <color name="noStats2">#9FF8BC</color>
+</resources>

@@ -36,6 +36,7 @@ public class MoodoModeService {
         return modeRepository.findById(id);
     }
 
+
     // 특정 유저 기분 기록 조회
     public List<MoodoMode> findByUserId(String userId) {
         return modeRepository.findByUserId(userId);

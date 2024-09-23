@@ -2,6 +2,8 @@ package bitcfull.moodo_spring.controller;
 
 import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.service.MoodoUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -25,6 +27,7 @@ import java.util.Optional;
 @RequestMapping("/api/user")
 public class MoodoUserController {
 
+    private static final Logger log = LoggerFactory.getLogger(MoodoUserController.class);
     @Autowired
     private MoodoUserService userService;
 
@@ -71,16 +74,21 @@ public class MoodoUserController {
     }
 
     // 비밀번호 체크
-    @PostMapping("/check-pw/{id}")
-    public ResponseEntity<String> checkPw(@PathVariable String id, @RequestBody Map<String, String> passwordMap) {
-        String password = passwordMap.get("password");
+    @PostMapping("/check-pw/{id}/{pass}")
+    public Boolean checkPw(@PathVariable String id, @PathVariable String pass) {
+        Optional<MooDoUser> existingUser = userService.findById(id);
 
-        boolean isPasswordCorrect = userService.checkPassword(id, password);
-
-        if (isPasswordCorrect) {
-            return ResponseEntity.ok("비밀번호가 올바릅니다.");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("비밀번호가 다릅니다.");
+        if (existingUser.isPresent()) {
+            MooDoUser user = existingUser.get();
+            if (user.getPass().equals(pass)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
         }
     }
 
@@ -88,6 +96,18 @@ public class MoodoUserController {
     @GetMapping("/list")
     public List<MooDoUser> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    // 사용자 정보 수정 (생일 + 비밀번호)
+    @PutMapping("/changeUser/{id}")
+    public ResponseEntity<Void> changeUser(@PathVariable String id, @RequestParam String pass, @RequestParam String age) {
+        try {
+            userService.update(id, pass, age);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            log.error("error", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     // 비밀번호 변경
@@ -103,14 +123,6 @@ public class MoodoUserController {
             throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
         }
     }
-
-    // 사용자 정보 가져오기
-    @GetMapping("/userInfo/{id}")
-    public MooDoUser getUserInfo(@PathVariable String id) {
-        System.out.println("사용자 정보 가져오기 " + id);
-        return userService.getUserInfo(id);
-    }
-
     // 생일 변경
     @PutMapping("/change-age/{id}")
     public MooDoUser changeAge(@PathVariable String id, @RequestBody Map<String, String> ageMap) {
@@ -123,6 +135,13 @@ public class MoodoUserController {
         } else {
             throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
         }
+    }
+
+    // 사용자 정보 가져오기
+    @GetMapping("/userInfo/{id}")
+    public MooDoUser getUserInfo(@PathVariable String id) {
+        System.out.println("사용자 정보 가져오기 " + id);
+        return userService.getUserInfo(id);
     }
 
     // 프로필 사진 업로드
@@ -201,12 +220,12 @@ public class MoodoUserController {
 
     // 회원 탈퇴
     @DeleteMapping("/deleteUser/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable String id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         try {
             userService.deleteUser(id);
-            return ResponseEntity.ok("회원 탈퇴 성공");
+            return ResponseEntity.noContent().build();
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("회원 탈퇴 실패 : " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 

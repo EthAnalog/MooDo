@@ -1,10 +1,14 @@
 package bitcfull.moodo_spring.controller;
 
+import bitcfull.moodo_spring.model.MooDoUser;
 import bitcfull.moodo_spring.model.MoodoMode;
 import bitcfull.moodo_spring.service.MoodoModeService;
+import bitcfull.moodo_spring.service.MoodoUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -15,6 +19,8 @@ public class MoodoModeController {
 
     @Autowired
     private MoodoModeService moodoModeService;
+    @Autowired
+    private MoodoUserService moodoUserService;
 
     // 유저 전체 기분 목록과 가장 많은 기분값 조회
     @GetMapping("/list/{userId}")
@@ -31,21 +37,24 @@ public class MoodoModeController {
 
     // 특정 날짜 일기 조회
     @GetMapping("/list/{userId}/{date}")
-    public Optional<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable String date) {
-        return moodoModeService.findByUserAndDate(userId, date);
+    public List<MoodoMode> userMoodList(@PathVariable String userId, @PathVariable String date) {
+
+        System.out.println("\n" + date + "\n");
+        Optional<MoodoMode> moodOptional = moodoModeService.findByUserAndDate(userId, date);
+        return moodOptional.map(Collections::singletonList).orElse(Collections.emptyList());
     }
 
     // 특정 날짜 기분값 조회
     @GetMapping("/list/mdMode/{userId}/{date}")
     public int getMdMode(@PathVariable String userId, @PathVariable String date) {
+        System.out.println("\n 넘어간다 " + date + "\n");
+
         Optional<MoodoMode> mood = moodoModeService.findByUserAndDate(userId, date);
         if (mood.isPresent()) {
             int moodNum = mood.get().getMdMode();
-            System.out.println(date + " 감정 " + moodNum);
             return moodNum;
         } else {
             // 데이터가 없을 경우 기본값 반환 or 예외
-            System.out.println(date + " 데이터 없음");
             return 0; // 0 반환
         }
     }
